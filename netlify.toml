@@ -1,8 +1,5 @@
 [build]
-  command = ""
   publish = "."
 
-=======
 [build.environment]
   NODE_VERSION = "18"
->>>>>>> ead0c46739c8baf62c23c2a98f3c7347689ebc59
