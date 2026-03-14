@@ -672,8 +672,29 @@ const WandVision = (function() {
                 openVideoLightbox(src, title, desc);
             }
 
-            overlay.addEventListener('click', openInLightbox);
-            overlay.addEventListener('touchend', openInLightbox, { passive: false });
+            overlay.addEventListener('click', function(e) {
+    const icon = overlay.querySelector('i');
+    const iconRect = icon.getBoundingClientRect();
+    const x = e.clientX;
+    const y = e.clientY;
+    const margin = 20;
+    if (x >= iconRect.left - margin && x <= iconRect.right + margin &&
+        y >= iconRect.top - margin && y <= iconRect.bottom + margin) {
+        openInLightbox(e);
+    }
+});
+overlay.addEventListener('touchend', function(e) {
+    const touch = e.changedTouches[0];
+    const icon = overlay.querySelector('i');
+    const iconRect = icon.getBoundingClientRect();
+    const x = touch.clientX;
+    const y = touch.clientY;
+    const margin = 20;
+    if (x >= iconRect.left - margin && x <= iconRect.right + margin &&
+        y >= iconRect.top - margin && y <= iconRect.bottom + margin) {
+        openInLightbox(e);
+    }
+}, { passive: false });
         });
     }
 
