@@ -147,17 +147,13 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .logo-title .wand { color: var(--dark-blue); }
 .logo-title .vision {
-    background: linear-gradient(to bottom, #D4A017, #8B6914, #D4A017);
+    position: relative;
+    background: linear-gradient(135deg, #B8860B, #FFD700, #8B6914, #FFC200, #B8860B);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 1px 3px rgba(139, 105, 20, 0.5));
-    animation: goldShine 3s ease-in-out infinite;
-}
-
-@keyframes goldShine {
-    0%, 100% { filter: drop-shadow(0 0 4px rgba(212, 160, 23, 0.7)); }
-    50% { filter: drop-shadow(0 0 12px rgba(212, 160, 23, 1)); }
+    animation: goldFlow 3s linear infinite;
 }
 
 .logo-title .kk { color: var(--dark-blue); }
@@ -182,6 +178,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     transition: var(--transition);
 }
 @media (min-width: 900px) { .mobile-menu-toggle { display: none; } }
+@media (min-width: 900px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
 
 /* Nav Menu */
 .nav-menu {
@@ -268,6 +265,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     min-height: 100vh;
     padding: 100px 20px 60px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -333,7 +331,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .hero-surface-badge i { color: #f59e0b; font-size: 1rem; }
 
 .hero-subtitle {
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.95);
     font-size: clamp(0.95rem, 2vw, 1.1rem);
     margin-bottom: 30px;
 }
@@ -344,7 +342,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .room-selector {
     max-width: 1400px;
     margin: 0 auto 30px;
-    padding: 0 20px;
+    padding: 0 40px;
     width: 100%;
 }
 .room-grid {
@@ -507,8 +505,8 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     gap: 12px;
     margin-top: 25px;
 }
-@media (min-width: 600px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 900px) { .features-grid { grid-template-columns: repeat(5, 1fr); } }
+@media (min-width: 600px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .features-grid { grid-template-columns: repeat(4, 1fr); max-width: 900px; margin-left: auto; margin-right: auto; } }
 
 .feature-card {
     background: rgba(255,255,255,0.12);
@@ -695,7 +693,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 /* ===================================
    LEISTUNGEN SECTION
 =================================== */
-.leistungen-section { background: var(--light); padding: 80px 0; }
+.leistungen-section { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); }
 .leistungen-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -843,7 +841,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 /* ===================================
    GALLERY
 =================================== */
-.gallery-section { background: var(--light); padding: 80px 0; }
+.gallery-section { background: var(--light); padding: 40px 0 80px; }
 .gallery-filter {
     display: flex;
     gap: 10px;
@@ -1121,6 +1119,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     width: 100px; height: 100px;
     display: block;
     margin: 0 auto;
+    object-fit: contain;
     filter: drop-shadow(0 5px 20px rgba(255,255,255,0.3));
     animation: float 3s ease-in-out infinite;
 }
@@ -1360,6 +1359,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     width: 80px; height: 80px;
     display: block;
     margin: 0 auto;
+    object-fit: contain;
     filter: drop-shadow(0 5px 15px rgba(30,58,138,0.3));
 }
 .popup-step h3 { font-size: 1.4rem; color: var(--dark-blue); text-align: center; margin-bottom: 10px; }
@@ -1589,16 +1589,6 @@ a:focus, button:focus {
     background: var(--pale-blue);
     color: var(--dark-blue);
 }
-.room-selector {
-    width: 100% !important;
-    max-width: 1400px !important;
-    margin: 0 auto 30px !important;
-    padding: 0 40px !important;
-}
-.hero-interactive {
-    flex-direction: column !important;
-    align-items: center !important;
-}
 /* SKIP LINK */
 .skip-link {
     position: absolute;
@@ -1616,25 +1606,9 @@ a:focus, button:focus {
 .skip-link:focus {
     top: 0;
 }
-/* IMAGE ASPECT RATIO FIX */
-.section-icon {
-    object-fit: contain;
-}
-
-.cta-icon-img {
-    object-fit: contain;
-}
-
-.popup-icon-img {
-    object-fit: contain;
-}
 /* FOOTER CONTRAST FIX */
 .footer-col h4 {
     color: #bfdbfe;
-}
-/* CONTRAST FIXES */
-.hero-subtitle {
-    color: rgba(255,255,255,0.95) !important;
 }
 
 .feature-card p {
@@ -1653,10 +1627,6 @@ a:focus, button:focus {
     color: #4a5568 !important;
 }
 
-.video-info p {
-    color: #4a5568 !important;
-}
-
 .result-item span {
     color: #4a5568 !important;
 }
@@ -1667,16 +1637,6 @@ a:focus, button:focus {
 /* ===================================
    GOLD SPARKLE - Vision Logo
 =================================== */
-.logo-title .vision {
-    position: relative;
-    background: linear-gradient(135deg, #B8860B, #FFD700, #8B6914, #FFC200, #B8860B);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: goldFlow 3s linear infinite;
-}
-
 @keyframes goldFlow {
     0% { background-position: 0% center; }
     100% { background-position: 200% center; }
@@ -1943,7 +1903,7 @@ a:focus, button:focus {
    ============================================ */
 
 .branchen-section {
-    background: var(--light);
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
     padding: 80px 0;
 }
 
@@ -2410,5 +2370,46 @@ a:focus, button:focus {
     .video-gallery-section .section-title {
         font-size: 2.2rem !important;
         line-height: 1.2 !important;
+    }
+}
+/* HAMBURGER ANIMACIJA */
+.mobile-menu-toggle span {
+    transition: all 0.3s ease;
+}
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+@media (max-width: 767px) {
+    .leistung-card {
+        padding: 20px 18px;
+    }
+    .leistung-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+    .leistung-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    .leistung-card p {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+    }
+    .leistung-list li {
+        font-size: 0.82rem;
+    }
+    .btn-leistung {
+        padding: 10px 16px;
+        font-size: 0.88rem;
+        min-height: 42px;
     }
 }

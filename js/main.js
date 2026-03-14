@@ -179,18 +179,24 @@ const WandVision = (function() {
     if (!menu) return;
     menu.style.top = (navbar ? navbar.offsetHeight : 70) + 'px';
     const isActive = menu.classList.toggle('active');
-    if (toggle) toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    if (toggle) {
+        toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        toggle.classList.toggle('active', isActive);
+    }
     document.body.style.overflow = isActive ? 'hidden' : '';
 }
 
     function closeMobileMenu() {
-        const menu = document.getElementById('nav-menu');
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        if (!menu) return;
-        menu.classList.remove('active');
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+    const menu = document.getElementById('nav-menu');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    if (!menu) return;
+    menu.classList.remove('active');
+    if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('active');
     }
+    document.body.style.overflow = '';
+}
 
     /* ===================================
        ROOM TRANSFORMATION
