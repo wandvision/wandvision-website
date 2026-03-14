@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WandVision K&K Blog – Tipps, Ideen und Inspirationen rund um Wanddruck, Bodendruck und Raumgestaltung in Baden-Württemberg.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://wandvisionkk.de/blog.html">
+  <title>Blog – Wanddruck & Bodendruck Ideen | WandVision K&K</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .blog-hero { background: var(--gradient-primary); padding: 120px 20px 60px; text-align: center; color: white; }
+    .blog-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 15px; color: white; }
+    .blog-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+    .blog-section { padding: 80px 0; background: var(--light); }
+    .blog-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+    @media (min-width: 600px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
+    .blog-card { background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); border: 2px solid transparent; }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--sky-blue); }
+    .blog-card.featured { grid-column: 1 / -1; }
+    @media (min-width: 1024px) { .blog-card.featured { display: grid; grid-template-columns: 1fr 1fr; } }
+    .blog-img-placeholder { width: 100%; height: 220px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+    .blog-card.featured .blog-img-placeholder { height: 300px; }
+    .blog-content { padding: 25px; }
+    .blog-meta { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; flex-wrap: wrap; }
+    .blog-category { background: var(--pale-blue); color: var(--dark-blue); padding: 4px 12px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.5px; }
+    .blog-category.boden { background: rgba(245,158,11,0.15); color: #92400e; }
+    .blog-category.trends { background: rgba(16,185,129,0.15); color: #065f46; }
+    .blog-date { font-size: 0.82rem; color: var(--gray); display: flex; align-items: center; gap: 5px; }
+    .blog-date i { color: var(--sky-blue); }
+    .blog-content h2 { font-size: 1.2rem; color: var(--dark-blue); margin-bottom: 10px; line-height: 1.3; }
+    .blog-card.featured .blog-content h2 { font-size: 1.6rem; }
+    .blog-content p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; margin-bottom: 20px; }
+    .blog-read-more { display: inline-flex; align-items: center; gap: 7px; color: var(--light-blue); font-weight: 600; font-size: 0.9rem; transition: var(--transition); text-decoration: none; }
+    .blog-read-more:hover { color: var(--dark-blue); gap: 10px; }
+    .blog-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--gray-light); }
+    .blog-tag { background: var(--light); color: var(--gray); padding: 4px 10px; border-radius: 50px; font-size: 0.78rem; font-weight: 500; border: 1px solid var(--gray-light); }
+    .newsletter-section { background: var(--gradient-primary); padding: 60px 20px; text-align: center; color: white; }
+    .newsletter-section h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 12px; color: white; }
+    .newsletter-section p { opacity: 0.9; margin-bottom: 25px; font-size: 1rem; }
+    .newsletter-form { display: flex; gap: 12px; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .newsletter-form input { flex: 1; min-width: 250px; padding: 14px 20px; border-radius: 50px; border: none; font-size: 1rem; font-family: var(--font-body); outline: none; }
+    .newsletter-form button { padding: 14px 28px; background: white; color: var(--dark-blue); border: none; border-radius: 50px; font-weight: 700; font-size: 1rem; font-family: var(--font-body); cursor: pointer; transition: var(--transition); min-height: 50px; }
+    .newsletter-form button:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+    .back-home { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 20px; transition: var(--transition); text-decoration: none; }
+    .back-home:hover { color: white; }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/zid-icon.png" alt="WandVision Logo" class="logo-icon-img">
+      <div class="logo-text">
+        <div class="logo-title"><span class="wand">Wand</span><span class="vision">Vision</span><span class="kk">K&K</span></div>
+        <div class="logo-subtitle">Wanddruck & Design</div>
+      </div>
+    </a>
+    <button class="mobile-menu-toggle" onclick="WandVision.toggleMobileMenu()" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </button>
+    <div class="nav-menu" id="nav-menu">
+      <a href="index.html#home" class="nav-item" onclick="WandVision.closeMobileMenu()">Home</a>
+      <a href="index.html#videos" class="nav-item" onclick="WandVision.closeMobileMenu()">Videos</a>
+      <a href="index.html#leistungen" class="nav-item nav-item-new" onclick="WandVision.closeMobileMenu()">Leistungen <span class="nav-badge">NEU</span></a>
+      <a href="index.html#gallery" class="nav-item" onclick="WandVision.closeMobileMenu()">Galerie</a>
+      <a href="index.html#preise" class="nav-item" onclick="WandVision.closeMobileMenu()">Preise</a>
+      <a href="index.html#faq" class="nav-item" onclick="WandVision.closeMobileMenu()">FAQ</a>
+      <a href="blog.html" class="nav-item" style="color: var(--light-blue)" onclick="WandVision.closeMobileMenu()">Blog</a>
+      <a href="tel:4915123456789" class="btn-primary-nav"><i class="fas fa-phone-alt"></i> <span class="btn-text">Anrufen</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- BLOG HERO -->
+<div class="blog-hero">
+  <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Zurück zur Startseite</a>
+  <h1>Unser Blog</h1>
+  <p>Tipps, Ideen und Inspirationen rund um Wanddruck, Bodendruck und Raumgestaltung</p>
+</div>
+
+<!-- BLOG ARTICLES -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-grid">
+
+      <!-- FEATURED: Bodendruck -->
+      <article class="blog-card featured">
+        <div class="blog-img-placeholder">🖨️</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category boden">NEU Bodendruck</span>
+            <span class="blog-date"><i class="fas fa-calendar"></i> Februar 2026</span>
+          </div>
+          <h2>Bodendruck: Die Revolution im Raumdesign – Böden & Terrassen</h2>
+          <p>WandVision K&K gehört zu den wenigen Anbietern in Baden-Württemberg, die direkt auf ebenen Böden und Terrassen drucken. Entdecken Sie die faszinierenden Möglichkeiten des 3D-Bodendrucks – von Firmenlogos über Naturmotive bis hin zu spektakulären 3D-Illusionen.</p>
+          <a href="blog/bodendruck-revolution.html" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+          <div class="blog-tags">
+            <span class="blog-tag">Bodendruck</span>
+            <span class="blog-tag">3D-Effekte</span>
+            <span class="blog-tag">Innovation</span>
+            <span class="blog-tag">Baden-Württemberg</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Wanddruck Trends 2026 -->
+      <article class="blog-card">
+        <div class="blog-img-placeholder">🎨</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category trends">Trends</span>
+            <span class="blog-date"><i class="fas fa-calendar"></i> Februar 2026</span>
+          </div>
+          <h2>Wanddruck Trends 2026 – Die neuesten Designs für Ihr Zuhause</h2>
+          <p>Von Biophilic Design über KI-generierte Motive bis hin zu maximalistischen Wandkunstwerken – entdecken Sie die heißesten Wandgestaltungs-Trends des Jahres.</p>
+          <a href="blog/wanddruck-trends-2026.html" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+          <div class="blog-tags">
+            <span class="blog-tag">Trends</span>
+            <span class="blog-tag">2026</span>
+            <span class="blog-tag">Biophilic Design</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Wohnzimmer -->
+      <article class="blog-card">
+        <div class="blog-img-placeholder">🛋️</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Wohnzimmer</span>
+            <span class="blog-date"><i class="fas fa-calendar"></i> Februar 2026</span>
+          </div>
+          <h2>10 Wanddruck-Ideen fürs Wohnzimmer, die begeistern</h2>
+          <p>Entdecken Sie die schönsten Wanddruck-Ideen für Ihr Wohnzimmer – von Naturmotiven bis hin zu modernen abstrakten Designs. Für jeden Stil die passende Inspiration.</p>
+          <a href="blog/wohnzimmer-ideen.html" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+          <div class="blog-tags">
+            <span class="blog-tag">Wohnzimmer</span>
+            <span class="blog-tag">Design</span>
+            <span class="blog-tag">Ideen</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Büro -->
+      <article class="blog-card">
+        <div class="blog-img-placeholder">💼</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Büro</span>
+            <span class="blog-date"><i class="fas fa-calendar"></i> Januar 2026</span>
+          </div>
+          <h2>Wie Wanddruck die Mitarbeiterzufriedenheit steigert</h2>
+          <p>Studien zeigen: Ein ansprechendes Büroumfeld steigert die Mitarbeiterzufriedenheit und Produktivität deutlich. Erfahren Sie, wie Wanddruck dabei hilft.</p>
+          <a href="blog/buero-wanddruck.html" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+          <div class="blog-tags">
+            <span class="blog-tag">Büro</span>
+            <span class="blog-tag">Produktivität</span>
+            <span class="blog-tag">Design</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Restaurant -->
+      <article class="blog-card">
+        <div class="blog-img-placeholder">🍽️</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Restaurant</span>
+            <span class="blog-date"><i class="fas fa-calendar"></i> Januar 2026</span>
+          </div>
+          <h2>Restaurant-Transformation durch Wanddruck – mehr Stammkunden & Umsatz</h2>
+          <p>Wie ein professioneller Wanddruck Ihr Restaurant in ein unvergessliches Erlebnis verwandelt und Stammkunden langfristig bindet.</p>
+          <a href="blog/restaurant-transformation.html" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+          <div class="blog-tags">
+            <span class="blog-tag">Restaurant</span>
+            <span class="blog-tag">HoReCa</span>
+            <span class="blog-tag">Ambiente</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Wanddruck vs Tapete -->
+      <article class="blog-card">
+        <div class="blog-img-placeholder">🆚</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Ratgeber</span>
+            <span class="blog-date"><i class="fas fa-calendar"></i> Dezember 2025</span>
+          </div>
+          <h2>Wanddruck vs. Tapete – Was ist die bessere Wahl 2026?</h2>
+          <p>Was ist langlebiger, individueller und umweltfreundlicher? Wir vergleichen Wanddruck und Tapete ehrlich und helfen Ihnen bei der richtigen Entscheidung.</p>
+          <a href="blog/wanddruck-vs-tapete.html" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+          <div class="blog-tags">
+            <span class="blog-tag">Vergleich</span>
+            <span class="blog-tag">Tapete</span>
+            <span class="blog-tag">Ratgeber</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kosten -->
+      <article class="blog-card">
+        <div class="blog-img-placeholder">💰</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Preise</span>
+            <span class="blog-date"><i class="fas fa-calendar"></i> Dezember 2025</span>
+          </div>
+          <h2>Wanddruck Kosten 2026 – So planen Sie Ihr Budget realistisch</h2>
+          <p>Oberfläche, Größe, Qualität – viele Faktoren beeinflussen den Preis. Wir zeigen Ihnen transparent, was Wanddruck kostet und wie Sie realistisch planen.</p>
+          <a href="blog/wanddruck-kosten.html" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+          <div class="blog-tags">
+            <span class="blog-tag">Kosten</span>
+            <span class="blog-tag">Budget</span>
+            <span class="blog-tag">Planung</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projekte -->
+      <article class="blog-card">
+        <div class="blog-img-placeholder">📍</div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="blog-category">Projekte</span>
+            <span class="blog-date"><i class="fas fa-calendar"></i> November 2025</span>
+          </div>
+          <h2>Unsere Wanddruck-Projekte in Stuttgart & Aalen – Galerie & Referenzen</h2>
+          <p>Von Büros in der Innenstadt bis zu Restaurants in Vaihingen – unsere realisierten Wanddruck-Projekte in der Region sprechen für sich.</p>
+          <a href="blog/projekte-stuttgart-aalen.html" class="blog-read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+          <div class="blog-tags">
+            <span class="blog-tag">Stuttgart</span>
+            <span class="blog-tag">Aalen</span>
+            <span class="blog-tag">Projekte</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="container">
+    <h2>Bleiben Sie inspiriert!</h2>
+    <p>Erhalten Sie die neuesten Wanddruck-Ideen und exklusive Angebote direkt in Ihr Postfach.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Vielen Dank! Sie erhalten bald unseren Newsletter.')">
+      <input type="email" placeholder="Ihre E-Mail-Adresse" required>
+      <button type="submit"><i class="fas fa-paper-plane"></i> Anmelden</button>
+    </form>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-trust-badges">
+    <div class="cta-trust-badge"><i class="fas fa-check-circle"></i><div><strong>5</strong><span>Jahre Erfahrung</span></div></div>
+    <div class="cta-trust-badge"><i class="fas fa-users"></i><div><strong>200</strong><span>Zufriedene Kunden</span></div></div>
+    <div class="cta-trust-badge"><i class="fas fa-award"></i><div><strong>100%</strong><span>Qualitätsgarantie</span></div></div>
+    <div class="cta-trust-badge"><i class="fas fa-headset"></i><div><strong>24/7</strong><span>Support</span></div></div>
+  </div>
+  <div class="cta-content">
+    <div class="cta-emoji"><img src="images/zid-icon.png" alt="Wand Icon" class="cta-icon-img"></div>
+    <h2>Lassen Sie uns gemeinsam Ihre perfekte Wandgestaltung planen.</h2>
+    <p>Kostenlose Beratung – unverbindlich und schnell!</p>
+    <div class="cta-buttons">
+      <a href="tel:4915123456789" class="btn-cta-primary"><i class="fas fa-phone-alt"></i> Jetzt anrufen</a>
+      <a href="index.html#preise" class="btn-cta-secondary"><i class="fas fa-calculator"></i> Preis berechnen</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="images/zid-icon.png" alt="WandVision Logo" class="footer-logo-icon-img">
+          <div class="footer-logo-text">
+            <div class="footer-logo-title"><span class="wand">Wand</span><span class="vision">Vision</span><span class="kk">K&K</span></div>
+          </div>
+        </div>
+        <p>Professioneller Vertikalwanddruck für Ihr Zuhause und Geschäft</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <p><i class="fas fa-phone"></i> +49 151 234 567 89</p>
+        <p><i class="fas fa-envelope"></i> info@wandvisionkk.de</p>
+        <p><i class="fas fa-map-marker-alt"></i> Hofherrnstrasse 67, 73434 Aalen, Baden-Württemberg</p>
+      </div>
+      <div class="footer-col">
+        <h4>Öffnungszeiten</h4>
+        <p>Montag – Freitag: 09:00 – 18:00</p>
+        <p>Samstag: 10:00 – 14:00</p>
+        <p>Sonntag: Geschlossen</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <p><a href="index.html#leistungen" class="footer-nav-link"><i class="fas fa-th-large"></i> Leistungen</a></p>
+        <p><a href="index.html#gallery" class="footer-nav-link"><i class="fas fa-images"></i> Galerie</a></p>
+        <p><a href="index.html#preise" class="footer-nav-link"><i class="fas fa-calculator"></i> Preisrechner</a></p>
+        <p><a href="blog.html" class="footer-nav-link"><i class="fas fa-blog"></i> Blog</a></p>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <a href="impressum.html" class="legal-link">Impressum</a>
+      <span class="legal-sep">|</span>
+      <a href="agb.html" class="legal-link">AGB</a>
+      <span class="legal-sep">|</span>
+      <a href="datenschutz.html" class="legal-link">Datenschutzerklärung</a>
+      <span class="legal-sep">|</span>
+      <a href="widerrufsrecht.html" class="legal-link">Widerrufsrecht</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 WandVision K&K. Alle Rechte vorbehalten.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating -->
+<a href="tel:4915123456789" class="floating-help" aria-label="Anrufen"><i class="fas fa-phone-alt"></i><span class="help-pulse"></span></a>
+<a href="https://wa.me/4915123456789" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i><span class="whatsapp-pulse"></span></a>
+
+<script src="js/main.js"></script>
+</body>
+</html>

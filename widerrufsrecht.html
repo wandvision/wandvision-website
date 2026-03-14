@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <title>Widerrufsrecht | WandVision K&K</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .legal-hero {
+            background: var(--gradient-primary);
+            padding: 120px 20px 50px;
+            text-align: center;
+            color: white;
+        }
+        .legal-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: white;
+            margin-bottom: 10px;
+        }
+        .legal-hero p { opacity: 0.85; font-size: 1rem; }
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        .back-home:hover { color: white; }
+        .legal-content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .legal-content h2 {
+            font-size: 1.3rem;
+            color: var(--dark-blue);
+            margin: 35px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--pale-blue);
+        }
+        .legal-content h3 {
+            font-size: 1.05rem;
+            color: var(--dark-blue);
+            margin: 20px 0 8px;
+        }
+        .legal-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        .legal-content ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        .legal-content ul li {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 6px;
+            list-style: disc;
+        }
+        .legal-content a {
+            color: var(--light-blue);
+            transition: var(--transition);
+        }
+        .legal-content a:hover { color: var(--dark-blue); }
+        .legal-info-box {
+            background: var(--pale-blue);
+            border-left: 4px solid var(--light-blue);
+            border-radius: var(--radius-sm);
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .legal-info-box p {
+            color: var(--dark-blue);
+            margin: 0;
+            line-height: 1.9;
+        }
+        .legal-warning-box {
+            background: rgba(245,158,11,0.1);
+            border-left: 4px solid #f59e0b;
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .legal-warning-box p {
+            color: #92400e;
+            font-weight: 500;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .legal-last-update {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legal-last-update i { color: var(--light-blue); }
+
+        /* Widerrufsformular */
+        .widerruf-formular {
+            border: 2px dashed var(--light-blue);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 30px 0;
+            background: var(--light);
+        }
+        .widerruf-formular h3 {
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .widerruf-formular h3 i { color: var(--light-blue); }
+        .widerruf-formular p {
+            margin-bottom: 15px;
+        }
+        .widerruf-formular .formular-line {
+            border-bottom: 1px solid var(--gray-light);
+            margin: 15px 0;
+            padding-bottom: 15px;
+        }
+        .widerruf-formular .formular-line p {
+            margin: 0;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        @media (min-width: 600px) {
+            .steps-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .step-card {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--gray-light);
+            transition: var(--transition);
+        }
+        .step-card:hover {
+            border-color: var(--sky-blue);
+            transform: translateY(-2px);
+        }
+        .step-number {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 0 auto 12px;
+        }
+        .step-card h4 {
+            font-size: 0.95rem;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+        }
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="images/zid-icon.png" alt="WandVision Logo" class="logo-icon-img">
+            <div class="logo-text">
+                <div class="logo-title">
+                    <span class="wand">Wand</span><span class="vision">Vision</span><span class="kk">K&K</span>
+                </div>
+                <div class="logo-subtitle">Wanddruck & Design</div>
+            </div>
+        </a>
+        <button class="mobile-menu-toggle" onclick="WandVision.toggleMobileMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="index.html#leistungen" class="nav-item">Leistungen <span class="nav-badge">NEU</span></a>
+            <a href="index.html#gallery" class="nav-item">Galerie</a>
+            <a href="index.html#preise" class="nav-item">Preise</a>
+            <a href="blog.html" class="nav-item">Blog</a>
+            <a href="tel:4915123456789" class="btn-primary-nav">
+                <i class="fas fa-phone-alt"></i> Anrufen
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="legal-hero">
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> Zurück zur Startseite
+    </a>
+    <h1>↩️ Widerrufsrecht</h1>
+    <p>Ihre Rechte gemäß § 355 BGB und EU-Verbraucherrechterichtlinie</p>
+</div>
+
+<!-- CONTENT -->
+<div class="legal-content">
+    <div class="legal-last-update">
+        <i class="fas fa-clock"></i> Stand: Februar 2026
+    </div>
+
+    <div class="legal-info-box">
+        <p><strong>Wichtiger Hinweis:</strong> Als Verbraucher haben Sie das Recht, diesen Vertrag innerhalb von 14 Tagen ohne Angabe von Gründen zu widerrufen – sofern die Dienstleistung noch nicht begonnen wurde.</p>
+    </div>
+
+    <h2>Widerrufsbelehrung</h2>
+    <h3>Widerrufsrecht</h3>
+    <p>Sie haben das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt 14 Tage ab dem Tag des Vertragsabschlusses.</p>
+    <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns:</p>
+    <div class="legal-info-box">
+        <p>
+            <strong>WandVision K&K GbR</strong><br>
+            Hofherrnstrasse 67<br>
+            73434 Aalen, Baden-Württemberg<br>
+            Tel: +49 151 234 567 89<br>
+            E-Mail: info@wandvisionkk.de
+        </p>
+    </div>
+    <p>mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.</p>
+    <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+
+    <h2>So gehen Sie vor</h2>
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h4>Widerruf erklären</h4>
+            <p>Kontaktieren Sie uns per E-Mail oder Brief innerhalb von 14 Tagen</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h4>Bestätigung erhalten</h4>
+            <p>Wir bestätigen Ihren Widerruf umgehend per E-Mail</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h4>Rückzahlung</h4>
+            <p>Bereits geleistete Zahlungen werden innerhalb von 14 Tagen erstattet</p>
+        </div>
+    </div>
+
+    <h2>Folgen des Widerrufs</h2>
+    <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen 14 Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist.</p>
+    <p>Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart. In keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.</p>
+
+    <h2>Erlöschen des Widerrufsrechts</h2>
+    <div class="legal-warning-box">
+        <p><i class="fas fa-exclamation-triangle"></i> <strong>Wichtig:</strong> Das Widerrufsrecht erlischt bei einem Vertrag zur Erbringung von Dienstleistungen, wenn wir die Dienstleistung vollständig erbracht haben und mit der Ausführung der Dienstleistung erst begonnen haben, nachdem Sie dazu Ihre ausdrückliche Zustimmung gegeben haben und gleichzeitig Ihre Kenntnis davon bestätigt haben, dass Sie Ihr Widerrufsrecht bei vollständiger Vertragserfüllung durch uns verlieren.</p>
+    </div>
+    <p>Bei Wanddruck- und Bodendruckarbeiten, die bereits begonnen wurden, kann das Widerrufsrecht daher eingeschränkt sein. In diesem Fall sind Sie verpflichtet, uns einen angemessenen Betrag zu zahlen, der dem Anteil der bereits erbrachten Leistung entspricht.</p>
+
+    <h2>Ausnahmen vom Widerrufsrecht</h2>
+    <p>Das Widerrufsrecht besteht nicht bei:</p>
+    <ul>
+        <li>Bereits vollständig erbrachten Dienstleistungen</li>
+        <li>Individuell angefertigten Motiven und Designs (nach § 312g Abs. 2 Nr. 1 BGB)</li>
+        <li>Verträgen, bei denen der Verbraucher ausdrücklich zugestimmt hat, dass der Unternehmer vor Ende der Widerrufsfrist mit der Ausführung beginnt</li>
+    </ul>
+
+    <h2>Muster-Widerrufsformular</h2>
+    <div class="widerruf-formular">
+        <h3><i class="fas fa-file-alt"></i> Muster-Widerrufsformular</h3>
+        <p>(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.)</p>
+
+        <div class="formular-line">
+            <p><strong>An:</strong><br>
+            WandVision K&K GbR<br>
+            Hofherrnstrasse 67<br>
+            73430 Aalen<br>
+            E-Mail: info@wandvisionkk.de</p>
+        </div>
+
+        <div class="formular-line">
+            <p>Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Erbringung der folgenden Dienstleistung:</p>
+            <p>Bestellt am (*): ___________________________</p>
+            <p>Name des/der Verbraucher(s): ___________________________</p>
+            <p>Anschrift des/der Verbraucher(s): ___________________________</p>
+        </div>
+
+        <div class="formular-line">
+            <p>Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier):</p>
+            <p>___________________________</p>
+            <p>Datum: ___________________________</p>
+        </div>
+
+        <p style="font-size:0.82rem; color: var(--gray); margin-top: 15px;">(*) Unzutreffendes streichen.</p>
+    </div>
+
+    <h2>Kontakt bei Fragen</h2>
+    <p>Bei Fragen zum Widerrufsrecht wenden Sie sich bitte an uns:</p>
+    <div class="legal-info-box">
+        <p>
+            <strong>WandVision K&K GbR</strong><br>
+            Tel: +49 151 234 567 89<br>
+            E-Mail: info@wandvisionkk.de<br>
+            Erreichbar: Mo–Fr 09:00–18:00 Uhr
+        </p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-legal">
+            <a href="impressum.html" class="legal-link">Impressum</a>
+            <span class="legal-sep">|</span>
+            <a href="agb.html" class="legal-link">AGB</a>
+            <span class="legal-sep">|</span>
+            <a href="datenschutz.html" class="legal-link">Datenschutzerklärung</a>
+            <span class="legal-sep">|</span>
+            <a href="widerrufsrecht.html" class="legal-link">Widerrufsrecht</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 WandVision K&K. Alle Rechte vorbehalten.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

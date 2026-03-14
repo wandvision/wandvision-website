@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <title>Impressum | WandVision K&K</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .legal-hero {
+            background: var(--gradient-primary);
+            padding: 120px 20px 50px;
+            text-align: center;
+            color: white;
+        }
+        .legal-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: white;
+            margin-bottom: 10px;
+        }
+        .legal-hero p { opacity: 0.85; font-size: 1rem; }
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        .back-home:hover { color: white; }
+        .legal-content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .legal-content h2 {
+            font-size: 1.3rem;
+            color: var(--dark-blue);
+            margin: 35px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--pale-blue);
+        }
+        .legal-content h3 {
+            font-size: 1.05rem;
+            color: var(--dark-blue);
+            margin: 20px 0 8px;
+        }
+        .legal-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        .legal-content a {
+            color: var(--light-blue);
+            transition: var(--transition);
+        }
+        .legal-content a:hover { color: var(--dark-blue); }
+        .legal-info-box {
+            background: var(--pale-blue);
+            border-left: 4px solid var(--light-blue);
+            border-radius: var(--radius-sm);
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .legal-info-box p {
+            color: var(--dark-blue);
+            margin: 0;
+            line-height: 1.9;
+        }
+        .legal-info-box strong {
+            color: var(--dark-blue);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        @media (min-width: 600px) {
+            .contact-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .contact-card {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            border: 1px solid var(--gray-light);
+        }
+        .contact-card i {
+            font-size: 1.3rem;
+            color: var(--light-blue);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .contact-card div strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 3px;
+        }
+        .contact-card div span {
+            font-size: 0.95rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+        .legal-last-update {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legal-last-update i { color: var(--light-blue); }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="images/zid-icon.png" alt="WandVision Logo" class="logo-icon-img">
+            <div class="logo-text">
+                <div class="logo-title">
+                    <span class="wand">Wand</span><span class="vision">Vision</span><span class="kk">K&K</span>
+                </div>
+                <div class="logo-subtitle">Wanddruck & Design</div>
+            </div>
+        </a>
+        <button class="mobile-menu-toggle" onclick="WandVision.toggleMobileMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="index.html#leistungen" class="nav-item">Leistungen <span class="nav-badge">NEU</span></a>
+            <a href="index.html#gallery" class="nav-item">Galerie</a>
+            <a href="index.html#preise" class="nav-item">Preise</a>
+            <a href="blog.html" class="nav-item">Blog</a>
+            <a href="tel:4915123456789" class="btn-primary-nav">
+                <i class="fas fa-phone-alt"></i> Anrufen
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="legal-hero">
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> Zurück zur Startseite
+    </a>
+    <h1>📄 Impressum</h1>
+    <p>Angaben gemäß § 5 TMG</p>
+</div>
+
+<!-- CONTENT -->
+<div class="legal-content">
+    <div class="legal-last-update">
+        <i class="fas fa-clock"></i> Stand: Februar 2026
+    </div>
+
+    <h2>Angaben zum Unternehmen</h2>
+    <div class="legal-info-box">
+        <p>
+            <strong>WandVision K&K GbR</strong><br>
+            Gesellschaft bürgerlichen Rechts (GbR)<br>
+            Hofherrnstrasse 67<br>
+            73434 Aalen<br>
+            Baden-Württemberg, Deutschland
+        </p>
+    </div>
+
+    <h2>Kontakt</h2>
+    <div class="contact-grid">
+        <div class="contact-card">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+                <strong>Telefon</strong>
+                <span>+49 151 234 567 89</span>
+            </div>
+        </div>
+        <div class="contact-card">
+            <i class="fas fa-envelope"></i>
+            <div>
+                <strong>E-Mail</strong>
+                <span>info@wandvisionkk.de</span>
+            </div>
+        </div>
+        <div class="contact-card">
+            <i class="fas fa-globe"></i>
+            <div>
+                <strong>Website</strong>
+                <span>www.wandvisionkk.de</span>
+            </div>
+        </div>
+        <div class="contact-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+                <strong>Standort</strong>
+                <span>Aalen, Baden-Württemberg</span>
+            </div>
+        </div>
+    </div>
+
+    <h2>Unternehmensform & Registrierung</h2>
+    <p>WandVision K&K ist eine Gesellschaft bürgerlichen Rechts (GbR) nach deutschem Recht.</p>
+    <p><strong>Steuernummer:</strong> [Steuernummer eintragen]<br>
+    <strong>Finanzamt:</strong> Finanzamt Aalen</p>
+
+    <h2>Verantwortlich für den Inhalt</h2>
+    <div class="legal-info-box">
+        <p>
+            <strong>Kristina Ćaćić</strong><br>
+            Hofherrnstrasse 67<br>
+            73434 Aalen<br>
+            Tel: +49 151 234 567 89<br>
+            E-Mail: info@wandvisionkk.de
+        </p>
+    </div>
+
+    <h2>Berufsbezeichnung & Zulassung</h2>
+    <p>Handwerk: Druck- und Medientechnologie</p>
+    <p>Zuständige Handwerkskammer: Handwerkskammer Ulm</p>
+
+    <h2>Streitschlichtung</h2>
+    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:</p>
+    <p><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></p>
+    <p>Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+    <h2>Haftung für Inhalte</h2>
+    <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+    <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+
+    <h2>Haftung für Links</h2>
+    <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+
+    <h2>Urheberrecht</h2>
+    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+    <p>Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet.</p>
+
+    <h2>Bildnachweise</h2>
+    <p>Alle auf dieser Website verwendeten Bilder sind entweder Eigentum von WandVision K&K oder wurden mit entsprechender Lizenz erworben. Für Fragen zu Bildrechten wenden Sie sich bitte an: info@wandvisionkk.de</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-legal">
+            <a href="impressum.html" class="legal-link">Impressum</a>
+            <span class="legal-sep">|</span>
+            <a href="agb.html" class="legal-link">AGB</a>
+            <span class="legal-sep">|</span>
+            <a href="datenschutz.html" class="legal-link">Datenschutzerklärung</a>
+            <span class="legal-sep">|</span>
+            <a href="widerrufsrecht.html" class="legal-link">Widerrufsrecht</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 WandVision K&K. Alle Rechte vorbehalten.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

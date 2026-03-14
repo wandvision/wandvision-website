@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+
+[[plugins]]
+  package = "netlify-plugin-cms"
+
+[build.environment]
+  NODE_VERSION = "18"
