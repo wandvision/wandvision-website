@@ -891,6 +891,7 @@ const WandVision = (function() {
         initAnimations();
         initBoden3DTilt();
         initScrollReveal();
+		document.querySelector('.js-mobile-toggle').addEventListener('click', WandVision.toggleMobileMenu);
 		    // PARTICLES na room preview klik
     document.querySelectorAll('.room-preview').forEach(function(preview) {
         preview.addEventListener('click', function(e) {
