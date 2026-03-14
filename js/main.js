@@ -173,13 +173,15 @@ const WandVision = (function() {
        MOBILE MENU
     =================================== */
     function toggleMobileMenu() {
-        const menu = document.getElementById('nav-menu');
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        if (!menu) return;
-        const isActive = menu.classList.toggle('active');
-        if (toggle) toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-        document.body.style.overflow = isActive ? 'hidden' : '';
-    }
+    const menu = document.getElementById('nav-menu');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const navbar = document.getElementById('navbar');
+    if (!menu) return;
+    menu.style.top = (navbar ? navbar.offsetHeight : 70) + 'px';
+    const isActive = menu.classList.toggle('active');
+    if (toggle) toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    document.body.style.overflow = isActive ? 'hidden' : '';
+}
 
     function closeMobileMenu() {
         const menu = document.getElementById('nav-menu');
@@ -702,13 +704,12 @@ const WandVision = (function() {
 
     // ── MOBILE: touchmove ──
     card.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const rect  = card.getBoundingClientRect();
-        const x = (touch.clientX - rect.left) / rect.width;
-        const y = (touch.clientY - rect.top)  / rect.height;
-        applyTilt(x, y, '0.05s ease', 1.03);
-    }, { passive: false });
+    const touch = e.touches[0];
+    const rect  = card.getBoundingClientRect();
+    const x = (touch.clientX - rect.left) / rect.width;
+    const y = (touch.clientY - rect.top)  / rect.height;
+    applyTilt(x, y, '0.05s ease', 1.03);
+}, { passive: true });
 
     card.addEventListener('touchend', function() {
         resetTilt();
