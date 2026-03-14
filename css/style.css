@@ -1516,11 +1516,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-.video-card {
-    animation: none !important;
-    transform: none !important;
-    opacity: 1 !important;
-}
 .fade-in { animation: fadeIn 0.5s ease forwards; }
 
 /* ===================================
@@ -2379,56 +2374,4 @@ a:focus, button:focus {
     margin-bottom: 12px;
     font-size: 1rem;
 }
-/* VIDEO SECTION - Veliki naslov */
-.video-section-title {
-  font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
-  color: #ffffff !important;
-  line-height: 1.15;
-}
 
-.gradient-text-blue {
-  background: linear-gradient(135deg, #60A5FA, #93C5FD);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-/* VIDEO SCROLL FIX */
-.video-gallery-section {
-  touch-action: pan-y;
-}
-
-.video-carousel-track {
-  touch-action: pan-y;
-}
-
-.video-carousel-wrapper {
-  touch-action: pan-y;
-}
-/* iOS BOUNCE FIX - video sekcija */
-#videos {
-    -webkit-overflow-scrolling: auto;
-    overscroll-behavior-y: contain;
-}
-
-.video-carousel-wrapper,
-.video-carousel-track {
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: auto;
-}
-
-/* Spriječi bounce dok se videi učitavaju */
-.video-card {
-    min-height: 320px;
-    will-change: auto;
-}
-/* MOBILE - onemogući kartice da se miču gore-dolje na touch */
-@media (max-width: 768px) {
-    .video-card:hover,
-    .video-card:active {
-        transform: none !important;
-    }
-
-    .video-card {
-        transition: box-shadow 0.3s ease !important;
-    }
-}

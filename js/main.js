@@ -629,31 +629,24 @@ const WandVision = (function() {
     /* ===================================
        INTERSECTION OBSERVER (animacije)
     =================================== */
-function initAnimations() {
-    if (!('IntersectionObserver' in window)) return;
-
-    document.querySelectorAll('.video-card').forEach(function(card) {
-        card.style.opacity = '1';
-        card.style.transform = 'none';
-        card.style.animation = 'none';
-    });
-
-    const elements = document.querySelectorAll(
-        '.leistung-card, .testimonial-card, .gallery-item, .faq-item, .feature-card'
-    );
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeIn 0.5s ease forwards';
-                observer.unobserve(entry.target);
-            }
+    function initAnimations() {
+        if (!('IntersectionObserver' in window)) return;
+        const elements = document.querySelectorAll(
+            '.leistung-card, .testimonial-card, .gallery-item, .video-card, .faq-item, .feature-card'
+        );
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.5s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        elements.forEach(function(el) {
+            el.style.opacity = '0';
+            observer.observe(el);
         });
-    }, { threshold: 0.1 });
-    elements.forEach(function(el) {
-        el.style.opacity = '0';
-        observer.observe(el);
-    });
-}
+    }
 
     /* ===================================
        VIDEO PLAYERS
@@ -820,59 +813,32 @@ function initAnimations() {
     }
 
     function initCarouselSwipe() {
-    const track = document.getElementById('videoCarouselTrack');
-    const section = document.getElementById('videos');
-    if (!track || !section) return;
+        const track = document.getElementById('videoCarouselTrack');
+        if (!track) return;
 
-    let startX = 0;
-    let startY = 0;
-    let locked = false; // true = korisnik je unutar sekcije i dodiruje ekran
+        let startX = 0;
+        let isDragging = false;
 
-    // Kad prst dotakne video sekciju — zapamti poziciju
-    section.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        locked = true;
-    }, { passive: true });
+        track.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
 
-    // Kad prst ode — oslobodi
-    section.addEventListener('touchend', function(e) {
-        if (!locked) return;
-        const diffX = startX - e.changedTouches[0].clientX;
-        const diffY = Math.abs(startY - e.changedTouches[0].clientY);
-        if (Math.abs(diffX) > 50 && Math.abs(diffX) > diffY) {
-            if (diffX > 0) carouselNext();
-            else carouselPrev();
-        }
-        locked = false;
-    }, { passive: true });
+        track.addEventListener('touchend', function(e) {
+            if (!isDragging) return;
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) carouselNext();
+                else carouselPrev();
+            }
+            isDragging = false;
+        }, { passive: true });
 
-    section.addEventListener('touchcancel', function() {
-        locked = false;
-    }, { passive: true });
-
-    // KLJUČNI DIO — passive: false omogućuje preventDefault
-    section.addEventListener('touchmove', function(e) {
-        if (!locked) return;
-
-        const dx = Math.abs(e.touches[0].clientX - startX);
-        const dy = Math.abs(e.touches[0].clientY - startY);
-
-        // Ako se pomiče više horizontalno nego vertikalno — blokiraj sve
-        if (dx > dy) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-        // Ako ide vertikalno (dy > dx) — pusti page scroll normalno
-    }, { passive: false });
-
-    window.addEventListener('resize', debounce(function() {
-        carouselIndex = 0;
-        updateCarousel();
-    }, 200));
-}
-
-
+        window.addEventListener('resize', debounce(function() {
+            carouselIndex = 0;
+            updateCarousel();
+        }, 200));
+    }
 
         function initScrollReveal() {
         const reveals = document.querySelectorAll('.reveal');
