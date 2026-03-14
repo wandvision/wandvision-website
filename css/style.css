@@ -534,7 +534,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 //* ===================================
    VIDEO SECTION
 =================================== */
-.video-gallery-section { background: var(--light); padding: 80px 0; }
+.video-gallery-section { background: var(--light); padding: 100px 0 80px; }
 /* VIDEO KARUSEL */
 .video-carousel-wrapper {
     position: relative;
@@ -2406,4 +2406,9 @@ a:focus, button:focus {
     margin-bottom: 12px;
     font-size: 1rem;
 }
-
+@media (max-width: 899px) {
+    .video-gallery-section .section-title {
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
+    }
+}
