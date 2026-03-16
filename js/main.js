@@ -556,20 +556,28 @@ const WandVision = (function() {
 
     const form = event.target;
     const formData = new FormData(form);
+    formData.append('form-name', 'konfigurator');
+    formData.append('selected-design', selectedDesign || 'nicht gewählt');
 
     fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
+        body: new URLSearchParams(formData).toString(),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     })
-    .then(function() {
-        showStep(5);
+    .then(function(response) {
+        if (response.ok) {
+            showStep(5);
+        } else {
+            console.error('Form response:', response.status);
+            showStep(5);
+        }
     })
     .catch(function(error) {
         console.error('Form error:', error);
         showStep(5);
     });
 }
+
 
 
     /* ===================================
