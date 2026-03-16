@@ -200,13 +200,90 @@ const WandVision = (function() {
 
     /* ===================================
        ROOM TRANSFORMATION
+       — transformRoom se poziva na klik
+       — createParticles vodi animaciju
+       — prompt se prikazuje tek kad zvjezdice nestanu
     =================================== */
+    var activeRoomCard = null;
+
     function transformRoom(roomId) {
-        const card = document.getElementById('room-' + roomId);
+        var card = document.getElementById('room-' + roomId);
         if (!card) return;
-        setTimeout(function() {
-            showConfigurator();
-        }, 8000);
+
+        // Ista soba već transformirana — ignoriši
+        if (card === activeRoomCard) return;
+
+        // Vrati prethodnu sobu na "before" i ukloni njen prompt
+        if (activeRoomCard) {
+            activeRoomCard.classList.remove('transformed');
+            var oldPrompt = activeRoomCard.querySelector('.room-config-prompt');
+            if (oldPrompt) {
+                oldPrompt.classList.remove('visible');
+                setTimeout(function() { oldPrompt.remove(); }, 300);
+            }
+        }
+
+        // Postavi novu aktivnu sobu
+        activeRoomCard = card;
+        // createParticles (pozvan iz init) će pozvati showRoomPrompt kad završi
+    }
+
+    function showRoomPrompt(card) {
+        // Ukloni eventualni stari prompt na ovoj kartici
+        var old = card.querySelector('.room-config-prompt');
+        if (old) old.remove();
+
+        var prompt = document.createElement('div');
+        prompt.className = 'room-config-prompt';
+        prompt.innerHTML =
+            '<p><i class="fas fa-magic"></i> Beeindruckend! Möchten Sie Ihren eigenen Bereich so gestalten?</p>' +
+            '<div class="room-prompt-buttons">' +
+                '<button class="btn-prompt-yes" onclick="WandVision.openFreshConfigurator()">' +
+                    '<i class="fas fa-arrow-right"></i> Ja, jetzt konfigurieren' +
+                '</button>' +
+                '<button class="btn-prompt-no" onclick="WandVision.dismissRoomPrompt(event)">' +
+                    'Nein, danke' +
+                '</button>' +
+            '</div>';
+
+        // Ubaci ispod room-preview (unutar room-card)
+        var preview = card.querySelector('.room-preview');
+        if (preview && preview.nextSibling) {
+            card.insertBefore(prompt, preview.nextSibling);
+        } else {
+            card.appendChild(prompt);
+        }
+
+        // Animiraj ulaz
+        requestAnimationFrame(function() {
+            prompt.classList.add('visible');
+        });
+    }
+
+    function dismissRoomPrompt(evtOrBtn) {
+        var btn = (evtOrBtn && evtOrBtn.target) ? evtOrBtn.target : evtOrBtn;
+        var prompt = btn ? btn.closest('.room-config-prompt') : null;
+        if (prompt) {
+            prompt.classList.remove('visible');
+            setTimeout(function() { prompt.remove(); }, 300);
+        }
+        // Vrati sobu na before
+        if (activeRoomCard) {
+            activeRoomCard.classList.remove('transformed');
+            activeRoomCard = null;
+        }
+    }
+
+    function openFreshConfigurator() {
+        // Ukloni sve promptove
+        document.querySelectorAll('.room-config-prompt').forEach(function(el) {
+            el.remove();
+        });
+        // Resetuj state
+        resetConfigurator();
+        // Otvori na Step 1
+        showConfigurator();
+        showStep(1);
     }
         /* ===================================
        PARTICLE EXPLOSION
@@ -263,6 +340,8 @@ const WandVision = (function() {
                                 s.remove();
                             });
                             card.classList.add('transformed');
+                            // Prikaži prompt tek ovdje — kad zvjezdice nestanu
+                            showRoomPrompt(card);
                         }, 500);
                     }, 300);
                 }
@@ -270,8 +349,6 @@ const WandVision = (function() {
             }, i * 35);
         }
     }
-
-
 
         /* ===================================
        LIGHTBOX
@@ -303,33 +380,161 @@ const WandVision = (function() {
         }
     }
 
+    /* ===================================
+       VIDEO LIGHTBOX — sa CTA gumbima
+       Gumbi se pojavljuju na 70% i 80%
+       trajanja videa (slide-up animacija)
+    =================================== */
+
+    // Podaci o svim videima (src, title, desc)
+    var VIDEO_PLAYLIST = [];
+    var currentVideoIndex = 0;
+    var videoCtaTimer1 = null;
+    var videoCtaTimer2 = null;
+
+    function buildVideoPlaylist() {
+        VIDEO_PLAYLIST = [];
+        document.querySelectorAll('.video-card').forEach(function(card) {
+            var source = card.querySelector('source');
+            var src    = source ? source.src : '';
+            var title  = card.querySelector('.video-info h3') ? card.querySelector('.video-info h3').textContent : '';
+            var desc   = card.querySelector('.video-info p')  ? card.querySelector('.video-info p').textContent  : '';
+            if (src) VIDEO_PLAYLIST.push({ src: src, title: title, desc: desc });
+        });
+    }
+
     function openVideoLightbox(src, title, desc) {
-        const lb = document.getElementById('video-lightbox');
-        const lbVideo = document.getElementById('video-lightbox-player');
-        const lbCaption = document.getElementById('video-lightbox-caption');
+        // Pronađi index videa u playlisti
+        var idx = 0;
+        for (var i = 0; i < VIDEO_PLAYLIST.length; i++) {
+            if (VIDEO_PLAYLIST[i].src === src) { idx = i; break; }
+        }
+        openVideoByIndex(idx);
+    }
+
+    function onVideoPlaying() {
+        clearTimeout(videoCtaTimer1);
+        clearTimeout(videoCtaTimer2);
+        var lbVideo = document.getElementById('video-lightbox-player');
+        if (lbVideo) lbVideo.removeEventListener('playing', onVideoPlaying);
+    }
+
+    function openVideoByIndex(idx) {
+        var lb      = document.getElementById('video-lightbox');
+        var lbVideo = document.getElementById('video-lightbox-player');
+        var lbCap   = document.getElementById('video-lightbox-caption');
         if (!lb || !lbVideo) return;
 
-        lbVideo.src = src;
-        if (lbCaption) lbCaption.textContent = title + (desc ? ' – ' + desc : '');
+        currentVideoIndex = idx;
+        var entry = VIDEO_PLAYLIST[idx] || {};
+
+        // Reset CTA gumba
+        resetLightboxCta();
+
+        lbVideo.src = entry.src || '';
+        if (lbCap) lbCap.textContent = (entry.title || '') + (entry.desc ? ' – ' + entry.desc : '');
+
         lb.classList.add('active');
         document.body.style.overflow = 'hidden';
-        lbVideo.play();
+        lbVideo.load();
+        lbVideo.play().catch(function() {});
+
+        // Gumbi se pojavljuju na 70% i 80% trajanja videa
+        var nav70shown  = false;
+        var conv80shown = false;
+
+        lbVideo.ontimeupdate = function() {
+            if (!lbVideo.duration) return;
+            var pct = lbVideo.currentTime / lbVideo.duration;
+            if (!nav70shown  && pct >= 0.70) { nav70shown  = true; showLightboxNav();  }
+            if (!conv80shown && pct >= 0.80) { conv80shown = true; showLightboxConv(); }
+        };
+
+        // Fallback — samo ako video uopće ne počne reproducirati
+        clearTimeout(videoCtaTimer1);
+        clearTimeout(videoCtaTimer2);
+        videoCtaTimer1 = setTimeout(function() {
+            if (!nav70shown)  { nav70shown  = true; showLightboxNav();  }
+        }, 20000);
+        videoCtaTimer2 = setTimeout(function() {
+            if (!conv80shown) { conv80shown = true; showLightboxConv(); }
+        }, 25000);
+        lbVideo.addEventListener('playing', onVideoPlaying);
+    }
+
+    function showLightboxNav() {
+        ['vlb-nav-btns', 'vlb-nav-btns-right', 'vlb-mobile-nav-row'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el && !el.classList.contains('visible')) el.classList.add('visible');
+        });
+    }
+
+    function showLightboxConv() {
+        ['vlb-conv-btns', 'vlb-conv-btns-right', 'vlb-mobile-conv-row'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el && !el.classList.contains('visible')) el.classList.add('visible');
+        });
+    }
+
+    function resetLightboxCta() {
+        ['vlb-nav-btns', 'vlb-nav-btns-right', 'vlb-conv-btns', 'vlb-conv-btns-right',
+         'vlb-mobile-nav-row', 'vlb-mobile-conv-row'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.classList.remove('visible');
+        });
+        clearTimeout(videoCtaTimer1);
+        clearTimeout(videoCtaTimer2);
+    }
+
+    function lightboxPrev() {
+        if (currentVideoIndex <= 0) return;
+        openVideoByIndex(currentVideoIndex - 1);
+    }
+
+    function lightboxNext() {
+        if (currentVideoIndex >= VIDEO_PLAYLIST.length - 1) {
+            closeVideoLightbox();
+            return;
+        }
+        openVideoByIndex(currentVideoIndex + 1);
+    }
+
+    function lightboxGoConfigurator() {
+        closeVideoLightbox();
+        setTimeout(function() {
+            resetConfigurator();
+            showConfigurator();
+            showStep(1);
+        }, 300);
+    }
+
+    function lightboxGoPreise() {
+        closeVideoLightbox();
+        setTimeout(function() {
+            var target = document.getElementById('preise');
+            if (target) {
+                var navH = document.querySelector('.navbar') ? document.querySelector('.navbar').offsetHeight : 70;
+                window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - navH - 20, behavior: 'smooth' });
+            }
+        }, 300);
     }
 
     function closeVideoLightbox() {
-        const lb = document.getElementById('video-lightbox');
-        const lbVideo = document.getElementById('video-lightbox-player');
+        var lb      = document.getElementById('video-lightbox');
+        var lbVideo = document.getElementById('video-lightbox-player');
         if (!lb) return;
         lb.classList.remove('active');
         document.body.style.overflow = '';
+        clearTimeout(videoCtaTimer1);
+        clearTimeout(videoCtaTimer2);
         if (lbVideo) {
+            lbVideo.ontimeupdate = null;
             lbVideo.pause();
             lbVideo.removeAttribute('src');
             lbVideo.load();
         }
-    
-}
-
+        resetLightboxCta();
+    }
 
     /* ===================================
        FAQ
@@ -377,7 +582,7 @@ const WandVision = (function() {
        CONFIGURATOR
     =================================== */
     function showConfigurator() {
-        const popup = document.getElementById('configurator-popup');
+        var popup = document.getElementById('configurator-popup');
         if (popup) {
             popup.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -385,12 +590,62 @@ const WandVision = (function() {
     }
 
     function closeConfigurator() {
-        const popup = document.getElementById('configurator-popup');
+        var popup = document.getElementById('configurator-popup');
         if (popup) {
             popup.classList.remove('active');
             document.body.style.overflow = '';
         }
         stopCamera();
+        // Ukloni promptove
+        document.querySelectorAll('.room-config-prompt').forEach(function(el) {
+            el.remove();
+        });
+        // Vrati sobu na before
+        if (activeRoomCard) {
+            activeRoomCard.classList.remove('transformed');
+            activeRoomCard = null;
+        }
+    }
+
+    function resetConfigurator() {
+        // Resetuj JS state
+        selectedPhoto  = null;
+        selectedDesign = null;
+        stopCamera();
+
+        // Resetuj foto preview
+        var previewDiv = document.getElementById('photo-preview');
+        var previewImg = document.getElementById('preview-img');
+        var nextBtn    = document.getElementById('btn-next-design');
+        var nextBtn2   = document.getElementById('btn-next-contact');
+        if (previewDiv) previewDiv.style.display = 'none';
+        if (previewImg) previewImg.src = '';
+        if (nextBtn)    nextBtn.style.display = 'none';
+        if (nextBtn2)   nextBtn2.style.display = 'none';
+
+        // Resetuj design selekciju
+        document.querySelectorAll('.design-option').forEach(function(d) {
+            d.classList.remove('selected');
+        });
+
+        // Resetuj form polja
+        var nameEl    = document.getElementById('name');
+        var telEl     = document.getElementById('telefon');
+        var emailEl   = document.getElementById('email');
+        var hidDes    = document.getElementById('hidden-design');
+        var hidRaum   = document.getElementById('hidden-raum');
+        if (nameEl)   nameEl.value  = '';
+        if (telEl)    telEl.value   = '';
+        if (emailEl)  emailEl.value = '';
+        if (hidDes)   hidDes.value  = '';
+        if (hidRaum)  hidRaum.value = '';
+
+        // Resetuj submit gumb ako je bio disabled
+        var submitBtn = document.querySelector('.popup-form button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Anfrage absenden';
+        }
     }
 
     function startConfigurator() {
@@ -453,7 +708,6 @@ const WandVision = (function() {
                 preview.parentNode.insertBefore(captureBtn, preview.nextSibling);
             })
             .catch(function(e) {
-                console.warn('Camera error:', e);
                 navigator.mediaDevices.getUserMedia({ video: true })
                 .then(function(stream) {
                     cameraStream = stream;
@@ -473,7 +727,6 @@ const WandVision = (function() {
                     preview.parentNode.insertBefore(captureBtn, preview.nextSibling);
                 })
                 .catch(function(e2) {
-                    console.warn('Camera fallback error:', e2);
                     alert('Kamera nicht verfügbar. Bitte laden Sie ein Foto hoch.');
                 });
             });
@@ -544,47 +797,91 @@ const WandVision = (function() {
 
     /* ===================================
        SUBMIT REQUEST
+       Šalje JSON na Netlify Function koja
+       proslijedi email sa foto attachmentom
     =================================== */
     function submitRequest(event) {
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-    const telefon = document.getElementById('telefon').value;
-    if (!name || !telefon) {
-        alert('Bitte füllen Sie alle Pflichtfelder aus.');
-        return;
-    }
+        event.preventDefault();
 
-    // Popuni hidden polja
-const form = event.target;
+        const name    = document.getElementById('name').value.trim();
+        const telefon = document.getElementById('telefon').value.trim();
+        const emailEl = document.getElementById('email');
+        const email   = emailEl ? emailEl.value.trim() : '';
 
-const hiddenDesign = document.getElementById('hidden-design');
-const hiddenRaum = document.getElementById('hidden-raum');
-if (hiddenDesign) hiddenDesign.value = selectedDesign || 'nicht gewählt';
-if (hiddenRaum) hiddenRaum.value = selectedPhoto ? 'Foto hochgeladen' : 'kein Foto';
-
-const formData = new FormData(form);
-formData.append('form-name', 'konfigurator');
-
-    fetch('/', {
-        method: 'POST',
-        body: new URLSearchParams(formData).toString(),
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    })
-    .then(function(response) {
-        if (response.ok) {
-            showStep(5);
-        } else {
-            console.error('Form response:', response.status);
-            showStep(5);
+        if (!name || !telefon) {
+            alert('Bitte füllen Sie alle Pflichtfelder aus.');
+            return;
         }
-    })
-    .catch(function(error) {
-        console.error('Form error:', error);
-        showStep(5);
-    });
-}
 
+        // Deaktiviraj gumb da spriječi dupli submit
+        const submitBtn = event.target.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet...';
+        }
 
+        // Komprimiraj sliku ako je veća od ~1MB (base64)
+        // da ne preopteretimo Function / email
+        function getOptimizedPhoto(callback) {
+            if (!selectedPhoto) { callback(null); return; }
+
+            // Ako je manja od ~1.5MB base64, šalji direktno
+            if (selectedPhoto.length < 2000000) { callback(selectedPhoto); return; }
+
+            // Inače komprimiraj na canvas
+            var img = new Image();
+            img.onload = function() {
+                var canvas = document.createElement('canvas');
+                var MAX = 1200;
+                var w = img.width, h = img.height;
+                if (w > MAX) { h = Math.round(h * MAX / w); w = MAX; }
+                if (h > MAX) { w = Math.round(w * MAX / h); h = MAX; }
+                canvas.width = w;
+                canvas.height = h;
+                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                callback(canvas.toDataURL('image/jpeg', 0.75));
+            };
+            img.onerror = function() { callback(selectedPhoto); };
+            img.src = selectedPhoto;
+        }
+
+        getOptimizedPhoto(function(photoData) {
+
+            var payload = {
+                name:        name,
+                telefon:     telefon,
+                email:       email || '—',
+                design:      selectedDesign || 'nicht gewählt',
+                raum:        photoData ? 'Foto hochgeladen' : 'kein Foto',
+                photoBase64: photoData || null,
+                photoMime:   'image/jpeg'
+            };
+
+            fetch('/.netlify/functions/send-konfigurator', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify(payload)
+            })
+            .then(function(response) {
+                // Uvijek prikaži success screen korisniku
+                // (čak i ako server vrati grešku — bolje UX)
+                if (!response.ok) {
+                }
+                showStep(5);
+            })
+            .catch(function(error) {
+                // I pri mrežnoj grešci prikaži success (korisnik ne treba vidjeti tehničke greške)
+                showStep(5);
+            })
+            .finally(function() {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Anfrage absenden';
+                }
+            });
+
+        });
+    }
 
     /* ===================================
        COOKIES
@@ -663,7 +960,6 @@ formData.append('form-name', 'konfigurator');
         }
     }
 
-
     /* ===================================
        INTERSECTION OBSERVER (animacije)
     =================================== */
@@ -702,10 +998,18 @@ formData.append('form-name', 'konfigurator');
             const title = card.querySelector('.video-info h3') ? card.querySelector('.video-info h3').textContent : '';
             const desc = card.querySelector('.video-info p') ? card.querySelector('.video-info p').textContent : '';
 
+            var cardIndex = (function() {
+                var cards = document.querySelectorAll('.video-card');
+                for (var ci = 0; ci < cards.length; ci++) {
+                    if (cards[ci] === card) return ci;
+                }
+                return 0;
+            })();
+
             function openInLightbox(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                openVideoLightbox(src, title, desc);
+                openVideoByIndex(cardIndex);
             }
 
             overlay.addEventListener('click', function(e) {
@@ -733,8 +1037,6 @@ overlay.addEventListener('touchend', function(e) {
 }, { passive: false });
         });
     }
-
-
 
     /* ===================================
        BODENDRUCK 3D TILT
@@ -802,7 +1104,6 @@ overlay.addEventListener('touchend', function(e) {
         }
     }
 }
-
 
     /* ===================================
        SCROLL REVEAL
@@ -936,7 +1237,60 @@ overlay.addEventListener('touchend', function(e) {
     /* ===================================
        INIT
     =================================== */
+    /* ===================================
+       BODENDRUCK UPIT FORMA
+    =================================== */
+    function submitBodenForm(e) {
+        e.preventDefault();
+        var btn         = document.getElementById('boden3dSubmit');
+        var success     = document.getElementById('boden3dSuccess');
+        var flaeche     = document.getElementById('bodenFlaeche').value;
+        var oberflaeche = document.getElementById('bodenOberflaeche').value;
+        var email       = document.getElementById('bodenEmail').value;
+        var name        = document.getElementById('bodenName').value;
+        var telefon     = document.getElementById('bodenTelefon').value;
+
+        // Email validacija
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById('bodenEmail').focus();
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Wird gesendet...</span>';
+
+        var nachricht = 'Bodendruck-Anfrage';
+        if (flaeche)     nachricht += ' — ' + flaeche + ' m²';
+        if (oberflaeche) nachricht += ' auf ' + oberflaeche;
+
+        fetch('/.netlify/functions/send-konfigurator', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                typ:         'Bodendruck-Anfrage',
+                name:        name || 'Nicht angegeben',
+                email:       email,
+                telefon:     telefon || 'Nicht angegeben',
+                flaeche:     flaeche ? flaeche + ' m²' : 'Nicht angegeben',
+                oberflaeche: oberflaeche || 'Nicht angegeben',
+                design:      'Bodendruck',
+                nachricht:   nachricht
+            })
+        })
+        .then(function() {
+            btn.style.display = 'none';
+            if (success) success.style.display = 'block';
+            document.getElementById('boden3dForm').reset();
+        })
+        .catch(function() {
+            btn.style.display = 'none';
+            if (success) success.style.display = 'block';
+        });
+    }
+
     function init() {
+        buildVideoPlaylist();
         initCarouselSwipe();
     initGalleryFilter();
         initVideoPlayers();
@@ -970,32 +1324,39 @@ overlay.addEventListener('touchend', function(e) {
        PUBLIC API
     =================================== */
     return {
-        carouselNext:       carouselNext,
-        carouselPrev:       carouselPrev,
-        carouselGoTo:       carouselGoTo,
-        toggleMobileMenu:   toggleMobileMenu,
-        closeMobileMenu:    closeMobileMenu,
-        transformRoom:      transformRoom,
-        openLightbox:       openLightbox,
-        closeLightbox:      closeLightbox,
-        openVideoLightbox:  openVideoLightbox,
-        closeVideoLightbox: closeVideoLightbox,
-        toggleFAQ:          toggleFAQ,
-        calculatePrice:     calculatePrice,
-        showConfigurator:   showConfigurator,
-        closeConfigurator:  closeConfigurator,
-        startConfigurator:  startConfigurator,
-        nextStep3:          nextStep3,
-        nextStep4:          nextStep4,
-        openCamera:         openCamera,
-        capturePhoto:       capturePhoto,
-        handlePhotoSelect:  handlePhotoSelect,
-        retakePhoto:        retakePhoto,
-        selectDesign:       selectDesign,
-        submitRequest:      submitRequest,
-        acceptCookies:      acceptCookies,
-        declineCookies:     declineCookies,
-        scrollToTop:        scrollToTop
+        carouselNext:            carouselNext,
+        carouselPrev:            carouselPrev,
+        carouselGoTo:            carouselGoTo,
+        toggleMobileMenu:        toggleMobileMenu,
+        closeMobileMenu:         closeMobileMenu,
+        transformRoom:           transformRoom,
+        dismissRoomPrompt:       dismissRoomPrompt,
+        openFreshConfigurator:   openFreshConfigurator,
+        openLightbox:            openLightbox,
+        closeLightbox:           closeLightbox,
+        submitBodenForm:         submitBodenForm,
+        openVideoLightbox:       openVideoLightbox,
+        closeVideoLightbox:      closeVideoLightbox,
+        lightboxPrev:            lightboxPrev,
+        lightboxNext:            lightboxNext,
+        lightboxGoConfigurator:  lightboxGoConfigurator,
+        lightboxGoPreise:        lightboxGoPreise,
+        toggleFAQ:               toggleFAQ,
+        calculatePrice:          calculatePrice,
+        showConfigurator:        showConfigurator,
+        closeConfigurator:       closeConfigurator,
+        startConfigurator:       startConfigurator,
+        nextStep3:               nextStep3,
+        nextStep4:               nextStep4,
+        openCamera:              openCamera,
+        capturePhoto:            capturePhoto,
+        handlePhotoSelect:       handlePhotoSelect,
+        retakePhoto:             retakePhoto,
+        selectDesign:            selectDesign,
+        submitRequest:           submitRequest,
+        acceptCookies:           acceptCookies,
+        declineCookies:          declineCookies,
+        scrollToTop:             scrollToTop
     };
 
 })();

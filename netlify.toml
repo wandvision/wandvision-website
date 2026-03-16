@@ -2,7 +2,20 @@
   command = ""
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/*"
     [headers.values]
-    Content-Security-Policy = "default-src 'self'; media-src 'self' https://res.cloudinary.com; img-src 'self' https://res.cloudinary.com data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self';"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    Permissions-Policy = "geolocation=(), microphone=()"
+    Content-Security-Policy = "default-src 'self'; media-src 'self' https://res.cloudinary.com blob:; img-src 'self' https://res.cloudinary.com data: blob:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.resend.com; frame-ancestors 'none';"
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog.html"
+  status = 302

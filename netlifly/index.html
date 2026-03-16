@@ -255,29 +255,8 @@
             <button class="carousel-dot" onclick="WandVision.carouselGoTo(4)" aria-label="Video 5"></button>
         </div>
 
-        <!-- Feature kartice unutar video sekcije -->
-        <div class="features-grid" style="margin-top: 50px;">
-            <div class="feature-card">
-                <div class="feature-icon">🖼️</div>
-                <p>Direktdruck auf allen Wandoberflächen – Holz, Putz, Metall, Glas...</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌿</div>
-                <p>Ökologische, geruchlose und ungiftige Tinten</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📸</div>
-                <p>HD-Ergebnis mit gestochen scharfem Bild und leuchtenden Farben</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <p>Schnelle, saubere Montage – kein Staub, keine Baustelle</p>
-            </div>
-        </div>
-
     </div>
 </section>
-
 
 <!-- HERO SECTION -->
 <section class="hero-interactive hero-white-bg" style="padding-top: 20px; min-height: auto; justify-content: flex-start;">
@@ -364,7 +343,24 @@
         </div>
     </div>
 
-
+        <div class="features-grid">
+    <div class="feature-card">
+        <div class="feature-icon">🖼️</div>
+        <p>Direktdruck auf allen Wandoberflächen – Holz, Putz, Metall, Glas...</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🌿</div>
+        <p>Ökologische, geruchlose und ungiftige Tinten</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <p>HD-Ergebnis mit gestochen scharfem Bild und leuchtenden Farben</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <p>Schnelle, saubere Montage – kein Staub, keine Baustelle</p>
+    </div>
+</div>
 
 
     </div>
@@ -434,7 +430,21 @@
 
         </div>
 
-
+        <!-- Materijali bar -->
+        <div class="materials-bar reveal">
+            <p><strong>Wir drucken auf:</strong></p>
+            <div class="materials-list">
+                <span><i class="fas fa-check-circle"></i> Putz</span>
+                <span><i class="fas fa-check-circle"></i> Beton</span>
+                <span><i class="fas fa-check-circle"></i> Holz</span>
+                <span><i class="fas fa-check-circle"></i> Glas</span>
+                <span><i class="fas fa-check-circle"></i> Metall</span>
+                <span><i class="fas fa-check-circle"></i> Fliesen</span>
+                <span><i class="fas fa-check-circle"></i> Stein</span>
+                <span><i class="fas fa-check-circle"></i> Laminat</span>
+                <span><i class="fas fa-check-circle"></i> Boden</span>
+            </div>
+        </div>
 
     </div>
 </section>
@@ -485,51 +495,14 @@
                     <li><i class="fas fa-check-circle"></i> Innen & Außen geeignet</li>
                 </ul>
 
-                <!-- BODENDRUCK UPIT FORMA -->
-                <form class="boden3d-form" id="boden3dForm" onsubmit="WandVision.submitBodenForm(event)">
-                    <p class="boden3d-form-label">Kostenloses Angebot anfordern:</p>
-                    <div class="boden3d-form-row">
-                        <div class="boden3d-form-group">
-                            <input type="number" id="bodenFlaeche" name="flaeche"
-                                placeholder="m² Fläche"
-                                min="1" max="9999"
-                                class="boden3d-input" required>
-                        </div>
-                        <div class="boden3d-form-group">
-                            <select id="bodenOberflaeche" name="oberflaeche" class="boden3d-input boden3d-select" required>
-                                <option value="" disabled selected>Oberfläche</option>
-                                <option value="Beton">Beton</option>
-                                <option value="Estrich">Estrich</option>
-                                <option value="Fliesen">Fliesen</option>
-                                <option value="Holz">Holz</option>
-                                <option value="Terrasse">Terrasse</option>
-                                <option value="Sonstige">Sonstige</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="boden3d-form-row">
-                        <div class="boden3d-form-group">
-                            <input type="text" id="bodenName" name="name"
-                                placeholder="Ihr Name"
-                                class="boden3d-input" required>
-                        </div>
-                        <div class="boden3d-form-group">
-                            <input type="tel" id="bodenTelefon" name="telefon"
-                                placeholder="Telefonnummer"
-                                class="boden3d-input" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="boden3d-submit" id="boden3dSubmit">
-                        <i class="fas fa-star"></i>
-                        <span>Exklusives Angebot anfordern</span>
-                    </button>
-                    <p class="boden3d-form-note">
-                        <i class="fas fa-bolt"></i> Antwort innerhalb 24h · Kostenlos & unverbindlich
-                    </p>
-                    <p class="boden3d-form-success" id="boden3dSuccess" style="display:none;">
-                        <i class="fas fa-check-circle"></i> Danke! Wir melden uns innerhalb 24 Stunden.
-                    </p>
-                </form>
+                <div class="boden3d-cta-row">
+                    <a href="#preise" class="btn-primary-large">
+                        <i class="fas fa-calculator"></i> Preis berechnen
+                    </a>
+                    <a href="tel:+4917641608973" class="btn-boden3d-call">
+                        <i class="fas fa-phone-alt"></i> Anrufen
+                    </a>
+                </div>
             </div>
 
         </div>

@@ -170,13 +170,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     padding: 8px;
     touch-action: manipulation;
 }
-.mobile-menu-toggle span {
-    display: block;
-    width: 25px; height: 2px;
-    background: var(--dark-blue);
-    border-radius: 2px;
-    transition: var(--transition);
-}
+
 @media (min-width: 900px) { .mobile-menu-toggle { display: none; } }
 @media (min-width: 900px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
 
@@ -452,7 +446,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 
 .room-info { padding: 12px 15px; color: white; }
 .room-info h3 { font-size: 0.95rem; margin-bottom: 4px; color: white; }
-.room-info p { font-size: 0.8rem; color: rgba(255,255,255,0.75); }
 
 /* ===================================
    Hero CTA Buttons
@@ -497,6 +490,46 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .btn-hero-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; transform: translateY(-2px); }
 
 /* ===================================
+   Feature Kartice unutar video sekcije — zlatni stil
+=================================== */
+.video-gallery-section .feature-card {
+    background: linear-gradient(135deg, #92700A 0%, #D4AF37 40%, #F5E27A 60%, #D4AF37 80%, #92700A 100%);
+    background-size: 200% auto;
+    border: 1px solid #D4AF37;
+    box-shadow: 0 4px 20px rgba(212,175,55,0.35);
+    animation: goldShimmer 3s linear infinite;
+    position: relative;
+    overflow: hidden;
+}
+.video-gallery-section .feature-card::after,
+.video-gallery-section .feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-20deg);
+}
+.video-gallery-section .feature-card::after {
+    left: -75%;
+    animation: lightSweep 2.5s ease-in-out infinite;
+}
+.video-gallery-section .feature-card::before {
+    left: 125%;
+    animation: lightSweepReverse 2.5s ease-in-out infinite;
+}
+.video-gallery-section .feature-icon {
+    background: transparent;
+    color: #ffffff;
+}
+.video-gallery-section .feature-card p {
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* ===================================
    Feature Kartice
 =================================== */
 .features-grid {
@@ -525,9 +558,8 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .feature-card-highlight { background: rgba(245,158,11,0.2); border: 2px solid rgba(245,158,11,0.5); }
 .feature-card-highlight:hover { background: rgba(245,158,11,0.3); }
 .feature-icon { font-size: 2rem; color: white; }
-.feature-card p { color: rgba(255,255,255,0.9); font-weight: 600; font-size: 0.82rem; line-height: 1.4; margin: 0; }
-.feature-card-highlight p { color: #fde68a; }
 
+.feature-card-highlight p { color: #fde68a; }
 
 //* ===================================
    VIDEO SECTION
@@ -693,7 +725,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 /* ===================================
    LEISTUNGEN SECTION
 =================================== */
-.leistungen-section { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); }
+.leistungen-section { background: linear-gradient(135deg, #EFF6FF, var(--pale-blue)); }
 .leistungen-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -820,11 +852,10 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .testimonial-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--sky-blue); }
 .testimonial-stars { font-size: 1rem; margin-bottom: 12px; }
-.testimonial-text { font-size: 0.9rem; color: var(--gray); line-height: 1.6; font-style: italic; margin-bottom: 15px; }
+
 .testimonial-author { display: flex; align-items: center; gap: 10px; }
 .author-avatar i { font-size: 2rem; color: var(--sky-blue); }
 .author-info strong { display: block; font-size: 0.9rem; color: var(--dark-blue); }
-.author-info span { font-size: 0.8rem; color: var(--gray); }
 
 /* Google Rating */
 .google-rating { display: flex; justify-content: center; margin-top: 30px; }
@@ -929,7 +960,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
   inset: 0;
   background:
     radial-gradient(ellipse at center, rgba(212, 160, 23, 0.08) 0%, transparent 60%),
-    linear-gradient(135deg, #1E3A8A 0%, #1d4ed8 50%, #2563EB 100%);
+    linear-gradient(135deg, var(--dark-blue) 0%, #1d4ed8 50%, var(--mid-blue) 100%);
   z-index: 9999;
   align-items: center;
   justify-content: center;
@@ -1067,7 +1098,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     border-bottom: 1px solid var(--gray-light);
     font-size: 0.95rem;
 }
-.result-item span { color: var(--gray); }
+
 .result-item strong { color: var(--dark-blue); font-weight: 700; }
 .result-divider { height: 2px; background: var(--gradient-primary); margin: 15px 0; border-radius: 2px; }
 .result-total { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
@@ -1208,9 +1239,8 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     animation: goldFlow 3s linear infinite;
 }
 
-.footer-col p { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; opacity: 0.9; font-size: 0.9rem; }
 .footer-col p i { color: var(--sky-blue); width: 16px; flex-shrink: 0; }
-.footer-col h4 { margin-bottom: 15px; color: var(--sky-blue); font-size: 1rem; }
+
 .footer-nav-link {
     display: flex;
     align-items: center;
@@ -1608,34 +1638,18 @@ a:focus, button:focus {
 .skip-link:focus {
     top: 0;
 }
-/* FOOTER CONTRAST FIX */
-.footer-col h4 {
-    color: #bfdbfe;
-}
+/* FOOTER & ELEMENT CONTRAST FIXES
+   Specifičniji selektori umjesto !important */
+.footer .footer-col h4 { color: #bfdbfe; }
+.footer .footer-col p  { color: rgba(255,255,255,0.95); }
 
-.feature-card p {
-    color: rgba(255,255,255,0.95) !important;
-}
+.hero-section .feature-card p    { color: rgba(255,255,255,0.95); }
+.hero-section .room-info p        { color: rgba(255,255,255,0.9); }
 
-.room-info p {
-    color: rgba(255,255,255,0.9) !important;
-}
+.testimonials-section .testimonial-text { color: #4a5568; }
+.testimonials-section .author-info span { color: #4a5568; }
 
-.testimonial-text {
-    color: #4a5568 !important;
-}
-
-.author-info span {
-    color: #4a5568 !important;
-}
-
-.result-item span {
-    color: #4a5568 !important;
-}
-
-.footer-col p {
-    color: rgba(255,255,255,0.95) !important;
-}
+.calculator-section .result-item span   { color: #4a5568; }
 /* ===================================
    GOLD SPARKLE - Vision Logo
 =================================== */
@@ -1865,39 +1879,87 @@ a:focus, button:focus {
     color: #F5C518;
 }
 
-.boden3d-cta-row {
+/* ── BODENDRUCK FORMA ── */
+.boden3d-form {
     display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-md);
+    padding: 18px;
 }
-
-.btn-boden3d-call {
-    display: inline-flex;
-    align-items: center;
+.boden3d-form-label {
+    color: rgba(255,255,255,0.9) !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    margin: 0 0 4px !important;
+}
+.boden3d-form-row {
+    display: flex;
     gap: 8px;
-    padding: 14px 26px;
-    border-radius: 50px;
-    border: 2px solid rgba(255,255,255,0.4);
-    color: white;
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: var(--transition);
-    min-height: 50px;
-    text-decoration: none;
 }
-
-.btn-boden3d-call:hover {
+.boden3d-form-group { flex: 1; min-width: 0; }
+.boden3d-input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
     background: rgba(255,255,255,0.1);
-    border-color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-sm);
     color: white;
-    transform: translateY(-2px);
+    transition: var(--transition);
+    outline: none;
 }
-
-/* Reset default btn-primary-large hover na tamnoj pozadini */
-.boden3d-cta-row .btn-primary-large {
-    background: var(--gradient-primary);
+.boden3d-input::placeholder { color: rgba(255,255,255,0.45); }
+.boden3d-input:focus { border-color: #F5C518; background: rgba(255,255,255,0.15); }
+.boden3d-select option { background: var(--dark-blue); color: white; }
+.boden3d-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #92700A, #D4AF37, #92700A);
+    background-size: 200% auto;
     color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    animation: goldShimmer 3s linear infinite;
+}
+.boden3d-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+}
+.boden3d-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+.boden3d-form-note {
+    color: rgba(255,255,255,0.45) !important;
+    font-size: 0.75rem !important;
+    text-align: center;
+    margin: 2px 0 0 !important;
+}
+.boden3d-form-note i { color: #F5C518; margin-right: 4px; }
+.boden3d-form-success {
+    color: #4ade80 !important;
+    font-size: 0.88rem !important;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 !important;
+}
+.boden3d-form-success i { margin-right: 6px; }
+@media (max-width: 600px) {
+    .boden3d-form-row { flex-direction: column; }
 }
 
 /* ============================================
@@ -1905,7 +1967,7 @@ a:focus, button:focus {
    ============================================ */
 
 .branchen-section {
-    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+    background: linear-gradient(135deg, #EFF6FF, var(--pale-blue));
     padding: 80px 0;
 }
 
@@ -2209,59 +2271,287 @@ a:focus, button:focus {
     color: var(--light-blue);
     margin-right: 4px;
 }
-/* VIDEO LIGHTBOX */
+/* ===================================
+   VIDEO LIGHTBOX — sa CTA kolonama
+=================================== */
 .video-lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.98) 0%, rgba(29, 78, 216, 0.98) 50%, rgba(37, 99, 235, 0.98) 100%);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px;
-}
-.video-lightbox.active {
-  display: flex;
-}
-.video-lightbox-inner {
-  width: 100%;
-  max-width: 960px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-.video-lightbox-video {
-  width: 100%;
-  max-height: 80vh;
-  border-radius: var(--radius-md);
-  background: #000;
-  display: block;
-}
-.video-lightbox .lightbox-close {
-    z-index: 10001;
-    touch-action: manipulation;
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    background: none;
-    border-radius: 0;
-    width: auto;
-    height: auto;
-    display: flex;
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(15,23,42,0.97) 0%,
+        rgba(30,58,138,0.97) 50%,
+        rgba(29,78,216,0.97) 100%);
+    z-index: 9999;
     align-items: center;
     justify-content: center;
-    border: none;
+    padding: 50px 16px 16px;
+}
+.video-lightbox.active { display: flex; }
+
+/* X — crna boja */
+.video-lightbox .lightbox-close {
+    position: absolute;
+    top: 20px; right: 25px;
+    background: none; border: none;
     color: #000000;
     font-size: 2.5rem;
     cursor: pointer;
+    z-index: 10001;
     line-height: 1;
+    touch-action: manipulation;
 }
-.video-lightbox .lightbox-close:hover {
-    background: none;
-    border-color: transparent;
-    opacity: 0.7;
+.video-lightbox .lightbox-close:hover { opacity: 0.6; }
+
+/* ── LAYOUT: 3 kolone ── */
+.vlb-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* ── CENTAR ── */
+.vlb-center {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.video-lightbox-video {
+    width: 100%;
+    max-height: 74vh;
+    border-radius: var(--radius-md);
+    background: #000;
+    display: block;
+}
+.video-lightbox .lightbox-caption {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* ── BOČNE KOLONE — apsolutne pozicije za savršeno poravnanje ── */
+.vlb-side {
+    width: 170px;
+    flex-shrink: 0;
+    position: relative;
+    align-self: stretch;
+}
+
+/* Zurück / Weiter — uvijek na 25% visine kolone */
+.vlb-nav-group {
+    position: absolute;
+    top: 25%;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+.vlb-nav-group.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Meinen Bereich / Was kostet — uvijek na 58% visine kolone */
+.vlb-conv-group {
+    position: absolute;
+    top: 58%;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+.vlb-conv-group.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Desna strana — blagi delay za ljepši efekt */
+.vlb-side-right .vlb-nav-group  { transition-delay: 0.12s; }
+.vlb-side-right .vlb-conv-group { transition-delay: 0.12s; }
+
+/* ── GUMBI ──
+   Nav (Zurück/Weiter): bijela pozadina, plavi border, plavi tekst
+   Conv (Meinen Bereich/Was kostet): gradient, bijeli tekst
+── */
+.vlb-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 12px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    width: 150px;
+    min-height: 85px;
+    touch-action: manipulation;
+    line-height: 1.3;
+}
+.vlb-btn i    { font-size: 1.2rem; }
+.vlb-btn span { display: block; }
+
+/* Nav gumbi — diskretni */
+.vlb-nav-group .vlb-btn {
+    background: #ffffff;
+    color: var(--dark-blue);
+    border: 2px solid var(--pale-blue);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+.vlb-nav-group .vlb-btn i { color: var(--dark-blue); }
+.vlb-nav-group .vlb-btn:hover {
+    background: var(--pale-blue);
+    border-color: var(--light-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* Conv gumbi — bijela pozadina, plava slova */
+.vlb-conv-group .vlb-btn {
+    background: #ffffff;
+    color: var(--dark-blue);
+    border: 2px solid var(--pale-blue);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+.vlb-conv-group .vlb-btn i { color: var(--dark-blue); }
+.vlb-conv-group .vlb-btn:hover {
+    background: var(--pale-blue);
+    border-color: var(--light-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+/* Mobilni redovi — skriveni na desktopu */
+.vlb-mobile-nav-row,
+.vlb-mobile-conv-row { display: none; }
+
+/* ===================================================
+   MOBILNI VIDEO LIGHTBOX
+   Gore:   [← Zurück]  [Weiter →]   — pojavi se na 70%
+   Centar: VIDEO — maksimalna veličina
+   Dolje:  [Meinen]  [Was kostet?]  — pojavi se na 80%
+   Desktop se NE mijenja.
+=================================================== */
+@media (max-width: 768px) {
+
+    /* Lightbox — bez paddinga, stretch */
+    .video-lightbox {
+        padding: 44px 0 0 0;
+        align-items: stretch;
+        overflow: hidden;
+    }
+
+    /* Layout — vertikalni stupac, puna visina */
+    .vlb-layout {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+    }
+
+    /* Sakrij desktop bočne kolone */
+    .vlb-side-left,
+    .vlb-side-right {
+        display: none !important;
+    }
+
+    /* NAV RED — iznad videa, order 1 */
+    .vlb-mobile-nav-row {
+        order: 1;
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        padding: 6px 10px;
+        flex-shrink: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+    }
+    .vlb-mobile-nav-row.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* VIDEO — centar, sav slobodni prostor, order 2 */
+    .vlb-center {
+        order: 2;
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+    }
+    .video-lightbox-video {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        max-height: none;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 0;
+    }
+    .video-lightbox .lightbox-caption {
+        flex-shrink: 0;
+        font-size: 0.72rem;
+        padding: 2px 8px;
+    }
+
+    /* CONV RED — ispod videa, order 3 */
+    .vlb-mobile-conv-row {
+        order: 3;
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        padding: 6px 10px;
+        flex-shrink: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+    }
+    .vlb-mobile-conv-row.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Gumbi — kompaktni, ne preširoki */
+    .vlb-layout .vlb-mobile-nav-row .vlb-btn,
+    .vlb-layout .vlb-mobile-conv-row .vlb-btn {
+        flex: 0 0 auto;
+        width: 140px;
+        min-height: 52px;
+        font-size: 0.75rem;
+        padding: 8px 10px;
+        gap: 6px;
+    }
+    .vlb-layout .vlb-mobile-nav-row .vlb-btn i,
+    .vlb-layout .vlb-mobile-conv-row .vlb-btn i {
+        font-size: 1rem;
+    }
 }
 
 /* ===================================
@@ -2371,12 +2661,17 @@ a:focus, button:focus {
 }
 @media (max-width: 899px) {
     .video-gallery-section .section-title {
-        font-size: 2.2rem !important;
-        line-height: 1.2 !important;
+        font-size: 2.2rem;
+        line-height: 1.2;
     }
 }
 /* HAMBURGER ANIMACIJA */
 .mobile-menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
     transition: all 0.3s ease;
 }
 .mobile-menu-toggle.active span:nth-child(1) {
@@ -2415,4 +2710,264 @@ a:focus, button:focus {
         font-size: 0.88rem;
         min-height: 42px;
     }
+}
+/* ===================================
+   VIDEO HERO BLUE — moved from inline <style>
+=================================== */
+.video-hero-blue {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, #1e40af 40%, #1d4ed8 100%) !important;
+}
+.video-hero-blue .section-title,
+.video-hero-blue .section-subtitle {
+    color: #ffffff !important;
+}
+.video-hero-blue .video-info h3 {
+    color: var(--dark-blue) !important;
+}
+.video-hero-blue .video-info p {
+    color: #475569 !important;
+}
+.video-hero-blue .video-duration {
+    color: var(--gray) !important;
+}
+.video-hero-blue .video-card {
+    background: #ffffff;
+    border: 1px solid var(--gray-light);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border-radius: 16px;
+}
+.video-hero-blue .video-card:hover {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    transform: translateY(-4px);
+}
+
+/* ===================================
+   HERO WHITE BG — moved from inline <style>
+=================================== */
+.hero-white-bg {
+    background: #f8fafc !important;
+    min-height: auto !important;
+}
+.hero-white-bg .hero-content {
+    padding-top: 0;
+}
+.hero-white-bg .hero-title {
+    color: var(--dark-blue) !important;
+}
+.hero-white-bg .hero-subtitle {
+    color: #475569 !important;
+}
+.hero-white-bg .feature-card {
+    background: linear-gradient(135deg, #92700A 0%, #D4AF37 40%, #F5E27A 60%, #D4AF37 80%, #92700A 100%);
+    background-size: 200% auto;
+    border: 1px solid #D4AF37;
+    box-shadow: 0 4px 20px rgba(212,175,55,0.35);
+    animation: goldShimmer 3s linear infinite;
+    position: relative;
+    overflow: hidden;
+}
+@keyframes goldShimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+.hero-white-bg .feature-card::after,
+.hero-white-bg .feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.6) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    transform: skewX(-20deg);
+}
+.hero-white-bg .feature-card::after {
+    left: -75%;
+    animation: lightSweep 2.5s ease-in-out infinite;
+}
+.hero-white-bg .feature-card::before {
+    left: 125%;
+    animation: lightSweepReverse 2.5s ease-in-out infinite;
+}
+@keyframes lightSweep {
+    0%   { left: -75%; }
+    100% { left: 125%; }
+}
+@keyframes lightSweepReverse {
+    0%   { left: 125%; }
+    100% { left: -75%; }
+}
+.hero-white-bg .feature-icon {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+.hero-white-bg .feature-icon i {
+    color: #ffffff !important;
+    font-size: 1.8rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+.hero-white-bg .feature-card p {
+    color: #ffffff !important;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.hero-white-bg .room-info h3 {
+    color: var(--dark-blue) !important;
+}
+.hero-white-bg .room-info p {
+    color: var(--gray) !important;
+}
+.hero-white-bg .btn-hero-secondary {
+    background: transparent;
+    border: 2px solid var(--dark-blue);
+    color: var(--dark-blue);
+}
+.hero-white-bg .btn-hero-secondary:hover {
+    background: var(--dark-blue);
+    color: #ffffff;
+}
+.hero-white-bg .btn-hero-primary {
+    background: linear-gradient(135deg, var(--dark-blue), #1d4ed8);
+    color: #ffffff;
+}
+.hero-white-bg .hero-badge {
+    background: rgba(30,58,138,0.08);
+    color: var(--dark-blue);
+    border: 1px solid rgba(30,58,138,0.2);
+}
+.hero-white-bg .hero-badge i {
+    color: var(--dark-blue) !important;
+}
+.hero-white-bg .hero-surface-badge {
+    background: rgba(30,58,138,0.08);
+    color: var(--dark-blue);
+    border: 1px solid rgba(30,58,138,0.25);
+}
+.hero-white-bg .hero-surface-badge i {
+    color: var(--dark-blue) !important;
+}
+
+/* ===================================
+   BTN-UEBER-WA — Kristina call button fix (#10)
+   Override default green with brand gradient
+=================================== */
+.btn-ueber-wa.btn-ueber-call {
+    background: var(--gradient-primary);
+    color: #ffffff;
+}
+.btn-ueber-wa.btn-ueber-call:hover {
+    box-shadow: 0 8px 20px rgba(30,58,138,0.35);
+    color: #ffffff;
+}
+
+/* ===================================
+   ROOM CONFIG PROMPT
+   Pojavljuje se ispod slike nakon
+   transformacije
+=================================== */
+.room-config-prompt {
+    background: white;
+    border-top: 3px solid var(--light-blue);
+    padding: 0 14px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease, max-height 0.45s ease, padding 0.4s ease;
+}
+
+.room-config-prompt.visible {
+    opacity: 1;
+    /* Bez fiksne max-height — auto ne radi s transition,
+       koristimo dovoljno veliku vrijednost da pokrije
+       i mobile (dva reda gumba) i desktop (jedan red) */
+    max-height: 300px;
+    padding: 12px 14px;
+}
+
+.room-config-prompt p {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--dark-blue);
+    margin: 0 0 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.4;
+}
+
+.room-config-prompt p i {
+    color: var(--light-blue);
+    font-size: 0.85rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.room-prompt-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Na mobilnom gumbi zauzimaju punu širinu */
+@media (max-width: 480px) {
+    .room-prompt-buttons {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .btn-prompt-yes,
+    .btn-prompt-no {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.btn-prompt-yes {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: var(--font-body);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+    min-height: 38px;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+.btn-prompt-yes:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.btn-prompt-no {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: var(--transition);
+    min-height: 38px;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+.btn-prompt-no:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+/* Na hero-white-bg kartice imaju bijelu pozadinu */
+.hero-white-bg .room-card {
+    background: white;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius-md);
 }
