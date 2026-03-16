@@ -554,10 +554,15 @@ const WandVision = (function() {
         return;
     }
 
-    const form = event.target;
-    const formData = new FormData(form);
-    formData.append('form-name', 'konfigurator');
-    formData.append('selected-design', selectedDesign || 'nicht gewählt');
+    // Popuni hidden polja
+const hiddenDesign = document.getElementById('hidden-design');
+const hiddenRaum = document.getElementById('hidden-raum');
+if (hiddenDesign) hiddenDesign.value = selectedDesign || 'nicht gewählt';
+if (hiddenRaum) hiddenRaum.value = selectedPhoto ? 'Foto hochgeladen' : 'kein Foto';
+
+const formData = new FormData(form);
+formData.append('form-name', 'konfigurator');
+
 
     fetch('/', {
         method: 'POST',
