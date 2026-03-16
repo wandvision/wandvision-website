@@ -555,6 +555,8 @@ const WandVision = (function() {
     }
 
     // Popuni hidden polja
+const form = event.target;
+
 const hiddenDesign = document.getElementById('hidden-design');
 const hiddenRaum = document.getElementById('hidden-raum');
 if (hiddenDesign) hiddenDesign.value = selectedDesign || 'nicht gewählt';
@@ -562,7 +564,6 @@ if (hiddenRaum) hiddenRaum.value = selectedPhoto ? 'Foto hochgeladen' : 'kein Fo
 
 const formData = new FormData(form);
 formData.append('form-name', 'konfigurator');
-
 
     fetch('/', {
         method: 'POST',
