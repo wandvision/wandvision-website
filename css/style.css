@@ -501,8 +501,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     position: relative;
     overflow: hidden;
 }
-.video-gallery-section .feature-card::after,
-.video-gallery-section .feature-card::before {
+.video-gallery-section .feature-card::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -510,15 +509,10 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     height: 200%;
     background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
     transform: skewX(-20deg);
-}
-.video-gallery-section .feature-card::after {
     left: -75%;
     animation: lightSweep 2.5s ease-in-out infinite;
 }
-.video-gallery-section .feature-card::before {
-    left: 125%;
-    animation: lightSweepReverse 2.5s ease-in-out infinite;
-}
+.video-gallery-section .feature-card::before { content: none; }
 .video-gallery-section .feature-icon {
     background: transparent;
     color: #ffffff;
@@ -2772,8 +2766,7 @@ a:focus, button:focus {
     0%   { background-position: 0% center; }
     100% { background-position: 200% center; }
 }
-.hero-white-bg .feature-card::after,
-.hero-white-bg .feature-card::before {
+.hero-white-bg .feature-card::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -2786,15 +2779,10 @@ a:focus, button:focus {
         rgba(255,255,255,0) 100%
     );
     transform: skewX(-20deg);
-}
-.hero-white-bg .feature-card::after {
     left: -75%;
     animation: lightSweep 2.5s ease-in-out infinite;
 }
-.hero-white-bg .feature-card::before {
-    left: 125%;
-    animation: lightSweepReverse 2.5s ease-in-out infinite;
-}
+.hero-white-bg .feature-card::before { content: none; }
 @keyframes lightSweep {
     0%   { left: -75%; }
     100% { left: 125%; }
