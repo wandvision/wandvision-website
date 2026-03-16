@@ -546,15 +546,31 @@ const WandVision = (function() {
        SUBMIT REQUEST
     =================================== */
     function submitRequest(event) {
-        event.preventDefault();
-        const name = document.getElementById('name').value;
-        const telefon = document.getElementById('telefon').value;
-        if (!name || !telefon) {
-            alert('Bitte füllen Sie alle Pflichtfelder aus.');
-            return;
-        }
-        showStep(5);
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const telefon = document.getElementById('telefon').value;
+    if (!name || !telefon) {
+        alert('Bitte füllen Sie alle Pflichtfelder aus.');
+        return;
     }
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(function() {
+        showStep(5);
+    })
+    .catch(function(error) {
+        console.error('Form error:', error);
+        showStep(5);
+    });
+}
+
 
     /* ===================================
        COOKIES

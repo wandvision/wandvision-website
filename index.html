@@ -92,8 +92,8 @@
         min-height: auto !important;
     }
     .hero-white-bg .hero-content {
-        padding-top: 60px;
-    }
+    padding-top: 0;
+}
     .hero-white-bg .hero-title {
         color: #1E3A8A !important;
     }
@@ -228,7 +228,7 @@
       "name": "WandVision K&K",
       "description": "Professioneller Wanddruck & Bodendruck in Aalen und Umgebung",
       "url": "https://wandvisionkk.de",
-      "telephone": "+49-DEIN-TELEFON",
+      "telephone": "+4917641608973",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "DEINE STRASSE",
@@ -266,7 +266,7 @@
             "addressRegion": "Baden-Württemberg",
             "addressCountry": "DE"
         },
-        "telephone": "+4915123456789",
+        "telephone": "+4917641608973",
         "url": "https://wandvisionkk.de",
         "priceRange": "€€",
         "openingHours": "Mo-Fr 09:00-18:00",
@@ -441,7 +441,7 @@
 </section>
 
 <!-- HERO SECTION -->
-<section class="hero-interactive hero-white-bg">
+<section class="hero-interactive hero-white-bg" style="padding-top: 20px; min-height: auto; justify-content: flex-start;">
 
     <!-- Hero tekst -->
     <div class="hero-content">
@@ -1294,7 +1294,7 @@
                         präzise und professionell umgesetzt wird — vom ersten Drucktest
                         bis zum perfekten Endergebnis.
                     </p>
-                    <a href="https://wa.me/4915123456789" class="btn-ueber-wa" target="_blank" rel="noopener">
+                    <a href="https://wa.me/4917641608973" class="btn-ueber-wa" target="_blank" rel="noopener">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
@@ -1471,7 +1471,10 @@
         <div class="popup-icon"></div>
         <h3>Ihre Kontaktdaten</h3>
         <p>Fast geschafft! Wie können wir Sie erreichen?</p>
-        <form class="popup-form" onsubmit="WandVision.submitRequest(event)">
+        <form class="popup-form" name="konfigurator" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="WandVision.submitRequest(event)">
+<input type="hidden" name="form-name" value="konfigurator">
+<input type="hidden" name="bot-field" style="display:none">
+
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required placeholder="Ihr Name" autocomplete="name">

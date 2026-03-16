@@ -939,10 +939,11 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .lightbox-content { max-width: 90vw; max-height: 80vh; border-radius: var(--radius-md); object-fit: contain; }
 .lightbox-close {
     position: absolute;
-    top: 20px; right: 25px;
+    top: 20px;
+    right: 25px;
     background: none;
     border: none;
-    color: white;
+    color: #000000;
     font-size: 2.5rem;
     cursor: pointer;
     line-height: 1;
@@ -1344,16 +1345,17 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .popup-close {
     position: absolute;
-    top: 15px; right: 20px;
+    top: 15px;
+    right: 20px;
     background: none;
     border: none;
     font-size: 1.8rem;
-    color: var(--gray);
+    color: #000000;
     cursor: pointer;
     line-height: 1;
     touch-action: manipulation;
 }
-.popup-close:hover { color: var(--dark-blue); }
+.popup-close:hover { color: #333333; }
 .popup-icon { text-align: center; margin-bottom: 20px; font-size: 0; }
 .popup-icon-img {
     width: 80px; height: 80px;
@@ -2243,24 +2245,25 @@ a:focus, button:focus {
     position: absolute;
     top: 20px;
     right: 25px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    background: none;
+    border-radius: 0;
+    width: auto;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgba(255,255,255,0.3);
-    color: white;
-    font-size: 1.8rem;
+    border: none;
+    color: #000000;
+    font-size: 2.5rem;
     cursor: pointer;
     line-height: 1;
 }
-
 .video-lightbox .lightbox-close:hover {
-    background: rgba(255,255,255,0.25);
-    border-color: white;
+    background: none;
+    border-color: transparent;
+    opacity: 0.7;
 }
+
 /* ===================================
    MAGIC STARS
 =================================== */
