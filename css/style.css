@@ -339,6 +339,10 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     padding: 0 40px;
     width: 100%;
 }
+@media (max-width: 768px) {
+    .room-selector { padding: 0 16px; }
+    .room-preview { height: auto; aspect-ratio: 16 / 9; }
+}
 .room-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -348,12 +352,12 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     .room-grid { grid-template-columns: repeat(3, 1fr); gap: 25px; }
 }
 .room-card {
-    background: rgba(255,255,255,0.1);
+    background: white;
     border-radius: var(--radius-md);
     overflow: hidden;
     border: 2px solid rgba(255,255,255,0.2);
     transition: var(--transition);
-    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow-sm);
 }
 .room-card:hover {
     border-color: rgba(255,255,255,0.5);
@@ -958,10 +962,10 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
   z-index: 9999;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  padding: 50px 16px 16px;
 }
 .lightbox.active { display: flex; }
-.lightbox-content { max-width: 90vw; max-height: 80vh; border-radius: var(--radius-md); object-fit: contain; }
+.lightbox-content { width: 100%; height: 74vh; border-radius: var(--radius-md); object-fit: cover; display: block; }
 .lightbox-close {
     position: absolute;
     top: 20px;
@@ -973,8 +977,128 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     cursor: pointer;
     line-height: 1;
     touch-action: manipulation;
+    z-index: 10001;
 }
+.lightbox-close:hover { opacity: 0.6; }
 .lightbox-caption { color: white; margin-top: 15px; font-size: 0.95rem; text-align: center; }
+
+/* ── GALLERY LIGHTBOX LAYOUT: 3 kolone (kao video lightbox) ── */
+.glb-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+.glb-center {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.glb-side {
+    width: 170px;
+    flex-shrink: 0;
+    position: relative;
+    align-self: stretch;
+}
+.glb-nav-group {
+    position: absolute;
+    top: 25%;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+}
+.glb-conv-group {
+    position: absolute;
+    top: 58%;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+}
+.glb-mobile-nav-row,
+.glb-mobile-conv-row { display: none; }
+
+/* ── GALLERY LIGHTBOX MOBILE ── */
+@media (max-width: 768px) {
+    .lightbox {
+        padding: 44px 0 0 0;
+        align-items: stretch;
+        overflow: hidden;
+    }
+    .glb-layout {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+    }
+    .glb-side-left,
+    .glb-side-right {
+        display: none !important;
+    }
+    .glb-mobile-nav-row {
+        order: 1;
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        padding: 6px 10px;
+        flex-shrink: 0;
+    }
+    .glb-center {
+        order: 2;
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 0 12px;
+    }
+    .lightbox-content {
+        flex: 1;
+        min-height: 0;
+        width: 100%;
+        max-height: none;
+        height: 100%;
+        object-fit: cover;
+        border-radius: var(--radius-md);
+    }
+    .lightbox .lightbox-caption {
+        flex-shrink: 0;
+        font-size: 0.72rem;
+        padding: 2px 8px;
+    }
+    .glb-mobile-conv-row {
+        order: 3;
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        padding: 6px 10px;
+        flex-shrink: 0;
+    }
+    .glb-layout .glb-mobile-nav-row .vlb-btn,
+    .glb-layout .glb-mobile-conv-row .vlb-btn {
+        flex: 0 0 auto;
+        width: 140px;
+        min-height: 52px;
+        font-size: 0.75rem;
+        padding: 8px 10px;
+        gap: 6px;
+    }
+    .glb-layout .glb-mobile-nav-row .vlb-btn i,
+    .glb-layout .glb-mobile-conv-row .vlb-btn i {
+        font-size: 1rem;
+    }
+}
 
 /* ===================================
    FAQ
@@ -2664,7 +2788,7 @@ a:focus, button:focus {
     display: block;
     width: 24px;
     height: 2px;
-    background: white;
+    background: var(--dark-blue);
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -2959,3 +3083,850 @@ a:focus, button:focus {
     border: 1px solid var(--gray-light);
     border-radius: var(--radius-md);
 }
+
+/* ===================================
+   BRANCHEN PREVIEW SECTION (homepage)
+=================================== */
+.branchen-preview-section {
+    padding: 70px 0;
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+}
+.branchen-preview-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+.branchen-preview-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+.branchen-preview-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 14px;
+}
+.branchen-preview-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: #fff;
+    margin-bottom: 14px;
+    line-height: 1.2;
+}
+.branchen-preview-title .gradient-text {
+    background: linear-gradient(135deg, #93C5FD, #60A5FA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.branchen-preview-subtitle {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.75;
+    margin-bottom: 28px;
+    max-width: 460px;
+}
+.branchen-preview-cta {
+    background: #fff;
+    color: var(--dark-blue) !important;
+}
+.branchen-preview-cta:hover {
+    background: #F0F9FF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+}
+
+/* Icon grid */
+.branchen-preview-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.bp-icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+.bp-icon-card:hover { transform: translateY(-4px); }
+.bp-icon-card span {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    text-align: center;
+}
+.bp-icon {
+    width: 64px; height: 64px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+    transition: var(--transition);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.bp-icon-card:hover .bp-icon { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.bp-icon-1 { background: linear-gradient(135deg, #DC2626, #F87171); }
+.bp-icon-2 { background: linear-gradient(135deg, #2563EB, #60A5FA); }
+.bp-icon-3 { background: linear-gradient(135deg, #7C3AED, #A78BFA); }
+.bp-icon-4 { background: linear-gradient(135deg, #059669, #34D399); }
+.bp-icon-5 { background: linear-gradient(135deg, #D97706, #FCD34D); }
+.bp-icon-6 { background: linear-gradient(135deg, #0F766E, #2DD4BF); }
+
+@media (max-width: 900px) {
+    .branchen-preview-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        text-align: center;
+    }
+    .branchen-preview-subtitle { margin-left: auto; margin-right: auto; }
+    .branchen-preview-eyebrow { justify-content: center; }
+}
+@media (max-width: 480px) {
+    .branchen-preview-icons { gap: 10px; }
+    .bp-icon { width: 52px; height: 52px; font-size: 1.2rem; }
+    .bp-icon-card span { font-size: 0.72rem; }
+}
+
+/* ================================================================
+   PREMIUM DESIGN UPGRADE — WandVision K&K
+   Magistar dizajna — sve prioritetne izmjene na jednom mjestu
+   Ovo se dodaje NA KRAJ style.css i override-a sve prethodne stilove
+   ================================================================ */
+
+/* ================================================================
+   1. CSS VARIJABLE — premium proširenje
+   ================================================================ */
+:root {
+    /* Zlatni akcent — sistemski */
+    --gold: #D4AF37;
+    --gold-light: #F5E27A;
+    --gold-dark: #92700A;
+    --gold-glow: rgba(212,175,55,0.25);
+
+    /* Poboljšane sjene */
+    --shadow-premium: 0 20px 60px rgba(30,58,138,0.18), 0 4px 16px rgba(30,58,138,0.08);
+    --shadow-card: 0 2px 12px rgba(15,23,42,0.06), 0 0 0 1px rgba(30,58,138,0.05);
+    --shadow-card-hover: 0 12px 40px rgba(30,58,138,0.14), 0 2px 8px rgba(30,58,138,0.06);
+
+    /* Typography tuning */
+    --tracking-tight: -0.03em;
+    --tracking-wide: 0.08em;
+    --leading-tight: 1.15;
+    --leading-body: 1.75;
+}
+
+/* ================================================================
+   2. TIPOGRAFIJA — poboljšana hijerarhija
+   ================================================================ */
+
+/* H2 naslovi sekcija — veći, bolji spacing */
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
+    letter-spacing: var(--tracking-tight) !important;
+    line-height: var(--leading-tight) !important;
+    font-weight: 800 !important;
+}
+
+/* Podnaslov sekcija — više zraka */
+.section-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem) !important;
+    line-height: var(--leading-body) !important;
+    opacity: 0.85;
+    margin-top: 8px;
+}
+
+/* Section header — više bijelog prostora */
+.section-header {
+    margin-bottom: 64px !important;
+}
+
+/* Kicker tag iznad H2 naslova — nov sistemski element */
+.section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--mid-blue);
+    background: var(--pale-blue);
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+}
+.section-kicker-gold {
+    background: rgba(212,175,55,0.12);
+    color: var(--gold-dark);
+    border: 1px solid rgba(212,175,55,0.3);
+}
+
+/* ================================================================
+   3. SEKCIJE — više bijelog prostora, ritam
+   ================================================================ */
+section { padding: 96px 0 !important; }
+@media (max-width: 768px) { section { padding: 64px 0 !important; } }
+
+/* Video sekcija — ostaje s top paddingom zbog navbara */
+.video-gallery-section { padding-top: 110px !important; }
+
+/* Leistungen sekcija */
+.leistungen-section { padding: 96px 0 !important; }
+
+/* ================================================================
+   4. NAVBAR — finiji, delikatniji
+   ================================================================ */
+.navbar {
+    background: rgba(255,255,255,0.97) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 1px 0 rgba(30,58,138,0.08), 0 4px 20px rgba(30,58,138,0.04) !important;
+    border-bottom: 1px solid rgba(30,58,138,0.06);
+}
+.navbar.scrolled {
+    box-shadow: 0 1px 0 rgba(30,58,138,0.12), 0 8px 32px rgba(30,58,138,0.08) !important;
+}
+.nav-item {
+    font-size: 0.87rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em;
+    color: var(--dark) !important;
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+}
+.nav-item:hover {
+    color: var(--mid-blue) !important;
+    background: var(--pale-blue) !important;
+}
+
+/* ================================================================
+   5. LEISTUNGEN KARTICE — premium redizajn
+   ================================================================ */
+.leistungen-section {
+    background: #F8FAFF !important;
+}
+
+.leistungen-grid {
+    gap: 28px !important;
+}
+
+.leistung-card {
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    padding: 40px 32px !important;
+    box-shadow: var(--shadow-card) !important;
+    border: 1px solid rgba(30,58,138,0.06) !important;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+.leistung-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.leistung-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: var(--shadow-card-hover) !important;
+    border-color: rgba(37,99,235,0.12) !important;
+}
+.leistung-card:hover::before { opacity: 1; }
+
+/* Featured (Bodendruck) — premium dominacija */
+.leistung-card.featured {
+    background: linear-gradient(145deg, #1a3580 0%, #1E3A8A 40%, #1d4ed8 100%) !important;
+    border: none !important;
+    box-shadow: 0 24px 64px rgba(30,58,138,0.35), 0 4px 16px rgba(30,58,138,0.2) !important;
+    transform: scale(1.03);
+}
+.leistung-card.featured::before { display: none; }
+.leistung-card.featured:hover {
+    transform: scale(1.03) translateY(-8px) !important;
+    box-shadow: 0 32px 80px rgba(30,58,138,0.42), 0 8px 24px rgba(30,58,138,0.25) !important;
+}
+
+/* Badge na featured kartici */
+.leistung-badge {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark)) !important;
+    background-size: 200% auto !important;
+    animation: goldShimmer 3s linear infinite !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.1em !important;
+    padding: 5px 16px !important;
+    top: -11px !important;
+    right: 24px !important;
+}
+
+/* Icon box */
+.leistung-icon {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 14px !important;
+    font-size: 1.6rem !important;
+    margin-bottom: 24px !important;
+    background: var(--pale-blue) !important;
+    color: var(--mid-blue) !important;
+}
+.leistung-card.featured .leistung-icon {
+    background: rgba(255,255,255,0.15) !important;
+    color: #fff !important;
+}
+
+/* Naslovi i tekst */
+.leistung-card h3 {
+    font-size: 1.35rem !important;
+    letter-spacing: var(--tracking-tight) !important;
+    margin-bottom: 14px !important;
+    color: var(--dark-blue) !important;
+}
+.leistung-card p {
+    font-size: 0.93rem !important;
+    line-height: 1.72 !important;
+    color: var(--gray) !important;
+    margin-bottom: 22px !important;
+}
+.leistung-list {
+    margin-bottom: 30px !important;
+    gap: 12px !important;
+}
+.leistung-list li {
+    font-size: 0.88rem !important;
+    gap: 10px !important;
+    color: var(--dark) !important;
+}
+.leistung-card.featured .leistung-list li { color: rgba(255,255,255,0.92) !important; }
+
+/* CTA dugme na kartici */
+.btn-leistung {
+    padding: 14px 22px !important;
+    font-size: 0.9rem !important;
+    border-radius: 12px !important;
+    letter-spacing: 0.01em !important;
+    background: var(--pale-blue) !important;
+    color: var(--dark-blue) !important;
+    font-weight: 700 !important;
+    transition: all 0.25s ease !important;
+}
+.btn-leistung:hover {
+    background: var(--mid-blue) !important;
+    color: #fff !important;
+    transform: none !important;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.3) !important;
+}
+.leistung-card.featured .btn-leistung {
+    background: #ffffff !important;
+    color: var(--dark-blue) !important;
+}
+.leistung-card.featured .btn-leistung:hover {
+    background: rgba(255,255,255,0.88) !important;
+    color: var(--dark-blue) !important;
+}
+
+/* ================================================================
+   6. TESTIMONIALS — od generičnih do premium
+   ================================================================ */
+.testimonials-section {
+    background: #F0F5FF !important;
+    padding: 96px 0 !important;
+}
+
+.testimonial-card {
+    background: #ffffff !important;
+    border-radius: 18px !important;
+    padding: 32px 28px !important;
+    border: none !important;
+    box-shadow: var(--shadow-card) !important;
+    position: relative;
+    transition: all 0.3s ease !important;
+    overflow: hidden;
+}
+.testimonial-card::before {
+    content: '\201C';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    font-size: 6rem;
+    font-family: Georgia, serif;
+    color: var(--pale-blue);
+    line-height: 1;
+    pointer-events: none;
+    font-weight: 900;
+    z-index: 0;
+}
+.testimonial-card::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--gradient-primary);
+    border-radius: 0 2px 2px 0;
+}
+.testimonial-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: var(--shadow-card-hover) !important;
+}
+
+.testimonial-stars { font-size: 0.9rem !important; margin-bottom: 14px !important; position: relative; z-index: 1; }
+
+.testimonial-text {
+    font-size: 0.93rem !important;
+    line-height: 1.75 !important;
+    color: #374151 !important;
+    font-style: italic;
+    margin-bottom: 20px !important;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author { position: relative; z-index: 1; }
+.author-info strong {
+    font-size: 0.9rem !important;
+    color: var(--dark-blue) !important;
+    font-weight: 700 !important;
+}
+.author-info span {
+    font-size: 0.8rem !important;
+    color: var(--gray) !important;
+}
+
+/* Google rating */
+.google-rating { margin-top: 48px !important; }
+.rating-content {
+    background: #fff !important;
+    border-radius: 16px !important;
+    padding: 28px 48px !important;
+    box-shadow: var(--shadow-card) !important;
+    border: 1px solid rgba(30,58,138,0.06) !important;
+}
+
+/* ================================================================
+   7. FAQ — više prostora, čišći ritam
+   ================================================================ */
+.faq-section {
+    background: #F8FAFF !important;
+    padding: 96px 0 !important;
+}
+
+.faq-container { max-width: 760px !important; }
+
+.faq-item {
+    border: 1px solid rgba(30,58,138,0.08) !important;
+    border-radius: 14px !important;
+    margin-bottom: 10px !important;
+    background: #fff !important;
+    box-shadow: var(--shadow-card) !important;
+    transition: all 0.3s ease !important;
+    overflow: visible !important;
+}
+.faq-item:hover {
+    border-color: rgba(37,99,235,0.2) !important;
+    box-shadow: var(--shadow-card-hover) !important;
+}
+.faq-item.active {
+    border-color: var(--mid-blue) !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.08), var(--shadow-card-hover) !important;
+}
+
+.faq-question {
+    padding: 22px 26px !important;
+}
+.faq-question h3 {
+    font-size: 0.98rem !important;
+    font-weight: 600 !important;
+    color: var(--dark) !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.01em;
+}
+.faq-question i { color: var(--mid-blue) !important; }
+
+.faq-answer {
+    padding: 0 26px !important;
+}
+.faq-item.active .faq-answer {
+    padding: 2px 26px 24px !important;
+}
+.faq-answer p {
+    font-size: 0.93rem !important;
+    line-height: 1.78 !important;
+    color: var(--gray) !important;
+}
+
+/* ================================================================
+   8. PRICING / KONFIGURATOR — premium forma
+   ================================================================ */
+.pricing-section {
+    background: #fff !important;
+    padding: 96px 0 !important;
+}
+
+.calculator-form {
+    border-radius: 20px !important;
+    padding: 44px 40px !important;
+    box-shadow: var(--shadow-premium) !important;
+    border: 1px solid rgba(30,58,138,0.06) !important;
+}
+@media (max-width: 600px) { .calculator-form { padding: 28px 20px !important; } }
+
+.form-group label {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.03em !important;
+    text-transform: uppercase !important;
+    color: var(--gray) !important;
+    margin-bottom: 10px !important;
+}
+.form-group input,
+.form-group select {
+    border-radius: 10px !important;
+    border: 1.5px solid var(--gray-light) !important;
+    padding: 14px 16px !important;
+    font-size: 0.95rem !important;
+    background: #FAFBFF !important;
+    transition: all 0.2s ease !important;
+}
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--mid-blue) !important;
+    background: #fff !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.08) !important;
+}
+
+.btn-calculate {
+    border-radius: 12px !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.02em !important;
+    padding: 17px !important;
+    margin-top: 16px !important;
+    background: linear-gradient(135deg, #1E3A8A, #2563EB) !important;
+    box-shadow: 0 4px 16px rgba(30,58,138,0.25) !important;
+}
+.btn-calculate:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 28px rgba(30,58,138,0.35) !important;
+}
+
+.result-card {
+    border-radius: 16px !important;
+    border: 1px solid rgba(30,58,138,0.08) !important;
+}
+
+/* ================================================================
+   9. FLOATING BUTTONS — diskretnije, manje agresivno
+   ================================================================ */
+.floating-help {
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 1.25rem !important;
+    bottom: 22px !important;
+    right: 22px !important;
+    box-shadow: 0 4px 20px rgba(30,58,138,0.3) !important;
+}
+@media (min-width: 768px) {
+    .floating-help {
+        width: 58px !important;
+        height: 58px !important;
+        bottom: 26px !important;
+        right: 26px !important;
+        font-size: 1.3rem !important;
+    }
+}
+
+.floating-whatsapp {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1.3rem !important;
+    bottom: 86px !important;
+    right: 24px !important;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.3) !important;
+}
+@media (min-width: 768px) {
+    .floating-whatsapp {
+        width: 52px !important;
+        height: 52px !important;
+        bottom: 100px !important;
+        right: 28px !important;
+    }
+}
+
+/* Pulse animacija — diskretnija */
+.help-pulse, .whatsapp-pulse { opacity: 0.3 !important; }
+
+/* Scroll to top — usklađen dizajn */
+.scroll-to-top {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 10px !important;
+    border: none !important;
+    background: var(--dark-blue) !important;
+    color: #fff !important;
+    box-shadow: var(--shadow-card) !important;
+    font-size: 0.85rem !important;
+    bottom: 90px !important;
+    right: 24px !important;
+}
+.scroll-to-top:hover {
+    background: var(--mid-blue) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(30,58,138,0.3) !important;
+}
+
+/* ================================================================
+   10. FOOTER — tamniji, premium kontrast
+   ================================================================ */
+.footer {
+    background: #0a1628 !important;
+    padding: 72px 0 36px !important;
+}
+.footer .footer-col h4 {
+    color: rgba(255,255,255,0.5) !important;
+    font-size: 0.72rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    margin-bottom: 18px !important;
+    font-weight: 700 !important;
+}
+.footer .footer-col p {
+    font-size: 0.88rem !important;
+    color: rgba(255,255,255,0.7) !important;
+    line-height: 1.8 !important;
+    margin-bottom: 6px !important;
+}
+.footer-nav-link {
+    font-size: 0.88rem !important;
+    color: rgba(255,255,255,0.65) !important;
+    margin-bottom: 10px !important;
+    transition: all 0.2s ease !important;
+}
+.footer-nav-link:hover {
+    color: var(--sky-blue) !important;
+    padding-left: 6px !important;
+}
+.footer-legal {
+    border-top: 1px solid rgba(255,255,255,0.07) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+    padding: 24px 0 !important;
+    margin-bottom: 24px !important;
+}
+.legal-link {
+    font-size: 0.82rem !important;
+    color: rgba(255,255,255,0.45) !important;
+    letter-spacing: 0.02em !important;
+}
+.legal-link:hover { color: rgba(255,255,255,0.8) !important; }
+.legal-sep { color: rgba(255,255,255,0.15) !important; }
+.footer-bottom {
+    color: rgba(255,255,255,0.35) !important;
+    font-size: 0.8rem !important;
+}
+
+/* ================================================================
+   11. BRANCHEN PREVIEW (homepage) — čišći, elegantniji
+   ================================================================ */
+.branchen-preview-section {
+    padding: 80px 0 !important;
+}
+
+/* ================================================================
+   12. VIDEO KARTICE — malo finiji
+   ================================================================ */
+.video-card {
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-card) !important;
+}
+.video-info {
+    padding: 14px 16px !important;
+    height: auto !important;
+    min-height: 90px !important;
+}
+.video-info h3 {
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    color: var(--dark-blue) !important;
+}
+
+/* ================================================================
+   13. GALLERY — finije kartice
+   ================================================================ */
+.gallery-item {
+    border-radius: 14px !important;
+}
+
+/* ================================================================
+   14. BODENDRUCK 3D SEKCIJA — zlatni kicker
+   ================================================================ */
+.boden3d-section .section-header::before {
+    content: 'EINZIGARTIGER USP';
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+/* ================================================================
+   15. SECTION DIVIDERS — suptilni ritam između sekcija
+   ================================================================ */
+.leistungen-section,
+.testimonials-section,
+.faq-section,
+.pricing-section {
+    position: relative;
+}
+
+/* ================================================================
+   16. HERO WHITE BG SECTION — više prostora
+   ================================================================ */
+.hero-interactive.hero-white-bg {
+    padding-top: 40px !important;
+    padding-bottom: 48px !important;
+}
+
+/* ================================================================
+   17. REVEAL — poboljšana animacija s translateY
+   ================================================================ */
+.reveal {
+    opacity: 0 !important;
+    transform: translateY(24px) !important;
+    transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.65s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.reveal.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ================================================================
+   18. ÜBER UNS — finiji kontrast
+   ================================================================ */
+.ueber-uns-section {
+    background: #F8FAFF !important;
+}
+.ueber-foto-deco {
+    border-color: rgba(37,99,235,0.1) !important;
+}
+
+/* ================================================================
+   19. CTA BRIDGE (result sekcija) — finiji
+   ================================================================ */
+.result-cta-bridge {
+    background: var(--pale-blue) !important;
+    border-radius: 14px !important;
+    padding: 24px 28px !important;
+    margin-top: 20px !important;
+    text-align: center;
+    border: 1px solid rgba(37,99,235,0.1) !important;
+}
+.result-cta-bridge p {
+    font-size: 0.95rem !important;
+    color: var(--dark-blue) !important;
+    font-weight: 600 !important;
+    margin-bottom: 16px !important;
+}
+.bridge-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gradient-primary) !important;
+    color: #fff !important;
+    padding: 13px 26px !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    font-size: 0.92rem !important;
+    transition: var(--transition) !important;
+    box-shadow: 0 4px 16px rgba(30,58,138,0.2) !important;
+}
+.bridge-btn-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(30,58,138,0.3) !important;
+}
+
+/* ================================================================
+   20. MOBILE TUNING
+   ================================================================ */
+@media (max-width: 768px) {
+    .section-header { margin-bottom: 44px !important; }
+    .leistung-card { padding: 30px 22px !important; }
+    .leistung-card.featured { transform: scale(1) !important; }
+    .testimonial-card { padding: 26px 22px !important; }
+    .calculator-form { border-radius: 16px !important; }
+    .faq-question { padding: 18px 20px !important; }
+    .faq-item.active .faq-answer { padding: 2px 20px 20px !important; }
+}
+
+
+/* ================================================================
+   FIX — Leistung featured kartica: tekst vidljivost
+   Srednja (Bodendruck) kartica — bijeli tekst, naslov vidljiv
+   ================================================================ */
+
+/* Naslov na featured kartici — mora biti bijel */
+.leistung-card.featured h3 {
+    color: #ffffff !important;
+    font-size: 1.45rem !important;
+}
+
+/* Opis tekst na featured kartici — bijel */
+.leistung-card.featured p {
+    color: rgba(255,255,255,0.88) !important;
+}
+
+/* Lista na featured kartici — bijela */
+.leistung-card.featured .leistung-list li {
+    color: rgba(255,255,255,0.92) !important;
+}
+.leistung-card.featured .leistung-list li i {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+/* Featured kartica ne smije naslijediti border na hover */
+.leistung-card.featured:hover {
+    border: none !important;
+}
+
+/* Bijele i ostale kartice — hover border ne smije biti previše jak */
+.leistung-card:not(.featured):hover {
+    border-color: rgba(37,99,235,0.15) !important;
+}
+
+/* Overflow na kartici ne smije odrezati PREMIUM badge */
+.leistung-card {
+    overflow: visible !important;
+}
+
+
+/* ================================================================
+   FIX 2 — Ukloniti plavu hover liniju na kartici (::before)
+   ================================================================ */
+
+.leistung-card::before {
+    display: none !important;
+}
+
+.leistung-card:hover::before {
+    display: none !important;
+}
+

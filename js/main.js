@@ -353,27 +353,49 @@ const WandVision = (function() {
         /* ===================================
        LIGHTBOX
     =================================== */
-    function openLightbox(item) {
-        const img = item.querySelector('img');
-        const overlay = item.querySelector('.gallery-overlay');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        if (!lightbox || !img) return;
+    // Galerija lightbox — indeks trenutne slike
+    var currentGalleryIndex = 0;
+    var galleryItems = [];
 
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        if (overlay) {
-            const h4 = overlay.querySelector('h4');
-            const p = overlay.querySelector('p');
-            lightboxCaption.textContent = (h4 ? h4.textContent : '') + (p ? ' – ' + p.textContent : '');
-        }
+    function openLightbox(item) {
+        galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+        currentGalleryIndex = galleryItems.indexOf(item);
+        showGalleryImage(currentGalleryIndex);
+        var lightbox = document.getElementById('lightbox');
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
+    function showGalleryImage(idx) {
+        var items = galleryItems.length ? galleryItems : Array.from(document.querySelectorAll('.gallery-item'));
+        if (idx < 0) idx = items.length - 1;
+        if (idx >= items.length) idx = 0;
+        currentGalleryIndex = idx;
+        var item = items[idx];
+        var img = item.querySelector('img');
+        var overlay = item.querySelector('.gallery-overlay');
+        var lightboxImg = document.getElementById('lightbox-img');
+        var lightboxCaption = document.getElementById('lightbox-caption');
+        if (!img || !lightboxImg) return;
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        if (overlay && lightboxCaption) {
+            var h4 = overlay.querySelector('h4');
+            var p  = overlay.querySelector('p');
+            lightboxCaption.textContent = (h4 ? h4.textContent : '') + (p ? ' – ' + p.textContent : '');
+        }
+    }
+
+    function lightboxGalleryPrev() {
+        showGalleryImage(currentGalleryIndex - 1);
+    }
+
+    function lightboxGalleryNext() {
+        showGalleryImage(currentGalleryIndex + 1);
+    }
+
     function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
+        var lightbox = document.getElementById('lightbox');
         if (lightbox) {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
@@ -501,6 +523,7 @@ const WandVision = (function() {
 
     function lightboxGoConfigurator() {
         closeVideoLightbox();
+        closeLightbox();
         setTimeout(function() {
             resetConfigurator();
             showConfigurator();
@@ -510,6 +533,7 @@ const WandVision = (function() {
 
     function lightboxGoPreise() {
         closeVideoLightbox();
+        closeLightbox();
         setTimeout(function() {
             var target = document.getElementById('preise');
             if (target) {
@@ -1332,6 +1356,8 @@ overlay.addEventListener('touchend', function(e) {
         transformRoom:           transformRoom,
         dismissRoomPrompt:       dismissRoomPrompt,
         openFreshConfigurator:   openFreshConfigurator,
+        lightboxGalleryPrev:     lightboxGalleryPrev,
+        lightboxGalleryNext:     lightboxGalleryNext,
         openLightbox:            openLightbox,
         closeLightbox:           closeLightbox,
         submitBodenForm:         submitBodenForm,
