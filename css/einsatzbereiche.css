@@ -546,3 +546,47 @@
         text-align: center;
     }
 }
+
+/* ===================================
+   SECTOR IMAGES (replace icons)
+=================================== */
+.eb-sector-img {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: eb-img-float 3s ease-in-out infinite;
+}
+.eb-sector-img:hover {
+    transform: translateY(-6px) scale(1.03);
+}
+.eb-img-1 { box-shadow: 0 20px 50px rgba(220,38,38,0.25); }
+.eb-img-2 { box-shadow: 0 20px 50px rgba(30,58,138,0.25); }
+.eb-img-3 { box-shadow: 0 20px 50px rgba(124,58,237,0.25); }
+.eb-img-4 { box-shadow: 0 20px 50px rgba(5,150,105,0.25); }
+.eb-img-5 { box-shadow: 0 20px 50px rgba(217,119,6,0.25); }
+.eb-img-6 { box-shadow: 0 20px 50px rgba(15,118,110,0.25); }
+
+.eb-img-1:hover { box-shadow: 0 24px 60px rgba(220,38,38,0.35); }
+.eb-img-2:hover { box-shadow: 0 24px 60px rgba(30,58,138,0.35); }
+.eb-img-3:hover { box-shadow: 0 24px 60px rgba(124,58,237,0.35); }
+.eb-img-4:hover { box-shadow: 0 24px 60px rgba(5,150,105,0.35); }
+.eb-img-5:hover { box-shadow: 0 24px 60px rgba(217,119,6,0.35); }
+.eb-img-6:hover { box-shadow: 0 24px 60px rgba(15,118,110,0.35); }
+
+@keyframes eb-img-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.eb-sector-img:hover {
+    animation: none;
+    transform: translateY(-6px) scale(1.03);
+}
+
+@media (max-width: 900px) {
+    .eb-sector-img { width: 200px; height: 200px; }
+}
+@media (max-width: 600px) {
+    .eb-sector-img { width: 160px; height: 160px; }
+}

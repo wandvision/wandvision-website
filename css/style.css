@@ -1,9 +1,4 @@
-/* ===================================
-   WANDVISION K&K - COBALT BLUE THEME
-   Mobile Optimized - Complete Style
-=================================== */
 
-/* VARIJABLE */
 :root {
     --dark-blue: #1E3A8A;
     --mid-blue: #2563EB;
@@ -27,8 +22,6 @@
     --radius-md: 16px;
     --radius-lg: 24px;
 }
-
-/* RESET & BASE */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
@@ -43,20 +36,15 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
-
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
-
 section { padding: 60px 0; }
 @media (min-width: 768px) { section { padding: 80px 0; } }
-
-/* TIPOGRAFIJA */
 h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
-
 .section-header { text-align: center; margin-bottom: 50px; }
 .section-title {
     font-size: clamp(1.6rem, 4vw, 2.5rem);
@@ -76,9 +64,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .section-icon { width: 50px; height: 50px; display: inline-block; vertical-align: middle; }
 @media (max-width: 768px) { .section-icon { width: 40px; height: 40px; } }
-/* ===================================
-   BUTTONS
-=================================== */
 .btn-primary-nav {
     background: var(--gradient-primary);
     color: white;
@@ -96,7 +81,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     touch-action: manipulation;
 }
 .btn-primary-nav:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
 .btn-primary-large {
     background: var(--gradient-primary);
     color: white;
@@ -114,10 +98,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     touch-action: manipulation;
 }
 .btn-primary-large:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-
-/* ===================================
-   NAVBAR
-=================================== */
 .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -155,11 +135,8 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     background-clip: text;
     animation: goldFlow 3s linear infinite;
 }
-
 .logo-title .kk { color: var(--dark-blue); }
 .logo-subtitle { font-size: 0.7rem; color: var(--gray); letter-spacing: 0.5px; margin-top: 2px; }
-
-/* Mobile Toggle */
 .mobile-menu-toggle {
     display: flex;
     flex-direction: column;
@@ -170,11 +147,8 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     padding: 8px;
     touch-action: manipulation;
 }
-
 @media (min-width: 900px) { .mobile-menu-toggle { display: none; } }
 @media (min-width: 900px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
-
-/* Nav Menu */
 .nav-menu {
     display: none;
     position: fixed;
@@ -193,7 +167,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     right: 15px;
 }
 .nav-menu.active { display: flex; }
-
 @media (min-width: 900px) {
     .nav-menu {
         display: flex;
@@ -206,7 +179,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
         background: transparent;
     }
 }
-
 .nav-item {
     padding: 7px 12px;
     border-radius: var(--radius-sm);
@@ -218,7 +190,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     align-items: center;
     gap: 6px;
 }
-
 @media (max-width: 899px) {
     .nav-item {
         padding: 8px 12px;
@@ -235,8 +206,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     }
 }
 .nav-item:hover { color: var(--light-blue); background: var(--pale-blue); }
-
-/* Nav Badge */
 .nav-badge {
     background: #f59e0b;
     color: white;
@@ -251,9 +220,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     0%, 100% { opacity: 1; }
     50% { opacity: 0.7; }
 }
-/* ===================================
-   HERO SECTION
-=================================== */
 .hero-interactive {
     background: var(--gradient-hero);
     min-height: 100vh;
@@ -306,8 +272,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-
-/* Hero Surface Badge */
 .hero-surface-badge {
     display: inline-flex;
     align-items: center;
@@ -323,16 +287,11 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     backdrop-filter: blur(10px);
 }
 .hero-surface-badge i { color: #f59e0b; font-size: 1rem; }
-
 .hero-subtitle {
     color: rgba(255,255,255,0.95);
     font-size: clamp(0.95rem, 2vw, 1.1rem);
     margin-bottom: 30px;
 }
-
-/* ===================================
-   ROOM SELECTOR
-=================================== */
 .room-selector {
     max-width: 1400px;
     margin: 0 auto 30px;
@@ -383,8 +342,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .room-after { opacity: 0; }
 .room-card.transformed .room-after { opacity: 1; }
 .room-card.transformed .room-before { opacity: 0; }
-
-/* BEFORE/AFTER BADGE */
 .room-before-after-badge {
     position: absolute;
     top: 12px;
@@ -414,8 +371,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .room-card.transformed .room-before-after-badge span:last-child {
     color: #4ade80;
 }
-
-/* OVERLAY */
 .room-overlay {
     position: absolute;
     inset: 0;
@@ -442,18 +397,12 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     letter-spacing: 0.3px;
 }
 .room-card.transformed .room-overlay { opacity: 0; }
-
 @keyframes pulse-icon {
     0%, 100% { transform: scale(1); opacity: 0.9; }
     50% { transform: scale(1.25); opacity: 1; }
 }
-
 .room-info { padding: 12px 15px; color: white; }
 .room-info h3 { font-size: 0.95rem; margin-bottom: 4px; color: white; }
-
-/* ===================================
-   Hero CTA Buttons
-=================================== */
 .hero-cta-buttons {
     display: flex;
     gap: 15px;
@@ -492,10 +441,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     touch-action: manipulation;
 }
 .btn-hero-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; transform: translateY(-2px); }
-
-/* ===================================
-   Feature Kartice unutar video sekcije — zlatni stil
-=================================== */
 .video-gallery-section .feature-card {
     background: linear-gradient(135deg, #92700A 0%, #D4AF37 40%, #F5E27A 60%, #D4AF37 80%, #92700A 100%);
     background-size: 200% auto;
@@ -526,10 +471,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     font-weight: 500;
     text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
-
-/* ===================================
-   Feature Kartice
-=================================== */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -538,7 +479,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 @media (min-width: 600px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 900px) { .features-grid { grid-template-columns: repeat(4, 1fr); max-width: 900px; margin-left: auto; margin-right: auto; } }
-
 .feature-card {
     background: rgba(255,255,255,0.12);
     border: 1px solid rgba(255,255,255,0.25);
@@ -556,22 +496,15 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .feature-card-highlight { background: rgba(245,158,11,0.2); border: 2px solid rgba(245,158,11,0.5); }
 .feature-card-highlight:hover { background: rgba(245,158,11,0.3); }
 .feature-icon { font-size: 2rem; color: white; }
-
 .feature-card-highlight p { color: #fde68a; }
-
-//* ===================================
-   VIDEO SECTION
-=================================== */
+/
 .video-gallery-section { background: var(--light); padding: 100px 0 80px; }
-/* VIDEO KARUSEL */
 .video-carousel-wrapper {
     position: relative;
     display: flex;
     align-items: flex-start;
     margin-top: 40px;
 }
-
-/* Track = scrollable kontejner koji klipa sadrzaj */
 .video-carousel-track {
     display: flex;
     align-items: flex-start;
@@ -583,18 +516,14 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     scrollbar-width: none;
 }
 .video-carousel-track::-webkit-scrollbar {
-    display: none;            /* sakrij scrollbar Chrome/Safari */
+    display: none;            
 }
-
-/* Kartice - JS postavlja tocnu px sirinu */
 .video-carousel-track .video-card {
     flex: 0 0 calc((100% - 48px) / 3);
     width: calc((100% - 48px) / 3);
     min-width: 0;
     max-width: none;
 }
-
-/* Strelice */
 .carousel-arrow {
     position: absolute;
     top: 40%;
@@ -622,8 +551,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .carousel-arrow-left  { left: -25px; }
 .carousel-arrow-right { right: -25px; }
-
-/* Dots */
 .carousel-dots {
     display: flex;
     justify-content: center;
@@ -649,8 +576,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     border-color: var(--dark-blue);
     background: rgba(59,130,246,0.3);
 }
-
-/* Mobile: 1 video */
 @media (max-width: 768px) {
     .carousel-arrow-left  { left: -18px; }
     .carousel-arrow-right { right: -18px; }
@@ -658,15 +583,12 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     .video-carousel-track { gap: 0; }
     .carousel-arrow { width: 38px; height: 38px; font-size: 1rem; top: 35%; }
 }
-
-/* Tablet: 2 videa */
 @media (min-width: 769px) and (max-width: 1024px) {
     .video-carousel-track .video-card {
         flex: 0 0 calc((100% - 24px) / 2);
         width: calc((100% - 24px) / 2);
     }
 }
-
 .video-card {
     background: white;
     border-radius: var(--radius-md);
@@ -675,7 +597,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     transition: box-shadow 0.3s ease;
 }
 .video-card:hover { box-shadow: var(--shadow-lg); }
-
 .video-wrapper {
     position: relative;
     background: var(--dark-blue);
@@ -719,10 +640,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     align-items: center;
     gap: 5px;
 }
-
-/* ===================================
-   LEISTUNGEN SECTION
-=================================== */
 .leistungen-section { background: linear-gradient(135deg, #EFF6FF, var(--pale-blue)); }
 .leistungen-grid {
     display: grid;
@@ -731,7 +648,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     margin-bottom: 40px;
 }
 @media (min-width: 768px) { .leistungen-grid { grid-template-columns: repeat(3, 1fr); } }
-
 .leistung-card {
     background: white;
     border-radius: var(--radius-lg);
@@ -744,7 +660,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .leistung-card:hover { transform: translateY(-5px); border-color: var(--light-blue); box-shadow: var(--shadow-lg); }
 .leistung-card.featured { background: var(--gradient-primary); color: white; border-color: transparent; }
 .leistung-card.featured:hover { border-color: rgba(255,255,255,0.3); }
-
 .leistung-badge {
     position: absolute;
     top: -12px; right: 20px;
@@ -773,13 +688,11 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .leistung-card.featured h3 { color: white; }
 .leistung-card p { font-size: 0.95rem; color: var(--gray); margin-bottom: 20px; line-height: 1.6; }
 .leistung-card.featured p { color: rgba(255,255,255,0.85); }
-
 .leistung-list { padding: 0; margin: 0 0 25px; display: flex; flex-direction: column; gap: 10px; }
 .leistung-list li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 500; color: var(--dark); }
 .leistung-card.featured .leistung-list li { color: white; }
 .leistung-list li i { color: var(--light-blue); font-size: 0.85rem; flex-shrink: 0; }
 .leistung-card.featured .leistung-list li i { color: rgba(255,255,255,0.8); }
-
 .btn-leistung {
     display: flex;
     align-items: center;
@@ -798,8 +711,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .leistung-card.featured .btn-leistung { background: white; color: var(--dark-blue); }
 .btn-leistung:hover { transform: scale(1.03); box-shadow: var(--shadow-md); }
-
-/* Materials Bar */
 .materials-bar {
     background: white;
     border-radius: var(--radius-md);
@@ -827,10 +738,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .materials-list span:hover { background: var(--light-blue); color: white; }
 .materials-list span i { color: var(--light-blue); font-size: 0.75rem; }
 .materials-list span:hover i { color: white; }
-
-/* ===================================
-   TESTIMONIALS
-=================================== */
 .testimonials-section { background: white; padding: 80px 0; }
 .testimonials-grid {
     display: grid;
@@ -840,7 +747,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 @media (min-width: 600px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .testimonials-grid { grid-template-columns: repeat(4, 1fr); } }
-
 .testimonial-card {
     background: var(--light);
     border-radius: var(--radius-md);
@@ -850,12 +756,9 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .testimonial-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--sky-blue); }
 .testimonial-stars { font-size: 1rem; margin-bottom: 12px; }
-
 .testimonial-author { display: flex; align-items: center; gap: 10px; }
 .author-avatar i { font-size: 2rem; color: var(--sky-blue); }
 .author-info strong { display: block; font-size: 0.9rem; color: var(--dark-blue); }
-
-/* Google Rating */
 .google-rating { display: flex; justify-content: center; margin-top: 30px; }
 .rating-content {
     background: var(--light);
@@ -866,10 +769,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .google-text-logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
 .stars-large { font-size: 1.5rem; margin-bottom: 8px; }
-
-/* ===================================
-   GALLERY
-=================================== */
 .gallery-section { background: var(--light); padding: 40px 0 80px; }
 .gallery-filter {
     display: flex;
@@ -907,7 +806,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 @media (min-width: 600px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 1024px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
-
 .gallery-item {
     position: relative;
     border-radius: var(--radius-md);
@@ -950,8 +848,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     touch-action: manipulation;
 }
 .btn-gallery:hover { background: var(--light-blue); color: white; }
-
-/* Lightbox */
 .lightbox {
   display: none;
   position: fixed;
@@ -981,8 +877,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .lightbox-close:hover { opacity: 0.6; }
 .lightbox-caption { color: white; margin-top: 15px; font-size: 0.95rem; text-align: center; }
-
-/* ── GALLERY LIGHTBOX LAYOUT: 3 kolone (kao video lightbox) ── */
 .glb-layout {
     display: flex;
     flex-direction: row;
@@ -1022,8 +916,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .glb-mobile-nav-row,
 .glb-mobile-conv-row { display: none; }
-
-/* ── GALLERY LIGHTBOX MOBILE ── */
 @media (max-width: 768px) {
     .lightbox {
         padding: 44px 0 0 0;
@@ -1099,10 +991,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
         font-size: 1rem;
     }
 }
-
-/* ===================================
-   FAQ
-=================================== */
 .faq-section { background: white; padding: 80px 0; }
 .faq-container { max-width: 800px; margin: 0 auto; }
 .faq-item {
@@ -1132,10 +1020,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .faq-answer p { color: var(--gray); font-size: 0.95rem; line-height: 1.7; }
 .faq-cta { text-align: center; margin-top: 40px; }
 .faq-cta p { font-size: 1.1rem; font-weight: 600; color: var(--dark-blue); margin-bottom: 15px; }
-
-/* ===================================
-   PRICING / CALCULATOR
-=================================== */
 .pricing-section { background: var(--light); padding: 80px 0; }
 .calculator-wrapper { max-width: 700px; margin: 0 auto; }
 .calculator-form {
@@ -1195,8 +1079,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     touch-action: manipulation;
 }
 .btn-calculate:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-
-/* Result Card */
 .calculator-result { margin-top: 20px; }
 .result-card {
     background: white;
@@ -1216,7 +1098,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     border-bottom: 1px solid var(--gray-light);
     font-size: 0.95rem;
 }
-
 .result-item strong { color: var(--dark-blue); font-weight: 700; }
 .result-divider { height: 2px; background: var(--gradient-primary); margin: 15px 0; border-radius: 2px; }
 .result-total { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
@@ -1232,9 +1113,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     gap: 8px;
 }
 .result-footer p i { color: var(--light-blue); margin-top: 2px; flex-shrink: 0; }
-/* ===================================
-   CTA SECTION
-=================================== */
 .cta-section {
     background: var(--gradient-primary);
     color: white;
@@ -1312,10 +1190,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     touch-action: manipulation;
 }
 .btn-cta-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-
-/* ===================================
-   FOOTER
-=================================== */
 .footer { background: var(--dark-blue); color: white; padding: 50px 0 30px; }
 .footer-grid {
     display: grid;
@@ -1325,7 +1199,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 @media (min-width: 600px) { .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; } }
 @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
-
 .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
 .footer-logo-icon-img { width: 40px; height: 40px; object-fit: contain; }
 .footer-logo-title {
@@ -1344,9 +1217,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     background-clip: text;
     animation: goldFlow 3s linear infinite;
 }
-
 .footer-logo .vision { color: var(--sky-blue); }
-
 .footer-logo .kk {
     position: relative;
     background: linear-gradient(135deg, #B8860B, #FFD700, #8B6914, #FFC200, #B8860B);
@@ -1356,9 +1227,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     background-clip: text;
     animation: goldFlow 3s linear infinite;
 }
-
 .footer-col p i { color: var(--sky-blue); width: 16px; flex-shrink: 0; }
-
 .footer-nav-link {
     display: flex;
     align-items: center;
@@ -1370,7 +1239,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .footer-nav-link:hover { color: var(--sky-blue); padding-left: 5px; }
 .footer-nav-link i { color: var(--sky-blue); width: 16px; font-size: 0.85rem; }
-
 .footer-legal {
     display: flex;
     flex-wrap: wrap;
@@ -1386,10 +1254,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .legal-link:hover { color: var(--sky-blue); }
 .legal-sep { color: rgba(255,255,255,0.3); font-size: 0.85rem; }
 .footer-bottom { text-align: center; opacity: 0.7; font-size: 0.85rem; }
-
-/* ===================================
-   FLOATING BUTTONS
-=================================== */
 .floating-help {
     position: fixed;
     bottom: 20px; right: 20px;
@@ -1409,7 +1273,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .floating-help:hover { transform: scale(1.1); }
 @media (min-width: 768px) { .floating-help { width: 70px; height: 70px; bottom: 30px; right: 30px; font-size: 1.6rem; } }
-
 .help-pulse, .whatsapp-pulse {
     position: absolute;
     width: 100%; height: 100%;
@@ -1423,7 +1286,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     0% { transform: scale(1); opacity: 0.5; }
     100% { transform: scale(1.6); opacity: 0; }
 }
-
 .floating-whatsapp {
     position: fixed;
     bottom: 95px; right: 20px;
@@ -1443,7 +1305,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .floating-whatsapp:hover { transform: scale(1.1); }
 @media (min-width: 768px) { .floating-whatsapp { bottom: 115px; right: 30px; width: 60px; height: 60px; } }
-
 .scroll-to-top {
     position: fixed;
     bottom: 300px; right: 22px;
@@ -1464,10 +1325,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 }
 .scroll-to-top.visible { display: flex; }
 .scroll-to-top:hover { background: var(--light-blue); color: white; transform: translateY(-2px); }
-
-/* ===================================
-   CONFIGURATOR POPUP
-=================================== */
 .configurator-popup {
     display: none;
     position: fixed;
@@ -1533,8 +1390,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     touch-action: manipulation;
 }
 .btn-popup-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-/* Camera Buttons */
 .camera-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .btn-camera-take, .btn-camera-upload {
     padding: 12px 22px;
@@ -1567,8 +1422,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     transition: var(--transition);
 }
 .btn-retake:hover { border-color: var(--light-blue); color: var(--light-blue); }
-
-/* Design Grid */
 .design-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .design-option {
     border-radius: var(--radius-sm);
@@ -1582,8 +1435,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .design-option.selected { border-color: var(--light-blue); box-shadow: 0 0 20px rgba(59,130,246,0.4); }
 .design-option img { width: 100%; height: 90px; object-fit: cover; }
 .design-option span { display: block; padding: 8px; text-align: center; font-weight: 600; font-size: 0.82rem; background: var(--light); }
-
-/* Popup Form */
 .popup-form { display: flex; flex-direction: column; gap: 18px; }
 .popup-form .form-group label { font-weight: 600; margin-bottom: 6px; color: var(--dark); font-size: 0.9rem; }
 .popup-form input {
@@ -1596,8 +1447,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     min-height: 50px;
 }
 .popup-form input:focus { outline: none; border-color: var(--light-blue); }
-
-/* Success */
 .success-message { background: var(--light); padding: 20px; border-radius: var(--radius-md); margin-bottom: 20px; }
 .success-message p { font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
 .quick-contact { margin: 20px 0; }
@@ -1618,14 +1467,10 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
 .btn-whatsapp { background: #25D366; color: white; }
 .btn-call { background: var(--light-blue); color: white; }
 .btn-whatsapp:hover, .btn-call:hover { transform: scale(1.03); }
-
 .testimonial { background: var(--light); padding: 18px; border-radius: var(--radius-md); text-align: center; }
 .testimonial .stars { font-size: 1.1rem; margin-bottom: 8px; }
 .testimonial p { font-style: italic; font-size: 0.9rem; margin-bottom: 8px; }
 .testimonial span { font-size: 0.82rem; color: var(--gray); font-weight: 600; }
-/* ===================================
-   COOKIE BANNER
-=================================== */
 .cookie-banner {
     display: none;
     position: fixed;
@@ -1692,36 +1537,21 @@ h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
     font-family: var(--font-body);
 }
 .btn-cookie-policy:hover { color: white; }
-
-/* ===================================
-   ANIMATIONS
-=================================== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 .fade-in { animation: fadeIn 0.5s ease forwards; }
-
-/* ===================================
-   SCROLLBAR
-=================================== */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--light); }
 ::-webkit-scrollbar-thumb { background: var(--light-blue); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--dark-blue); }
-
-/* ===================================
-   SEO & ACCESSIBILITY
-=================================== */
 article, section, main { display: block; }
-
 img[alt] { border: 0; }
-
 a:focus, button:focus {
     outline: 2px solid var(--light-blue);
     outline-offset: 2px;
 }
-
 @media (max-width: 768px) {
     input[type="text"],
     input[type="number"],
@@ -1731,15 +1561,10 @@ a:focus, button:focus {
         font-size: 16px !important;
     }
 }
-
-/* ===================================
-   SELECTION
-=================================== */
 ::selection {
     background: var(--pale-blue);
     color: var(--dark-blue);
 }
-/* SKIP LINK */
 .skip-link {
     position: absolute;
     top: -100px;
@@ -1756,33 +1581,22 @@ a:focus, button:focus {
 .skip-link:focus {
     top: 0;
 }
-/* FOOTER & ELEMENT CONTRAST FIXES
-   Specifičniji selektori umjesto !important */
 .footer .footer-col h4 { color: #bfdbfe; }
 .footer .footer-col p  { color: rgba(255,255,255,0.95); }
-
 .hero-section .feature-card p    { color: rgba(255,255,255,0.95); }
 .hero-section .room-info p        { color: rgba(255,255,255,0.9); }
-
 .testimonials-section .testimonial-text { color: #4a5568; }
 .testimonials-section .author-info span { color: #4a5568; }
-
 .calculator-section .result-item span   { color: #4a5568; }
-/* ===================================
-   GOLD SPARKLE - Vision Logo
-=================================== */
 @keyframes goldFlow {
     0% { background-position: 0% center; }
     100% { background-position: 200% center; }
 }
-
-/* Zvjezdice — manji sjaj */
 .sparkle {
     position: absolute;
     pointer-events: none;
     animation: sparklePop 0.8s ease-in-out forwards;
 }
-
 .sparkle::before {
     content: '';
     position: absolute;
@@ -1794,7 +1608,6 @@ a:focus, button:focus {
     transform: translate(-50%, -50%);
     box-shadow: 0 0 3px 1px rgba(255, 215, 0, 0.6);
 }
-
 .sparkle::after {
     content: '';
     position: absolute;
@@ -1806,16 +1619,12 @@ a:focus, button:focus {
     transform: translate(-50%, -50%);
     box-shadow: 0 0 3px 1px rgba(255, 215, 0, 0.6);
 }
-
 @keyframes sparklePop {
     0%   { transform: scale(0) rotate(0deg);    opacity: 0; }
     30%  { transform: scale(1.2) rotate(45deg); opacity: 1; }
     60%  { transform: scale(1)   rotate(45deg); opacity: 0.8; }
     100% { transform: scale(0)   rotate(90deg); opacity: 0; }
 }
-/* ===================================
-   SCROLL REVEAL
-=================================== */
 .reveal {
     opacity: 0;
     transition: opacity 0.6s ease;
@@ -1827,24 +1636,17 @@ a:focus, button:focus {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
-/* ============================================
-   BODENDRUCK 3D TILT SHOWCASE
-   ============================================ */
-
 .boden3d-section {
     background: var(--gradient-hero);
     padding: 80px 0;
     overflow: hidden;
 }
-
 .boden3d-section .section-title {
     color: white;
 }
-
 .boden3d-section .section-subtitle {
     color: rgba(255,255,255,0.6);
 }
-
 .boden3d-wrapper {
     display: grid;
     grid-template-columns: 1fr;
@@ -1853,14 +1655,11 @@ a:focus, button:focus {
     max-width: 1100px;
     margin: 0 auto;
 }
-
 @media (min-width: 900px) {
     .boden3d-wrapper {
         grid-template-columns: 1fr 1fr;
     }
 }
-
-/* ---- 3D KARTA ---- */
 .boden3d-card {
     perspective: 1000px;
     width: 100%;
@@ -1868,7 +1667,6 @@ a:focus, button:focus {
     margin: 0 auto;
     cursor: crosshair;
 }
-
 .boden3d-inner {
     position: relative;
     border-radius: var(--radius-lg);
@@ -1881,7 +1679,6 @@ a:focus, button:focus {
         0 0 0 1px rgba(255,255,255,0.08);
     will-change: transform;
 }
-
 .boden3d-img {
     width: 100%;
     height: 380px;
@@ -1891,14 +1688,11 @@ a:focus, button:focus {
     pointer-events: none;
     user-select: none;
 }
-
 @media (max-width: 600px) {
     .boden3d-img {
         height: 260px;
     }
 }
-
-/* Sjajni overlay koji prati miš */
 .boden3d-shine {
     position: absolute;
     inset: 0;
@@ -1912,8 +1706,6 @@ a:focus, button:focus {
     transition: background 0.05s ease;
     mix-blend-mode: screen;
 }
-
-/* Labela na slici */
 .boden3d-label {
     position: absolute;
     bottom: 20px;
@@ -1930,16 +1722,12 @@ a:focus, button:focus {
     align-items: center;
     gap: 8px;
 }
-
 .boden3d-label i {
     color: #F5C518;
 }
-
-/* ---- INFO DESNA STRANA ---- */
 .boden3d-info {
     color: white;
 }
-
 .boden3d-badge {
     display: inline-flex;
     align-items: center;
@@ -1954,21 +1742,18 @@ a:focus, button:focus {
     margin-bottom: 18px;
     letter-spacing: 0.5px;
 }
-
 .boden3d-info h3 {
     font-size: clamp(1.4rem, 3vw, 2rem);
     color: white;
     margin-bottom: 14px;
     line-height: 1.2;
 }
-
 .boden3d-info p {
     color: rgba(255,255,255,0.75);
     font-size: 1rem;
     line-height: 1.7;
     margin-bottom: 24px;
 }
-
 .boden3d-list {
     list-style: none;
     padding: 0;
@@ -1977,7 +1762,6 @@ a:focus, button:focus {
     flex-direction: column;
     gap: 12px;
 }
-
 .boden3d-list li {
     display: flex;
     align-items: center;
@@ -1986,18 +1770,14 @@ a:focus, button:focus {
     font-size: 0.95rem;
     font-weight: 500;
 }
-
 .boden3d-list li i {
     color: #25D366;
     font-size: 1rem;
     flex-shrink: 0;
 }
-
 .boden3d-list li strong {
     color: #F5C518;
 }
-
-/* ── BODENDRUCK FORMA ── */
 .boden3d-form {
     display: flex;
     flex-direction: column;
@@ -2079,35 +1859,26 @@ a:focus, button:focus {
 @media (max-width: 600px) {
     .boden3d-form-row { flex-direction: column; }
 }
-
-/* ============================================
-   B2B BRANŠE SECTION
-   ============================================ */
-
 .branchen-section {
     background: linear-gradient(135deg, #EFF6FF, var(--pale-blue));
     padding: 80px 0;
 }
-
 .branchen-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 24px;
     margin-bottom: 50px;
 }
-
 @media (min-width: 600px) {
     .branchen-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 @media (min-width: 1024px) {
     .branchen-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-
 .branchen-card {
     background: white;
     border-radius: var(--radius-lg);
@@ -2119,13 +1890,11 @@ a:focus, button:focus {
     flex-direction: column;
     gap: 14px;
 }
-
 .branchen-card:hover {
     border-color: var(--light-blue);
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
-
 .branchen-icon {
     width: 60px;
     height: 60px;
@@ -2138,19 +1907,16 @@ a:focus, button:focus {
     color: white;
     flex-shrink: 0;
 }
-
 .branchen-icon-2 { background: linear-gradient(135deg, #0f766e, #14b8a6); }
 .branchen-icon-3 { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
 .branchen-icon-4 { background: linear-gradient(135deg, #dc2626, #f87171); }
 .branchen-icon-5 { background: linear-gradient(135deg, #d97706, #fbbf24); }
 .branchen-icon-6 { background: linear-gradient(135deg, #059669, #34d399); }
-
 .branchen-card h3 {
     font-size: 1.2rem;
     color: var(--dark-blue);
     margin: 0;
 }
-
 .branchen-card p {
     font-size: 0.9rem;
     color: var(--gray);
@@ -2158,7 +1924,6 @@ a:focus, button:focus {
     margin: 0;
     flex: 1;
 }
-
 .branchen-list {
     list-style: none;
     padding: 0;
@@ -2167,7 +1932,6 @@ a:focus, button:focus {
     flex-direction: column;
     gap: 8px;
 }
-
 .branchen-list li {
     display: flex;
     align-items: center;
@@ -2176,13 +1940,11 @@ a:focus, button:focus {
     color: var(--dark);
     font-weight: 500;
 }
-
 .branchen-list li i {
     color: var(--light-blue);
     font-size: 0.8rem;
     flex-shrink: 0;
 }
-
 .btn-branchen {
     display: flex;
     align-items: center;
@@ -2199,32 +1961,24 @@ a:focus, button:focus {
     min-height: 46px;
     margin-top: auto;
 }
-
 .btn-branchen:hover {
     transform: scale(1.03);
     box-shadow: var(--shadow-md);
     color: white;
 }
-
 .branchen-bottom {
     text-align: center;
 }
-
 .branchen-bottom p {
     font-size: 1.1rem;
     color: var(--gray);
     margin-bottom: 16px;
     font-weight: 500;
 }
-/* ============================================
-   ÜBER UNS — TEAM
-   ============================================ */
-
 .ueber-uns-section {
     background: white;
     padding: 80px 0;
 }
-
 .ueber-team-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -2232,28 +1986,23 @@ a:focus, button:focus {
     max-width: 1000px;
     margin: 0 auto 50px;
 }
-
 @media (min-width: 768px) {
     .ueber-team-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 60px;
     }
 }
-
 .ueber-team-card {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
-
-/* ---- FOTO ---- */
 .ueber-foto-wrapper {
     position: relative;
     max-width: 340px;
     margin: 0 auto;
     width: 100%;
 }
-
 .ueber-foto-card {
     position: relative;
     border-radius: var(--radius-lg);
@@ -2261,7 +2010,6 @@ a:focus, button:focus {
     z-index: 2;
     box-shadow: var(--shadow-lg);
 }
-
 .ueber-foto {
     width: 100%;
     height: 380px;
@@ -2269,11 +2017,9 @@ a:focus, button:focus {
     object-position: center top;
     display: block;
 }
-
 @media (max-width: 600px) {
     .ueber-foto { height: 280px; }
 }
-
 .ueber-foto-badge {
     position: absolute;
     bottom: 16px;
@@ -2292,12 +2038,9 @@ a:focus, button:focus {
     gap: 8px;
     white-space: nowrap;
 }
-
 .ueber-foto-badge i {
     color: #F5C518;
 }
-
-/* Dekorativni okvir */
 .ueber-foto-deco {
     position: absolute;
     top: 16px;
@@ -2308,19 +2051,15 @@ a:focus, button:focus {
     border-radius: var(--radius-lg);
     z-index: 1;
 }
-
 .ueber-foto-deco-right {
     left: -16px;
     right: 16px;
 }
-
-/* ---- INFO ---- */
 .ueber-team-info {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-
 .ueber-badge {
     display: inline-flex;
     align-items: center;
@@ -2333,20 +2072,17 @@ a:focus, button:focus {
     font-weight: 700;
     width: fit-content;
 }
-
 .ueber-team-info h3 {
     font-size: 1.6rem;
     color: var(--dark-blue);
     margin: 0;
 }
-
 .ueber-team-info p {
     color: var(--gray);
     font-size: 0.95rem;
     line-height: 1.8;
     margin: 0;
 }
-
 .btn-ueber-wa {
     display: inline-flex;
     align-items: center;
@@ -2362,14 +2098,11 @@ a:focus, button:focus {
     width: fit-content;
     min-height: 48px;
 }
-
 .btn-ueber-wa:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(37,211,102,0.35);
     color: white;
 }
-
-/* ---- BOTTOM CTA ---- */
 .ueber-bottom {
     text-align: center;
     padding-top: 20px;
@@ -2377,21 +2110,16 @@ a:focus, button:focus {
     max-width: 600px;
     margin: 0 auto;
 }
-
 .ueber-bottom p {
     font-size: 1rem;
     color: var(--gray);
     margin-bottom: 20px;
     line-height: 1.6;
 }
-
 .ueber-bottom p i {
     color: var(--light-blue);
     margin-right: 4px;
 }
-/* ===================================
-   VIDEO LIGHTBOX — sa CTA kolonama
-=================================== */
 .video-lightbox {
     display: none;
     position: fixed;
@@ -2406,8 +2134,6 @@ a:focus, button:focus {
     padding: 50px 16px 16px;
 }
 .video-lightbox.active { display: flex; }
-
-/* X — crna boja */
 .video-lightbox .lightbox-close {
     position: absolute;
     top: 20px; right: 25px;
@@ -2420,8 +2146,6 @@ a:focus, button:focus {
     touch-action: manipulation;
 }
 .video-lightbox .lightbox-close:hover { opacity: 0.6; }
-
-/* ── LAYOUT: 3 kolone ── */
 .vlb-layout {
     display: flex;
     flex-direction: row;
@@ -2431,8 +2155,6 @@ a:focus, button:focus {
     width: 100%;
     max-width: 1200px;
 }
-
-/* ── CENTAR ── */
 .vlb-center {
     flex: 1;
     min-width: 0;
@@ -2453,16 +2175,12 @@ a:focus, button:focus {
     font-size: 0.85rem;
     text-align: center;
 }
-
-/* ── BOČNE KOLONE — apsolutne pozicije za savršeno poravnanje ── */
 .vlb-side {
     width: 170px;
     flex-shrink: 0;
     position: relative;
     align-self: stretch;
 }
-
-/* Zurück / Weiter — uvijek na 25% visine kolone */
 .vlb-nav-group {
     position: absolute;
     top: 25%;
@@ -2479,8 +2197,6 @@ a:focus, button:focus {
     transform: translateY(0);
     pointer-events: auto;
 }
-
-/* Meinen Bereich / Was kostet — uvijek na 58% visine kolone */
 .vlb-conv-group {
     position: absolute;
     top: 58%;
@@ -2497,15 +2213,8 @@ a:focus, button:focus {
     transform: translateY(0);
     pointer-events: auto;
 }
-
-/* Desna strana — blagi delay za ljepši efekt */
 .vlb-side-right .vlb-nav-group  { transition-delay: 0.12s; }
 .vlb-side-right .vlb-conv-group { transition-delay: 0.12s; }
-
-/* ── GUMBI ──
-   Nav (Zurück/Weiter): bijela pozadina, plavi border, plavi tekst
-   Conv (Meinen Bereich/Was kostet): gradient, bijeli tekst
-── */
 .vlb-btn {
     display: flex;
     flex-direction: column;
@@ -2527,8 +2236,6 @@ a:focus, button:focus {
 }
 .vlb-btn i    { font-size: 1.2rem; }
 .vlb-btn span { display: block; }
-
-/* Nav gumbi — diskretni */
 .vlb-nav-group .vlb-btn {
     background: #ffffff;
     color: var(--dark-blue);
@@ -2542,8 +2249,6 @@ a:focus, button:focus {
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
-
-/* Conv gumbi — bijela pozadina, plava slova */
 .vlb-conv-group .vlb-btn {
     background: #ffffff;
     color: var(--dark-blue);
@@ -2557,28 +2262,14 @@ a:focus, button:focus {
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
-
-/* Mobilni redovi — skriveni na desktopu */
 .vlb-mobile-nav-row,
 .vlb-mobile-conv-row { display: none; }
-
-/* ===================================================
-   MOBILNI VIDEO LIGHTBOX
-   Gore:   [← Zurück]  [Weiter →]   — pojavi se na 70%
-   Centar: VIDEO — maksimalna veličina
-   Dolje:  [Meinen]  [Was kostet?]  — pojavi se na 80%
-   Desktop se NE mijenja.
-=================================================== */
 @media (max-width: 768px) {
-
-    /* Lightbox — bez paddinga, stretch */
     .video-lightbox {
         padding: 44px 0 0 0;
         align-items: stretch;
         overflow: hidden;
     }
-
-    /* Layout — vertikalni stupac, puna visina */
     .vlb-layout {
         flex-direction: column;
         align-items: stretch;
@@ -2587,14 +2278,10 @@ a:focus, button:focus {
         max-width: 100%;
         height: 100%;
     }
-
-    /* Sakrij desktop bočne kolone */
     .vlb-side-left,
     .vlb-side-right {
         display: none !important;
     }
-
-    /* NAV RED — iznad videa, order 1 */
     .vlb-mobile-nav-row {
         order: 1;
         display: flex !important;
@@ -2611,8 +2298,6 @@ a:focus, button:focus {
         opacity: 1;
         pointer-events: auto;
     }
-
-    /* VIDEO — centar, sav slobodni prostor, order 2 */
     .vlb-center {
         order: 2;
         flex: 1;
@@ -2637,8 +2322,6 @@ a:focus, button:focus {
         font-size: 0.72rem;
         padding: 2px 8px;
     }
-
-    /* CONV RED — ispod videa, order 3 */
     .vlb-mobile-conv-row {
         order: 3;
         display: flex !important;
@@ -2655,8 +2338,6 @@ a:focus, button:focus {
         opacity: 1;
         pointer-events: auto;
     }
-
-    /* Gumbi — kompaktni, ne preširoki */
     .vlb-layout .vlb-mobile-nav-row .vlb-btn,
     .vlb-layout .vlb-mobile-conv-row .vlb-btn {
         flex: 0 0 auto;
@@ -2671,10 +2352,6 @@ a:focus, button:focus {
         font-size: 1rem;
     }
 }
-
-/* ===================================
-   MAGIC STARS
-=================================== */
 .magic-star {
     position: absolute;
     pointer-events: none;
@@ -2685,25 +2362,19 @@ a:focus, button:focus {
     animation: star-appear 0.4s ease forwards;
     text-shadow: 0 0 6px #FFD700, 0 0 12px #FFD700;
 }
-
 @keyframes star-appear {
     0%   { transform: translate(-50%, -50%) scale(0) rotate(0deg);   opacity: 0; }
     60%  { transform: translate(-50%, -50%) scale(1.3) rotate(20deg); opacity: 1; }
     100% { transform: translate(-50%, -50%) scale(1) rotate(10deg);   opacity: 1; }
 }
-
 @keyframes star-fadeout {
     0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
 }
-
 @keyframes star-blink {
     0%, 100% { text-shadow: 0 0 6px #FFD700, 0 0 12px #FFD700; opacity: 1; }
     50%       { text-shadow: 0 0 15px #FFD700, 0 0 30px #FFD700; opacity: 0.7; }
 }
-/* ===================================
-   SECTION BRIDGE / CTA PRIJELAZI
-=================================== */
 .section-bridge {
     background: var(--white);
     padding: 30px 20px;
@@ -2711,26 +2382,22 @@ a:focus, button:focus {
     justify-content: center;
     border-top: 1px solid var(--gray-light);
 }
-
 .bridge-inner {
     text-align: center;
     max-width: 600px;
 }
-
 .bridge-hint {
     font-size: 1rem;
     color: var(--gray);
     margin-bottom: 16px;
     font-weight: 500;
 }
-
 .bridge-buttons {
     display: flex;
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
 }
-
 .bridge-btn {
     display: inline-flex;
     align-items: center;
@@ -2744,7 +2411,6 @@ a:focus, button:focus {
     min-height: 44px;
     touch-action: manipulation;
 }
-
 .bridge-btn-primary {
     background: var(--gradient-primary);
     color: white;
@@ -2753,7 +2419,6 @@ a:focus, button:focus {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
-
 .bridge-btn-secondary {
     background: transparent;
     color: var(--dark-blue);
@@ -2763,7 +2428,6 @@ a:focus, button:focus {
     background: var(--pale-blue);
     transform: translateY(-2px);
 }
-
 .result-cta-bridge {
     text-align: center;
     padding: 20px;
@@ -2783,7 +2447,6 @@ a:focus, button:focus {
         line-height: 1.2;
     }
 }
-/* HAMBURGER ANIMACIJA */
 .mobile-menu-toggle span {
     display: block;
     width: 24px;
@@ -2829,9 +2492,6 @@ a:focus, button:focus {
         min-height: 42px;
     }
 }
-/* ===================================
-   VIDEO HERO BLUE — moved from inline <style>
-=================================== */
 .video-hero-blue {
     background: linear-gradient(135deg, var(--dark-blue) 0%, #1e40af 40%, #1d4ed8 100%) !important;
 }
@@ -2860,10 +2520,6 @@ a:focus, button:focus {
     box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     transform: translateY(-4px);
 }
-
-/* ===================================
-   HERO WHITE BG — moved from inline <style>
-=================================== */
 .hero-white-bg {
     background: #f8fafc !important;
     min-height: auto !important;
@@ -2964,11 +2620,6 @@ a:focus, button:focus {
 .hero-white-bg .hero-surface-badge i {
     color: var(--dark-blue) !important;
 }
-
-/* ===================================
-   BTN-UEBER-WA — Kristina call button fix (#10)
-   Override default green with brand gradient
-=================================== */
 .btn-ueber-wa.btn-ueber-call {
     background: var(--gradient-primary);
     color: #ffffff;
@@ -2977,12 +2628,6 @@ a:focus, button:focus {
     box-shadow: 0 8px 20px rgba(30,58,138,0.35);
     color: #ffffff;
 }
-
-/* ===================================
-   ROOM CONFIG PROMPT
-   Pojavljuje se ispod slike nakon
-   transformacije
-=================================== */
 .room-config-prompt {
     background: white;
     border-top: 3px solid var(--light-blue);
@@ -2992,16 +2637,11 @@ a:focus, button:focus {
     overflow: hidden;
     transition: opacity 0.4s ease, max-height 0.45s ease, padding 0.4s ease;
 }
-
 .room-config-prompt.visible {
     opacity: 1;
-    /* Bez fiksne max-height — auto ne radi s transition,
-       koristimo dovoljno veliku vrijednost da pokrije
-       i mobile (dva reda gumba) i desktop (jedan red) */
     max-height: 300px;
     padding: 12px 14px;
 }
-
 .room-config-prompt p {
     font-size: 0.83rem;
     font-weight: 600;
@@ -3012,22 +2652,18 @@ a:focus, button:focus {
     gap: 6px;
     line-height: 1.4;
 }
-
 .room-config-prompt p i {
     color: var(--light-blue);
     font-size: 0.85rem;
     margin-top: 2px;
     flex-shrink: 0;
 }
-
 .room-prompt-buttons {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
     align-items: center;
 }
-
-/* Na mobilnom gumbi zauzimaju punu širinu */
 @media (max-width: 480px) {
     .room-prompt-buttons {
         flex-direction: column;
@@ -3039,7 +2675,6 @@ a:focus, button:focus {
         justify-content: center;
     }
 }
-
 .btn-prompt-yes {
     background: var(--gradient-primary);
     color: white;
@@ -3059,7 +2694,6 @@ a:focus, button:focus {
     white-space: nowrap;
 }
 .btn-prompt-yes:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
 .btn-prompt-no {
     background: var(--gradient-primary);
     color: white;
@@ -3076,17 +2710,11 @@ a:focus, button:focus {
     white-space: nowrap;
 }
 .btn-prompt-no:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-/* Na hero-white-bg kartice imaju bijelu pozadinu */
 .hero-white-bg .room-card {
     background: white;
     border: 1px solid var(--gray-light);
     border-radius: var(--radius-md);
 }
-
-/* ===================================
-   BRANCHEN PREVIEW SECTION (homepage)
-=================================== */
 .branchen-preview-section {
     padding: 70px 0;
     background: var(--gradient-hero);
@@ -3147,8 +2775,6 @@ a:focus, button:focus {
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(0,0,0,0.18);
 }
-
-/* Icon grid */
 .branchen-preview-icons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -3187,7 +2813,6 @@ a:focus, button:focus {
 .bp-icon-4 { background: linear-gradient(135deg, #059669, #34D399); }
 .bp-icon-5 { background: linear-gradient(135deg, #D97706, #FCD34D); }
 .bp-icon-6 { background: linear-gradient(135deg, #0F766E, #2DD4BF); }
-
 @media (max-width: 900px) {
     .branchen-preview-inner {
         grid-template-columns: 1fr;
@@ -3202,61 +2827,34 @@ a:focus, button:focus {
     .bp-icon { width: 52px; height: 52px; font-size: 1.2rem; }
     .bp-icon-card span { font-size: 0.72rem; }
 }
-
-/* ================================================================
-   PREMIUM DESIGN UPGRADE — WandVision K&K
-   Magistar dizajna — sve prioritetne izmjene na jednom mjestu
-   Ovo se dodaje NA KRAJ style.css i override-a sve prethodne stilove
-   ================================================================ */
-
-/* ================================================================
-   1. CSS VARIJABLE — premium proširenje
-   ================================================================ */
 :root {
-    /* Zlatni akcent — sistemski */
     --gold: #D4AF37;
     --gold-light: #F5E27A;
     --gold-dark: #92700A;
     --gold-glow: rgba(212,175,55,0.25);
-
-    /* Poboljšane sjene */
     --shadow-premium: 0 20px 60px rgba(30,58,138,0.18), 0 4px 16px rgba(30,58,138,0.08);
     --shadow-card: 0 2px 12px rgba(15,23,42,0.06), 0 0 0 1px rgba(30,58,138,0.05);
     --shadow-card-hover: 0 12px 40px rgba(30,58,138,0.14), 0 2px 8px rgba(30,58,138,0.06);
-
-    /* Typography tuning */
     --tracking-tight: -0.03em;
     --tracking-wide: 0.08em;
     --leading-tight: 1.15;
     --leading-body: 1.75;
 }
-
-/* ================================================================
-   2. TIPOGRAFIJA — poboljšana hijerarhija
-   ================================================================ */
-
-/* H2 naslovi sekcija — veći, bolji spacing */
 .section-title {
     font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
     letter-spacing: var(--tracking-tight) !important;
     line-height: var(--leading-tight) !important;
     font-weight: 800 !important;
 }
-
-/* Podnaslov sekcija — više zraka */
 .section-subtitle {
     font-size: clamp(1rem, 2vw, 1.15rem) !important;
     line-height: var(--leading-body) !important;
     opacity: 0.85;
     margin-top: 8px;
 }
-
-/* Section header — više bijelog prostora */
 .section-header {
     margin-bottom: 64px !important;
 }
-
-/* Kicker tag iznad H2 naslova — nov sistemski element */
 .section-kicker {
     display: inline-flex;
     align-items: center;
@@ -3276,28 +2874,27 @@ a:focus, button:focus {
     color: var(--gold-dark);
     border: 1px solid rgba(212,175,55,0.3);
 }
-
-/* ================================================================
-   3. SEKCIJE — više bijelog prostora, ritam
-   ================================================================ */
-section { padding: 96px 0 !important; }
-@media (max-width: 768px) { section { padding: 64px 0 !important; } }
-
-/* Video sekcija — ostaje s top paddingom zbog navbara */
+section { padding: 60px 0 !important; }
+@media (max-width: 768px) { section { padding: 44px 0 !important; } }
 .video-gallery-section { padding-top: 110px !important; }
-
-/* Leistungen sekcija */
-.leistungen-section { padding: 96px 0 !important; }
-
-/* ================================================================
-   4. NAVBAR — finiji, delikatniji
-   ================================================================ */
+.leistungen-section { padding: 60px 0 !important; }
 .navbar {
     background: rgba(255,255,255,0.97) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
     box-shadow: 0 1px 0 rgba(30,58,138,0.08), 0 4px 20px rgba(30,58,138,0.04) !important;
     border-bottom: 1px solid rgba(30,58,138,0.06);
+}
+.navbar::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: white;
+    pointer-events: none;
+    z-index: 999;
 }
 .navbar.scrolled {
     box-shadow: 0 1px 0 rgba(30,58,138,0.12), 0 8px 32px rgba(30,58,138,0.08) !important;
@@ -3315,18 +2912,12 @@ section { padding: 96px 0 !important; }
     color: var(--mid-blue) !important;
     background: var(--pale-blue) !important;
 }
-
-/* ================================================================
-   5. LEISTUNGEN KARTICE — premium redizajn
-   ================================================================ */
 .leistungen-section {
     background: #F8FAFF !important;
 }
-
 .leistungen-grid {
     gap: 28px !important;
 }
-
 .leistung-card {
     background: #ffffff !important;
     border-radius: 20px !important;
@@ -3352,8 +2943,6 @@ section { padding: 96px 0 !important; }
     border-color: rgba(37,99,235,0.12) !important;
 }
 .leistung-card:hover::before { opacity: 1; }
-
-/* Featured (Bodendruck) — premium dominacija */
 .leistung-card.featured {
     background: linear-gradient(145deg, #1a3580 0%, #1E3A8A 40%, #1d4ed8 100%) !important;
     border: none !important;
@@ -3365,8 +2954,6 @@ section { padding: 96px 0 !important; }
     transform: scale(1.03) translateY(-8px) !important;
     box-shadow: 0 32px 80px rgba(30,58,138,0.42), 0 8px 24px rgba(30,58,138,0.25) !important;
 }
-
-/* Badge na featured kartici */
 .leistung-badge {
     background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark)) !important;
     background-size: 200% auto !important;
@@ -3377,8 +2964,6 @@ section { padding: 96px 0 !important; }
     top: -11px !important;
     right: 24px !important;
 }
-
-/* Icon box */
 .leistung-icon {
     width: 60px !important;
     height: 60px !important;
@@ -3392,8 +2977,6 @@ section { padding: 96px 0 !important; }
     background: rgba(255,255,255,0.15) !important;
     color: #fff !important;
 }
-
-/* Naslovi i tekst */
 .leistung-card h3 {
     font-size: 1.35rem !important;
     letter-spacing: var(--tracking-tight) !important;
@@ -3416,8 +2999,6 @@ section { padding: 96px 0 !important; }
     color: var(--dark) !important;
 }
 .leistung-card.featured .leistung-list li { color: rgba(255,255,255,0.92) !important; }
-
-/* CTA dugme na kartici */
 .btn-leistung {
     padding: 14px 22px !important;
     font-size: 0.9rem !important;
@@ -3442,15 +3023,10 @@ section { padding: 96px 0 !important; }
     background: rgba(255,255,255,0.88) !important;
     color: var(--dark-blue) !important;
 }
-
-/* ================================================================
-   6. TESTIMONIALS — od generičnih do premium
-   ================================================================ */
 .testimonials-section {
     background: #F0F5FF !important;
-    padding: 96px 0 !important;
+    padding: 60px 0 !important;
 }
-
 .testimonial-card {
     background: #ffffff !important;
     border-radius: 18px !important;
@@ -3486,9 +3062,7 @@ section { padding: 96px 0 !important; }
     transform: translateY(-6px) !important;
     box-shadow: var(--shadow-card-hover) !important;
 }
-
 .testimonial-stars { font-size: 0.9rem !important; margin-bottom: 14px !important; position: relative; z-index: 1; }
-
 .testimonial-text {
     font-size: 0.93rem !important;
     line-height: 1.75 !important;
@@ -3498,7 +3072,6 @@ section { padding: 96px 0 !important; }
     position: relative;
     z-index: 1;
 }
-
 .testimonial-author { position: relative; z-index: 1; }
 .author-info strong {
     font-size: 0.9rem !important;
@@ -3509,8 +3082,6 @@ section { padding: 96px 0 !important; }
     font-size: 0.8rem !important;
     color: var(--gray) !important;
 }
-
-/* Google rating */
 .google-rating { margin-top: 48px !important; }
 .rating-content {
     background: #fff !important;
@@ -3519,17 +3090,11 @@ section { padding: 96px 0 !important; }
     box-shadow: var(--shadow-card) !important;
     border: 1px solid rgba(30,58,138,0.06) !important;
 }
-
-/* ================================================================
-   7. FAQ — više prostora, čišći ritam
-   ================================================================ */
 .faq-section {
     background: #F8FAFF !important;
-    padding: 96px 0 !important;
+    padding: 60px 0 !important;
 }
-
 .faq-container { max-width: 760px !important; }
-
 .faq-item {
     border: 1px solid rgba(30,58,138,0.08) !important;
     border-radius: 14px !important;
@@ -3547,7 +3112,6 @@ section { padding: 96px 0 !important; }
     border-color: var(--mid-blue) !important;
     box-shadow: 0 0 0 3px rgba(37,99,235,0.08), var(--shadow-card-hover) !important;
 }
-
 .faq-question {
     padding: 22px 26px !important;
 }
@@ -3559,7 +3123,6 @@ section { padding: 96px 0 !important; }
     letter-spacing: -0.01em;
 }
 .faq-question i { color: var(--mid-blue) !important; }
-
 .faq-answer {
     padding: 0 26px !important;
 }
@@ -3571,15 +3134,16 @@ section { padding: 96px 0 !important; }
     line-height: 1.78 !important;
     color: var(--gray) !important;
 }
-
-/* ================================================================
-   8. PRICING / KONFIGURATOR — premium forma
-   ================================================================ */
 .pricing-section {
     background: #fff !important;
-    padding: 96px 0 !important;
+    padding: 60px 0 !important;
 }
-
+.pricing-section .section-title {
+    color: var(--dark-blue) !important;
+}
+.pricing-section .section-subtitle {
+    color: var(--gray) !important;
+}
 .calculator-form {
     border-radius: 20px !important;
     padding: 44px 40px !important;
@@ -3587,13 +3151,12 @@ section { padding: 96px 0 !important; }
     border: 1px solid rgba(30,58,138,0.06) !important;
 }
 @media (max-width: 600px) { .calculator-form { padding: 28px 20px !important; } }
-
 .form-group label {
     font-size: 0.82rem !important;
     font-weight: 700 !important;
     letter-spacing: 0.03em !important;
     text-transform: uppercase !important;
-    color: var(--gray) !important;
+    color: var(--dark-blue) !important;
     margin-bottom: 10px !important;
 }
 .form-group input,
@@ -3611,7 +3174,6 @@ section { padding: 96px 0 !important; }
     background: #fff !important;
     box-shadow: 0 0 0 3px rgba(37,99,235,0.08) !important;
 }
-
 .btn-calculate {
     border-radius: 12px !important;
     font-size: 0.95rem !important;
@@ -3625,15 +3187,10 @@ section { padding: 96px 0 !important; }
     transform: translateY(-2px) !important;
     box-shadow: 0 8px 28px rgba(30,58,138,0.35) !important;
 }
-
 .result-card {
     border-radius: 16px !important;
     border: 1px solid rgba(30,58,138,0.08) !important;
 }
-
-/* ================================================================
-   9. FLOATING BUTTONS — diskretnije, manje agresivno
-   ================================================================ */
 .floating-help {
     width: 52px !important;
     height: 52px !important;
@@ -3651,7 +3208,6 @@ section { padding: 96px 0 !important; }
         font-size: 1.3rem !important;
     }
 }
-
 .floating-whatsapp {
     width: 48px !important;
     height: 48px !important;
@@ -3668,11 +3224,7 @@ section { padding: 96px 0 !important; }
         right: 28px !important;
     }
 }
-
-/* Pulse animacija — diskretnija */
 .help-pulse, .whatsapp-pulse { opacity: 0.3 !important; }
-
-/* Scroll to top — usklađen dizajn */
 .scroll-to-top {
     width: 40px !important;
     height: 40px !important;
@@ -3690,10 +3242,6 @@ section { padding: 96px 0 !important; }
     transform: translateY(-3px) !important;
     box-shadow: 0 6px 20px rgba(30,58,138,0.3) !important;
 }
-
-/* ================================================================
-   10. FOOTER — tamniji, premium kontrast
-   ================================================================ */
 .footer {
     background: #0a1628 !important;
     padding: 72px 0 36px !important;
@@ -3739,17 +3287,9 @@ section { padding: 96px 0 !important; }
     color: rgba(255,255,255,0.35) !important;
     font-size: 0.8rem !important;
 }
-
-/* ================================================================
-   11. BRANCHEN PREVIEW (homepage) — čišći, elegantniji
-   ================================================================ */
 .branchen-preview-section {
-    padding: 80px 0 !important;
+    padding: 60px 0 !important;
 }
-
-/* ================================================================
-   12. VIDEO KARTICE — malo finiji
-   ================================================================ */
 .video-card {
     border-radius: 16px !important;
     box-shadow: var(--shadow-card) !important;
@@ -3757,7 +3297,20 @@ section { padding: 96px 0 !important; }
 .video-info {
     padding: 14px 16px !important;
     height: auto !important;
-    min-height: 90px !important;
+    min-height: 110px !important;
+}
+.video-carousel-track {
+    align-items: stretch !important;
+}
+.video-carousel-track .video-card {
+    display: flex !important;
+    flex-direction: column !important;
+}
+.video-carousel-track .video-card .video-wrapper {
+    flex-shrink: 0 !important;
+}
+.video-carousel-track .video-card .video-info {
+    flex-grow: 1 !important;
 }
 .video-info h3 {
     font-size: 0.88rem !important;
@@ -3765,17 +3318,9 @@ section { padding: 96px 0 !important; }
     line-height: 1.4 !important;
     color: var(--dark-blue) !important;
 }
-
-/* ================================================================
-   13. GALLERY — finije kartice
-   ================================================================ */
 .gallery-item {
     border-radius: 14px !important;
 }
-
-/* ================================================================
-   14. BODENDRUCK 3D SEKCIJA — zlatni kicker
-   ================================================================ */
 .boden3d-section .section-header::before {
     content: 'EINZIGARTIGER USP';
     display: block;
@@ -3786,28 +3331,16 @@ section { padding: 96px 0 !important; }
     color: var(--gold);
     margin-bottom: 10px;
 }
-
-/* ================================================================
-   15. SECTION DIVIDERS — suptilni ritam između sekcija
-   ================================================================ */
 .leistungen-section,
 .testimonials-section,
 .faq-section,
 .pricing-section {
     position: relative;
 }
-
-/* ================================================================
-   16. HERO WHITE BG SECTION — više prostora
-   ================================================================ */
 .hero-interactive.hero-white-bg {
     padding-top: 40px !important;
     padding-bottom: 48px !important;
 }
-
-/* ================================================================
-   17. REVEAL — poboljšana animacija s translateY
-   ================================================================ */
 .reveal {
     opacity: 0 !important;
     transform: translateY(24px) !important;
@@ -3818,20 +3351,18 @@ section { padding: 96px 0 !important; }
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
-
-/* ================================================================
-   18. ÜBER UNS — finiji kontrast
-   ================================================================ */
+.video-carousel-track .video-card.reveal {
+    transform: none !important;
+}
+.video-carousel-track .video-card.reveal.visible {
+    transform: none !important;
+}
 .ueber-uns-section {
     background: #F8FAFF !important;
 }
 .ueber-foto-deco {
     border-color: rgba(37,99,235,0.1) !important;
 }
-
-/* ================================================================
-   19. CTA BRIDGE (result sekcija) — finiji
-   ================================================================ */
 .result-cta-bridge {
     background: var(--pale-blue) !important;
     border-radius: 14px !important;
@@ -3863,10 +3394,6 @@ section { padding: 96px 0 !important; }
     transform: translateY(-2px) !important;
     box-shadow: 0 8px 24px rgba(30,58,138,0.3) !important;
 }
-
-/* ================================================================
-   20. MOBILE TUNING
-   ================================================================ */
 @media (max-width: 768px) {
     .section-header { margin-bottom: 44px !important; }
     .leistung-card { padding: 30px 22px !important; }
@@ -3876,57 +3403,31 @@ section { padding: 96px 0 !important; }
     .faq-question { padding: 18px 20px !important; }
     .faq-item.active .faq-answer { padding: 2px 20px 20px !important; }
 }
-
-
-/* ================================================================
-   FIX — Leistung featured kartica: tekst vidljivost
-   Srednja (Bodendruck) kartica — bijeli tekst, naslov vidljiv
-   ================================================================ */
-
-/* Naslov na featured kartici — mora biti bijel */
 .leistung-card.featured h3 {
     color: #ffffff !important;
     font-size: 1.45rem !important;
 }
-
-/* Opis tekst na featured kartici — bijel */
 .leistung-card.featured p {
     color: rgba(255,255,255,0.88) !important;
 }
-
-/* Lista na featured kartici — bijela */
 .leistung-card.featured .leistung-list li {
     color: rgba(255,255,255,0.92) !important;
 }
 .leistung-card.featured .leistung-list li i {
     color: rgba(255,255,255,0.7) !important;
 }
-
-/* Featured kartica ne smije naslijediti border na hover */
 .leistung-card.featured:hover {
     border: none !important;
 }
-
-/* Bijele i ostale kartice — hover border ne smije biti previše jak */
 .leistung-card:not(.featured):hover {
     border-color: rgba(37,99,235,0.15) !important;
 }
-
-/* Overflow na kartici ne smije odrezati PREMIUM badge */
 .leistung-card {
     overflow: visible !important;
 }
-
-
-/* ================================================================
-   FIX 2 — Ukloniti plavu hover liniju na kartici (::before)
-   ================================================================ */
-
 .leistung-card::before {
     display: none !important;
 }
-
 .leistung-card:hover::before {
     display: none !important;
 }
-

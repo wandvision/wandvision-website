@@ -89,6 +89,13 @@ const WandVision = (function() {
                 });
             });
         });
+
+        var preFilter = sessionStorage.getItem('galleryFilter');
+        if (preFilter) {
+            sessionStorage.removeItem('galleryFilter');
+            var targetBtn = document.querySelector('.filter-btn[data-filter="' + preFilter + '"]');
+            if (targetBtn) targetBtn.click();
+        }
     }
 
     /* ===================================
@@ -1333,10 +1340,6 @@ overlay.addEventListener('touchend', function(e) {
             const card = preview.closest('.room-card');
             if (card) createParticles(e, card);
         });
-        preview.addEventListener('touchstart', function(e) {
-            const card = preview.closest('.room-card');
-            if (card) createParticles(e, card);
-        }, { passive: true });
     });
 
         setInterval(createSparkle, 800);
