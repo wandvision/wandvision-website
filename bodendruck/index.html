@@ -119,7 +119,7 @@
             <h1 class="lp-hero-title">3D Bodendruck. <span class="gradient-text">Sehen. Staunen. Bleiben.</span></h1>
             <p class="lp-hero-subtitle">Direktdruck auf den Boden mit dreidimensionaler Tiefenwirkung — ein visueller Effekt, der Räume in Erlebnisse verwandelt. Für alle, die mehr wollen als das Gewöhnliche.</p>
             <div class="lp-hero-btns">
-                <button onclick="document.getElementById('premiumModal').classList.add('active')" class="btn-primary-large lp-btn-premium"><i class="fas fa-star"></i> Premium-Anfrage stellen</button>
+                <button onclick="KonfiguratorModal.open()" class="btn-primary-large lp-btn-premium"><i class="fas fa-star"></i> Premium-Anfrage stellen</button>
                 <a href="../index.html#gallery" class="lp-btn-secondary" onclick="sessionStorage.setItem('galleryFilter','boden')"><i class="fas fa-images"></i> Beispiele ansehen</a>
             </div>
         </div>
@@ -213,7 +213,7 @@
             <h2>Manche Wirkung sieht man. Diese spürt man.</h2>
             <p>Fordern Sie jetzt Ihr unverbindliches Angebot an — wir zeigen Ihnen, was auf Ihrem Boden möglich ist.</p>
             <div class="lp-cta-btns">
-                <button onclick="document.getElementById('premiumModal').classList.add('active')" class="btn-primary-large lp-cta-white" style="border:none;cursor:pointer;"><i class="fas fa-star"></i> Premium-Anfrage stellen</button>
+                <button onclick="KonfiguratorModal.open()" class="btn-primary-large lp-cta-white" style="border:none;cursor:pointer;"><i class="fas fa-star"></i> Premium-Anfrage stellen</button>
                 <a href="tel:+4917641608973" class="lp-btn-outline"><i class="fas fa-phone-alt"></i> Beratungsgespräch vereinbaren</a>
             </div>
             <p class="lp-cta-note"><i class="fas fa-shield-alt"></i> Kostenlos &amp; unverbindlich · 10 Jahre Garantie (Innen) · 5 Jahre (Außen)</p>
@@ -269,121 +269,9 @@
 <button id="scroll-to-top" class="scroll-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Nach oben"><i class="fas fa-chevron-up"></i></button>
 
 <!-- PREMIUM ANFRAGE MODAL -->
-<div id="premiumModal" class="pm-overlay" onclick="if(event.target===this)this.classList.remove('active')">
-    <div class="pm-card">
-        <button class="pm-close" onclick="document.getElementById('premiumModal').classList.remove('active')" aria-label="Schließen">&times;</button>
-        <div id="pmForm">
-            <div class="pm-header">
-                <div class="pm-icon"><i class="fas fa-star"></i></div>
-                <h2>Premium Bodendruck-Anfrage</h2>
-                <p>Beschreiben Sie Ihr Projekt — wir erstellen Ihnen ein individuelles Angebot.</p>
-            </div>
-            <div class="pm-fields">
-                <div class="pm-field">
-                    <label for="pmName">Ihr Name *</label>
-                    <input type="text" id="pmName" placeholder="Max Mustermann" required>
-                </div>
-                <div class="pm-field">
-                    <label for="pmEmail">E-Mail-Adresse *</label>
-                    <input type="email" id="pmEmail" placeholder="ihre@email.de" required>
-                </div>
-                <div class="pm-row">
-                    <div class="pm-field">
-                        <label for="pmFlaeche">Fläche in m²</label>
-                        <input type="number" id="pmFlaeche" placeholder="z.B. 25" min="1">
-                    </div>
-                    <div class="pm-field">
-                        <label for="pmTelefon">Telefon</label>
-                        <input type="tel" id="pmTelefon" placeholder="+49 ...">
-                    </div>
-                </div>
-                <div class="pm-field">
-                    <label for="pmNachricht">Ihre Nachricht</label>
-                    <textarea id="pmNachricht" rows="3" placeholder="Beschreiben Sie kurz Ihr Projekt, den Raum oder Ihre Wünsche..."></textarea>
-                </div>
-                <button class="pm-submit" id="pmSubmitBtn" onclick="submitPremiumForm()">
-                    <i class="fas fa-star"></i> Anfrage absenden
-                </button>
-                <p class="pm-note"><i class="fas fa-shield-alt"></i> Kostenlos & unverbindlich · Antwort innerhalb 24h</p>
-            </div>
-        </div>
-        <div id="pmSuccess" class="pm-success" style="display:none">
-            <div class="pm-success-icon"><i class="fas fa-check-circle"></i></div>
-            <h2>Vielen Dank!</h2>
-            <p>Ihre Premium-Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden mit einem individuellen Angebot.</p>
-            <button class="pm-submit" onclick="document.getElementById('premiumModal').classList.remove('active');setTimeout(resetPremiumForm,400)" style="background:var(--gradient-primary);">
-                <i class="fas fa-check"></i> Verstanden
-            </button>
-        </div>
-    </div>
-</div>
 
-<script>
-function submitPremiumForm() {
-    var name = document.getElementById('pmName').value.trim();
-    var email = document.getElementById('pmEmail').value.trim();
-    var flaeche = document.getElementById('pmFlaeche').value;
-    var telefon = document.getElementById('pmTelefon').value.trim();
-    var nachricht = document.getElementById('pmNachricht').value.trim();
-
-    if (!name || !email) {
-        alert('Bitte füllen Sie Name und E-Mail aus.');
-        return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-        return;
-    }
-
-    var btn = document.getElementById('pmSubmitBtn');
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet...';
-
-    var payload = {
-        name: name,
-        email: email,
-        telefon: telefon || '—',
-        design: 'Premium Bodendruck-Anfrage' + (flaeche ? ' (' + flaeche + ' m²)' : ''),
-        raum: nachricht || '—'
-    };
-
-    fetch('/.netlify/functions/send-konfigurator', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    })
-    .then(function(r) { return r.json(); })
-    .then(function() {
-        document.getElementById('pmForm').style.display = 'none';
-        document.getElementById('pmSuccess').style.display = 'block';
-    })
-    .catch(function() {
-        document.getElementById('pmForm').style.display = 'none';
-        document.getElementById('pmSuccess').style.display = 'block';
-    });
-}
-
-function resetPremiumForm() {
-    document.getElementById('pmName').value = '';
-    document.getElementById('pmEmail').value = '';
-    document.getElementById('pmFlaeche').value = '';
-    document.getElementById('pmTelefon').value = '';
-    document.getElementById('pmNachricht').value = '';
-    var btn = document.getElementById('pmSubmitBtn');
-    btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-star"></i> Anfrage absenden';
-    document.getElementById('pmForm').style.display = 'block';
-    document.getElementById('pmSuccess').style.display = 'none';
-}
-
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        var modal = document.getElementById('premiumModal');
-        if (modal) modal.classList.remove('active');
-    }
-});
-</script>
 
 <script src="../js/main.js" defer></script>
+<script src="../js/konfigurator-modal.js" defer></script>
 </body>
 </html>
