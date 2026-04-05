@@ -2,3 +2,74 @@
 .leistungen-section,.boden3d-section,.testimonials-section,.branchen-preview-section,.gallery-section,.faq-section,.pricing-section,.cta-section,.footer{content-visibility:auto;contain-intrinsic-size:auto 600px}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* ===================================
+   MOBILNA VERZIJA - KOMPLETNI FIX
+=================================== */
+
+/* 1. OVERLAY iza hamburger menija */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+.nav-overlay.active { display: block; }
+
+/* 2. Strelice karusela - veći touch area */
+@media (max-width: 899px) {
+    .carousel-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* 3. Sobe - 1 kolona na mobilnom */
+    .room-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* 4. Popup konfigurator kompaktniji */
+    .popup-step {
+        padding: 24px 18px !important;
+        max-height: 85vh !important;
+    }
+    .popup-step h3 { font-size: 1.1rem !important; }
+    .popup-step p { font-size: 0.85rem !important; margin-bottom: 16px !important; }
+
+    /* 5. FAQ tekst veći */
+    .faq-question h3 { font-size: 0.95rem !important; }
+
+    /* 6. Sve tipke min 48px */
+    button, .btn-primary-nav, .btn-leistung, .btn-calculate,
+    .btn-cta-primary, .btn-cta-secondary, .filter-btn {
+        min-height: 48px !important;
+    }
+
+    /* 7. Floating tipke manje */
+    .floating-help {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 1.1rem !important;
+        bottom: 16px !important;
+        right: 16px !important;
+    }
+    .floating-whatsapp {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1.2rem !important;
+        bottom: 76px !important;
+        right: 18px !important;
+    }
+}
+
+/* 8. Animacije isključene na mobilnom za bolji scroll */
+@media (max-width: 899px) {
+    .sparkle { display: none !important; }
+    @keyframes goldShimmer { 0%, 100% { background-position: 0% center; } }
+    .boden3d-inner {
+        transform: none !important;
+        transition: none !important;
+    }
+}
