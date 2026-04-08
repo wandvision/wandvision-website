@@ -1050,6 +1050,16 @@ overlay.addEventListener('touchend', function(e) {
  });
   setInterval(createSparkle, 800);
  }
+ function handleHashOnLoad() {
+  var hash = window.location.hash;
+  if (!hash) return;
+  var target = document.querySelector(hash);
+  if (!target) return;
+  setTimeout(function() {
+   target.scrollIntoView({ behavior: 'smooth' });
+  }, 200);
+ }
+ window.addEventListener('load', handleHashOnLoad);
  document.addEventListener('DOMContentLoaded', init);
  return {
   carouselNext:            carouselNext,
