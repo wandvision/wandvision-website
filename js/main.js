@@ -13,17 +13,17 @@ const WandVision = (function() {
  let cameraStream = null;
  const PRICING = {
   standard: {
-   putz: 150,
-   beton: 165,
-   holz: 170,
-   glas: 180,
-   boden: 200
+   putz: 170,
+   beton: 170,
+   holz: 180,
+   glas: 190,
+   boden: 210
   },
   premium: {
    putz: 200,
-   beton: 220,
-   holz: 230,
-   glas: 250,
+   beton: 200,
+   holz: 210,
+   glas: 230,
    boden: 250
   }
  };

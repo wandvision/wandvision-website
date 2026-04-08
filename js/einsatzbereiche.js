@@ -79,17 +79,17 @@ const EinsatzPage = (() => {
  function initCookies() {
   const banner = document.getElementById('cookie-banner');
   if (!banner) return;
-  if (!localStorage.getItem('cookieConsent')) {
+  if (!localStorage.getItem('cookiesAccepted')) {
    setTimeout(() => banner.classList.add('visible'), 1500);
   }
  }
  function acceptCookies() {
-  localStorage.setItem('cookieConsent', 'accepted');
+  localStorage.setItem('cookiesAccepted', 'accepted');
   const b = document.getElementById('cookie-banner');
   if (b) b.classList.remove('visible');
  }
  function declineCookies() {
-  localStorage.setItem('cookieConsent', 'declined');
+  localStorage.setItem('cookiesAccepted', 'declined');
   const b = document.getElementById('cookie-banner');
   if (b) b.classList.remove('visible');
  }
