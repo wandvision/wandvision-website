@@ -1040,7 +1040,7 @@
                     </div>
                     <div class="result-footer">
                         <p><i class="fas fa-info-circle"></i> Dies ist ein unverbindlicher Richtwert. Für ein genaues Angebot kontaktieren Sie uns bitte.</p>
-                        <button class="btn-primary-large" onclick="WandVision.showConfigurator()">
+                        <button class="btn-primary-large" onclick="KonfiguratorModal.open()">
                             <i class="fas fa-paper-plane"></i> Anfrage senden
                         </button>
                     </div>
@@ -1048,7 +1048,7 @@
 				<!-- Auto CTA nakon kalkulacije -->
 <div class="result-cta-bridge">
     <p>Ihr Budget passt? Dann starten wir!</p>
-    <button onclick="WandVision.showConfigurator()" class="bridge-btn bridge-btn-primary" style="border:none; cursor:pointer;">
+    <button onclick="KonfiguratorModal.open()" class="bridge-btn bridge-btn-primary" style="border:none; cursor:pointer;">
         <i class="fas fa-rocket"></i> Jetzt Projekt konfigurieren
     </button>
 </div>
@@ -1251,153 +1251,7 @@
     <i class="fas fa-arrow-up"></i>
 </button>
 
-<!-- CONFIGURATOR POPUP -->
-<div id="configurator-popup" class="configurator-popup">
-
-    <!-- Step 1 -->
-    <div id="step-1" class="popup-step">
-        <button class="popup-close" onclick="WandVision.closeConfigurator()" aria-label="Schließen">&times;</button>
-        <div class="popup-icon">
-            <img src="images/zid-icon.png" alt="Wand Icon" class="popup-icon-img">
-        </div>
-        <h3>Willkommen beim Wandkonfigurator!</h3>
-        <p>Lassen Sie uns gemeinsam Ihre perfekte Wandgestaltung planen. In wenigen Schritten erhalten Sie Ihr persönliches Angebot.</p>
-        <div class="popup-buttons">
-            <button class="btn-popup-primary" onclick="WandVision.startConfigurator()">
-                <i class="fas fa-arrow-right"></i> Los geht's
-            </button>
-        </div>
-    </div>
-
-    <!-- Step 2 -->
-    <div id="step-2" class="popup-step" style="display:none">
-        <button class="popup-close" onclick="WandVision.closeConfigurator()" aria-label="Schließen">&times;</button>
-        <div class="popup-icon"></div>
-        <h3>Foto Ihrer Wand</h3>
-        <p>Laden Sie ein Foto Ihrer Wand hoch oder nehmen Sie ein neues auf.</p>
-        <div class="camera-buttons">
-            <label for="camera-capture" class="btn-camera-take">
-    <i class="fas fa-camera"></i> Foto aufnehmen
-</label>
-<input type="file" id="camera-capture" accept="image/*" capture="environment" style="display:none" onchange="WandVision.handlePhotoSelect(event)">
-
-<label for="photo-upload" class="btn-camera-upload">
-    <i class="fas fa-upload"></i> Foto hochladen
-</label>
-<input type="file" id="photo-upload" accept="image/*" style="display:none" onchange="WandVision.handlePhotoSelect(event)">
-
-        </div>
-        <video id="camera-preview" style="display:none; width:100%; max-width:400px; border-radius:15px; margin:20px 0;"></video>
-        <canvas id="camera-canvas" style="display:none"></canvas>
-        <div id="photo-preview" class="photo-preview" style="display:none">
-            <img id="preview-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Vorschau" style="max-width:100%;border-radius:15px">
-            <button class="btn-retake" onclick="WandVision.retakePhoto()">
-                <i class="fas fa-redo"></i> Neues Foto
-            </button>
-        </div>
-        <button id="btn-next-design" class="btn-popup-primary" onclick="WandVision.nextStep3()" style="display:none;margin-top:20px">
-            <i class="fas fa-arrow-right"></i> Weiter zum Design
-        </button>
-    </div>
-
-    <!-- Step 3 -->
-    <div id="step-3" class="popup-step" style="display:none">
-        <button class="popup-close" onclick="WandVision.closeConfigurator()" aria-label="Schließen">&times;</button>
-        <div class="popup-icon">
-            <img src="images/zid-icon.png" alt="Wand Icon" class="popup-icon-img">
-        </div>
-        <h3>Wählen Sie Ihr Design</h3>
-        <p>Welches Motiv gefällt Ihnen am besten?</p>
-        <div class="design-grid">
-            <div class="design-option" onclick="WandVision.selectDesign('Natur Landschaft', this)">
-                <img src="images/design-1.jpg" alt="Wandgestaltung Natur Motiv — Individuelle Wandlösung" loading="lazy">
-                <span>Natur</span>
-            </div>
-            <div class="design-option" onclick="WandVision.selectDesign('Modern Abstrakt', this)">
-                <img src="images/design-2.jpg" alt="Wanddesign Modern — Exklusive Wanddekoration" loading="lazy">
-                <span>Modern</span>
-            </div>
-            <div class="design-option" onclick="WandVision.selectDesign('Klassisch Elegant', this)">
-                <img src="images/design-3.jpg" alt="Wandgestaltung Klassisch — Herrenhaus Wanddekoration" loading="lazy">
-                <span>Klassisch</span>
-            </div>
-            <div class="design-option" onclick="WandVision.selectDesign('Urban Street Art', this)">
-                <img src="images/design-4.jpg" alt="Wanddesign Urban — Materialeffekt auf Wand" loading="lazy">
-                <span>Urban</span>
-            </div>
-            <div class="design-option" onclick="WandVision.selectDesign('Minimalistisch', this)">
-                <img src="images/design-5.jpg" alt="Wandgestaltung Minimalistisch — Fugenlose Wandverkleidung" loading="lazy">
-                <span>Minimal</span>
-            </div>
-            <div class="design-option" onclick="WandVision.selectDesign('Eigenes Motiv', this)">
-                <img src="images/design-custom.jpg" alt="CAD Wanddesign — Individuelles Wandmotiv Ostalb" loading="lazy">
-                <span>Eigenes</span>
-            </div>
-        </div>
-        <button id="btn-next-contact" class="btn-popup-primary" onclick="WandVision.nextStep4()" style="display:none;margin-top:25px">
-            <i class="fas fa-arrow-right"></i> Weiter zu Kontaktdaten
-        </button>
-    </div>
-
-    <!-- Step 4 -->
-    <div id="step-4" class="popup-step" style="display:none">
-        <button class="popup-close" onclick="WandVision.closeConfigurator()" aria-label="Schließen">&times;</button>
-        <div class="popup-icon"></div>
-        <h3>Ihre Kontaktdaten</h3>
-        <p>Fast geschafft! Wie können wir Sie erreichen?</p>
-        <form class="popup-form" name="konfigurator" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="WandVision.submitRequest(event)">
-<input type="hidden" name="form-name" value="konfigurator">
-<input type="hidden" name="bot-field" style="display:none">
-<input type="hidden" name="ausgewaehltes-design" id="hidden-design" value="">
-<input type="hidden" name="ausgewaehlter-raum" id="hidden-raum" value="">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required placeholder="Ihr Name" autocomplete="name">
-            </div>
-            <div class="form-group">
-                <label for="telefon">Telefon</label>
-                <input type="tel" id="telefon" name="telefon" required placeholder="+49 151 234 567 89" inputmode="tel" autocomplete="tel">
-            </div>
-            <div class="form-group">
-                <label for="email">E-Mail (optional)</label>
-                <input type="email" id="email" name="email" placeholder="ihre@email.de" inputmode="email" autocomplete="email">
-            </div>
-            <button type="submit" class="btn-popup-primary">
-                <i class="fas fa-paper-plane"></i> Anfrage absenden
-            </button>
-        </form>
-    </div>
-
-    <!-- Step 5 -->
-    <div id="step-5" class="popup-step" style="display:none">
-        <button class="popup-close" onclick="WandVision.closeConfigurator()" aria-label="Schließen">&times;</button>
-        <div class="popup-icon success"></div>
-        <h3>Vielen Dank!</h3>
-        <p>Ihre Anfrage wurde erfolgreich übermittelt.</p>
-        <div class="success-message">
-            <p><strong>Was passiert jetzt?</strong></p>
-            <p>✅ Wir melden uns innerhalb von 24 Stunden bei Ihnen</p>
-            <p>✅ Sie erhalten ein unverbindliches Angebot</p>
-            <p>✅ Gemeinsam planen wir Ihr Projekt</p>
-        </div>
-        <div class="quick-contact">
-            <p>Oder kontaktieren Sie uns direkt</p>
-            <div class="quick-buttons">
-                <a href="https://wa.me/+4917641608973" class="btn-whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                <a href="tel:+4917641608973" class="btn-call">
-                    <i class="fas fa-phone-alt"></i> Anrufen
-                </a>
-            </div>
-        </div>
-        <div class="testimonial">
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p>"Super schnelle Antwortzeit und sehr professionelle Beratung!"</p>
-            <span>- Maria S., Aalen</span>
-        </div>
-    </div>
-</div>
+<!-- KONFIGURATOR wird dynamisch von konfigurator-modal.js geladen -->
 
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" class="cookie-banner">

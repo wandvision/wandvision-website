@@ -8,9 +8,7 @@ const WandVision = (function() {
    timer = setTimeout(function() { fn.apply(null, args); }, delay);
   };
  }
- let selectedPhoto = null;
- let selectedDesign = null;
- let cameraStream = null;
+ // Configurator state now managed by KonfiguratorModal
  const PRICING = {
   standard: {
    putz: 170,
@@ -91,7 +89,10 @@ const WandVision = (function() {
  function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
    anchor.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    var href = this.getAttribute('href');
+    if (!href || href === '#') return;
+    var target;
+    try { target = document.querySelector(href); } catch(err) { return; }
     if (target) {
      e.preventDefault();
      const navHeight = document.querySelector('.navbar') ?
@@ -212,9 +213,7 @@ const WandVision = (function() {
   document.querySelectorAll('.room-config-prompt').forEach(function(el) {
    el.remove();
   });
-  resetConfigurator();
-  showConfigurator();
-  showStep(1);
+  KonfiguratorModal.open();
  }
    function createParticles(e, card) {
   const preview = card.querySelector('.room-preview');
@@ -405,9 +404,7 @@ const WandVision = (function() {
   closeVideoLightbox();
   closeLightbox();
   setTimeout(function() {
-   resetConfigurator();
-   showConfigurator();
-   showStep(1);
+   KonfiguratorModal.open();
   }, 300);
  }
  function lightboxGoPreise() {
@@ -468,247 +465,31 @@ const WandVision = (function() {
   resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
  }
  function showConfigurator() {
-  var popup = document.getElementById('configurator-popup');
-  if (popup) {
-   popup.classList.add('active');
-   document.body.style.overflow = 'hidden';
-  }
+  KonfiguratorModal.open();
  }
  function closeConfigurator() {
-  var popup = document.getElementById('configurator-popup');
-  if (popup) {
-   popup.classList.remove('active');
-   document.body.style.overflow = '';
-  }
-  stopCamera();
-  document.querySelectorAll('.room-config-prompt').forEach(function(el) {
-   el.remove();
-  });
-  if (activeRoomCard) {
-   activeRoomCard.classList.remove('transformed');
-   activeRoomCard = null;
-  }
+  KonfiguratorModal.close();
  }
  function resetConfigurator() {
-  selectedPhoto  = null;
-  selectedDesign = null;
-  stopCamera();
-  var previewDiv = document.getElementById('photo-preview');
-  var previewImg = document.getElementById('preview-img');
-  var nextBtn    = document.getElementById('btn-next-design');
-  var nextBtn2   = document.getElementById('btn-next-contact');
-  if (previewDiv) previewDiv.style.display = 'none';
-  if (previewImg) previewImg.src = '';
-  if (nextBtn)    nextBtn.style.display = 'none';
-  if (nextBtn2)   nextBtn2.style.display = 'none';
-  document.querySelectorAll('.design-option').forEach(function(d) {
-   d.classList.remove('selected');
-  });
-  var nameEl    = document.getElementById('name');
-  var telEl     = document.getElementById('telefon');
-  var emailEl   = document.getElementById('email');
-  var hidDes    = document.getElementById('hidden-design');
-  var hidRaum   = document.getElementById('hidden-raum');
-  if (nameEl)   nameEl.value  = '';
-  if (telEl)    telEl.value   = '';
-  if (emailEl)  emailEl.value = '';
-  if (hidDes)   hidDes.value  = '';
-  if (hidRaum)  hidRaum.value = '';
-  var submitBtn = document.querySelector('.popup-form button[type="submit"]');
-  if (submitBtn) {
-   submitBtn.disabled = false;
-   submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Anfrage absenden';
-  }
+  // Handled by KonfiguratorModal
  }
  function startConfigurator() {
-  showStep(2);
+  KonfiguratorModal.open();
  }
  function showStep(n) {
-  for (let i = 1; i <= 5; i++) {
-   const step = document.getElementById('step-' + i);
-   if (step) step.style.display = i === n ? 'block' : 'none';
-  }
+  // Handled by KonfiguratorModal
  }
- function nextStep3() {
-  if (!selectedPhoto) {
-   alert('Bitte laden Sie zuerst ein Foto hoch.');
-   return;
-  }
-  showStep(3);
- }
- function nextStep4() {
-  if (!selectedDesign) {
-   alert('Bitte wählen Sie ein Design aus.');
-   return;
-  }
-  showStep(4);
- }
- function openCamera() {
-  const preview = document.getElementById('camera-preview');
-  if (!preview) return;
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-   navigator.mediaDevices.getUserMedia({
-    video: {
-     facingMode: { ideal: 'environment' },
-     width: { ideal: 1280 },
-     height: { ideal: 720 }
-    }
-   })
-   .then(function(stream) {
-    cameraStream = stream;
-    preview.srcObject = stream;
-    preview.style.display = 'block';
-    preview.play();
-    const oldBtn = document.getElementById('btn-capture-dynamic');
-    if (oldBtn) oldBtn.remove();
-    const captureBtn = document.createElement('button');
-    captureBtn.id = 'btn-capture-dynamic';
-    captureBtn.className = 'btn-camera-take';
-    captureBtn.innerHTML = '<i class="fas fa-camera"></i> Aufnehmen';
-    captureBtn.style.marginTop = '10px';
-    captureBtn.onclick = capturePhoto;
-    preview.parentNode.insertBefore(captureBtn, preview.nextSibling);
-   })
-   .catch(function(e) {
-    navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function(stream) {
-     cameraStream = stream;
-     preview.srcObject = stream;
-     preview.style.display = 'block';
-     preview.play();
-     const oldBtn = document.getElementById('btn-capture-dynamic');
-     if (oldBtn) oldBtn.remove();
-     const captureBtn = document.createElement('button');
-     captureBtn.id = 'btn-capture-dynamic';
-     captureBtn.className = 'btn-camera-take';
-     captureBtn.innerHTML = '<i class="fas fa-camera"></i> Aufnehmen';
-     captureBtn.style.marginTop = '10px';
-     captureBtn.onclick = capturePhoto;
-     preview.parentNode.insertBefore(captureBtn, preview.nextSibling);
-    })
-    .catch(function(e2) {
-     alert('Kamera nicht verfügbar. Bitte laden Sie ein Foto hoch.');
-    });
-   });
-  } else {
-   alert('Ihr Browser unterstützt keine Kamera. Bitte laden Sie ein Foto hoch.');
-  }
- }
- function capturePhoto() {
-  const video = document.getElementById('camera-preview');
-  const canvas = document.getElementById('camera-canvas');
-  if (!video || !canvas) return;
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
-  canvas.getContext('2d').drawImage(video, 0, 0);
-  const dataUrl = canvas.toDataURL('image/jpeg');
-  showPhotoPreview(dataUrl);
-  stopCamera();
- }
- function stopCamera() {
-  if (cameraStream) {
-   cameraStream.getTracks().forEach(function(t) { t.stop(); });
-   cameraStream = null;
-  }
-  const preview = document.getElementById('camera-preview');
-  if (preview) preview.style.display = 'none';
- }
- function handlePhotoSelect(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) { showPhotoPreview(e.target.result); };
-  reader.readAsDataURL(file);
- }
- function showPhotoPreview(src) {
-  selectedPhoto = src;
-  const previewDiv = document.getElementById('photo-preview');
-  const previewImg = document.getElementById('preview-img');
-  const nextBtn = document.getElementById('btn-next-design');
-  if (previewDiv) previewDiv.style.display = 'block';
-  if (previewImg) previewImg.src = src;
-  if (nextBtn) nextBtn.style.display = 'flex';
- }
- function retakePhoto() {
-  selectedPhoto = null;
-  const previewDiv = document.getElementById('photo-preview');
-  const nextBtn = document.getElementById('btn-next-design');
-  if (previewDiv) previewDiv.style.display = 'none';
-  if (nextBtn) nextBtn.style.display = 'none';
- }
- function selectDesign(name, el) {
-  selectedDesign = name;
-  document.querySelectorAll('.design-option').forEach(function(d) {
-   d.classList.remove('selected');
-  });
-  el.classList.add('selected');
-  const nextBtn = document.getElementById('btn-next-contact');
-  if (nextBtn) nextBtn.style.display = 'flex';
- }
- function submitRequest(event) {
-  event.preventDefault();
-  const name    = document.getElementById('name').value.trim();
-  const telefon = document.getElementById('telefon').value.trim();
-  const emailEl = document.getElementById('email');
-  const email   = emailEl ? emailEl.value.trim() : '';
-  if (!name || !telefon) {
-   alert('Bitte füllen Sie alle Pflichtfelder aus.');
-   return;
-  }
-  const submitBtn = event.target.querySelector('button[type="submit"]');
-  if (submitBtn) {
-   submitBtn.disabled = true;
-   submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet...';
-  }
-  function getOptimizedPhoto(callback) {
-   if (!selectedPhoto) { callback(null); return; }
-   if (selectedPhoto.length < 2000000) { callback(selectedPhoto); return; }
-   var img = new Image();
-   img.onload = function() {
-    var canvas = document.createElement('canvas');
-    var MAX = 1200;
-    var w = img.width, h = img.height;
-    if (w > MAX) { h = Math.round(h * MAX / w); w = MAX; }
-    if (h > MAX) { w = Math.round(w * MAX / h); h = MAX; }
-    canvas.width = w;
-    canvas.height = h;
-    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-    callback(canvas.toDataURL('image/jpeg', 0.75));
-   };
-   img.onerror = function() { callback(selectedPhoto); };
-   img.src = selectedPhoto;
-  }
-  getOptimizedPhoto(function(photoData) {
-   var payload = {
-    name:        name,
-    telefon:     telefon,
-    email:       email || '—',
-    design:      selectedDesign || 'nicht gewählt',
-    raum:        photoData ? 'Foto hochgeladen' : 'kein Foto',
-    photoBase64: photoData || null,
-    photoMime:   'image/jpeg'
-   };
-   fetch('/.netlify/functions/send-konfigurator', {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify(payload)
-   })
-   .then(function(response) {
-    if (!response.ok) {
-    }
-    showStep(5);
-   })
-   .catch(function(error) {
-    showStep(5);
-   })
-   .finally(function() {
-    if (submitBtn) {
-     submitBtn.disabled = false;
-     submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Anfrage absenden';
-    }
-   });
-  });
- }
+ function nextStep3() { KonfiguratorModal.goStep(3); }
+ function nextStep4() { KonfiguratorModal.goStep(4); }
+ // Legacy stubs — all configurator logic now in konfigurator-modal.js
+ function openCamera() {}
+ function capturePhoto() {}
+ function stopCamera() {}
+ function handlePhotoSelect() {}
+ function showPhotoPreview() {}
+ function retakePhoto() {}
+ function selectDesign() {}
+ function submitRequest(event) { if (event) event.preventDefault(); }
  function initCookieBanner() {
   if (localStorage.getItem('cookiesAccepted')) return;
   const banner = document.getElementById('cookie-banner');
@@ -747,12 +528,6 @@ const WandVision = (function() {
   if (lightbox) {
    lightbox.addEventListener('click', function(e) {
     if (e.target === lightbox) closeLightbox();
-   });
-  }
-  const popup = document.getElementById('configurator-popup');
-  if (popup) {
-   popup.addEventListener('click', function(e) {
-    if (e.target === popup) closeConfigurator();
    });
   }
   const videoLbClose = document.querySelector('#video-lightbox .lightbox-close');

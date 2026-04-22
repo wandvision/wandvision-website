@@ -48,11 +48,16 @@ exports.handler = async function(event) {
     }
 
     const {
-        name       = '—',
-        telefon    = '—',
-        email      = '—',
-        design     = '—',
-        raum       = '—',
+        name        = '—',
+        telefon     = '—',
+        email       = '—',
+        design      = '—',
+        druckart    = '—',
+        flaeche     = '—',
+        oberflaeche = '—',
+        raumtyp     = '—',
+        zeitrahmen  = '—',
+        raum        = '—',
         photoBase64 = null,
         photoMime   = 'image/jpeg'
     } = data;
@@ -100,14 +105,43 @@ exports.handler = async function(event) {
             <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; font-size: 13px;">✉️ E-Mail</td>
             <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-left: none; border-radius: 0 6px 6px 0; color: #0f172a; font-size: 14px;">${email !== '—' ? `<a href="mailto:${escapeHtml(email)}" style="color: #2563EB;">${escapeHtml(email)}</a>` : '—'}</td>
           </tr>
-          <tr><td colspan="2" style="height: 6px;"></td></tr>
+        </table>
+
+        <h2 style="color: #1E3A8A; font-size: 16px; margin: 28px 0 20px;">🎯 Projektdetails</h2>
+
+        <table style="width: 100%; border-collapse: collapse;">
           <tr>
-            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; font-size: 13px;">🎨 Design</td>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; width: 40%; font-size: 13px;">🎨 Design</td>
             <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-left: none; border-radius: 0 6px 6px 0; color: #0f172a; font-size: 14px;">${escapeHtml(design)}</td>
           </tr>
           <tr><td colspan="2" style="height: 6px;"></td></tr>
           <tr>
-            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; font-size: 13px;">🏠 Foto</td>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; font-size: 13px;">🖨 Druckart</td>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-left: none; border-radius: 0 6px 6px 0; color: #0f172a; font-size: 14px;">${escapeHtml(druckart)}</td>
+          </tr>
+          <tr><td colspan="2" style="height: 6px;"></td></tr>
+          <tr>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; font-size: 13px;">📐 Fläche</td>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-left: none; border-radius: 0 6px 6px 0; color: #0f172a; font-size: 14px; font-weight: bold;">${escapeHtml(flaeche)}</td>
+          </tr>
+          <tr><td colspan="2" style="height: 6px;"></td></tr>
+          <tr>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; font-size: 13px;">🧱 Oberfläche</td>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-left: none; border-radius: 0 6px 6px 0; color: #0f172a; font-size: 14px;">${escapeHtml(oberflaeche)}</td>
+          </tr>
+          <tr><td colspan="2" style="height: 6px;"></td></tr>
+          <tr>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; font-size: 13px;">🏠 Raumtyp</td>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-left: none; border-radius: 0 6px 6px 0; color: #0f172a; font-size: 14px;">${escapeHtml(raumtyp)}</td>
+          </tr>
+          <tr><td colspan="2" style="height: 6px;"></td></tr>
+          <tr>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; font-size: 13px;">📅 Zeitrahmen</td>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-left: none; border-radius: 0 6px 6px 0; color: #0f172a; font-size: 14px;">${escapeHtml(zeitrahmen)}</td>
+          </tr>
+          <tr><td colspan="2" style="height: 6px;"></td></tr>
+          <tr>
+            <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; font-weight: bold; color: #64748b; font-size: 13px;">📷 Foto</td>
             <td style="padding: 10px 14px; background: white; border: 1px solid #e2e8f0; border-left: none; border-radius: 0 6px 6px 0; color: #0f172a; font-size: 14px;">${photoBase64 ? '✅ Foto beigefügt (siehe Anhang)' : '❌ Kein Foto hochgeladen'}</td>
           </tr>
         </table>
@@ -155,7 +189,7 @@ exports.handler = async function(event) {
         from:        'WandVision K&K <noreply@wandvisionkk.de>',
         to:          [EMPFAENGER_EMAIL],
         reply_to:    email !== '—' ? email : undefined,
-        subject:     `🖨 Neue Konfigurator-Anfrage von ${name}`,
+        subject:     `🖨 Neue Konfigurator-Anfrage von ${name} — ${druckart}`,
         html:        htmlBody,
         attachments: attachments
     };

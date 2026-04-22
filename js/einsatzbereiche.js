@@ -21,7 +21,9 @@ const EinsatzPage = (() => {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    anchor.addEventListener('click', e => {
     const id = anchor.getAttribute('href');
-    const target = document.querySelector(id);
+    if (!id || id === '#') return;
+    let target;
+    try { target = document.querySelector(id); } catch(err) { return; }
     if (target) {
      e.preventDefault();
      const offset = 80;
