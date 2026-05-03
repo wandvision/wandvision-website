@@ -91,6 +91,24 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     X-XSS-Protection = "1; mode=block"
 
+    # Izolacija prozora od cross-origin stranica (COOP)
+    Cross-Origin-Opener-Policy = "same-origin"
+
+    # Content Security Policy — zaštita od XSS i injection napada
+    # VAŽNO: Prilagodi 'script-src' i 'style-src' ako koristiš externe skripte!
+    #
+    # Trenutno dozvoljeno:
+    #   - default-src 'self'          → svi resursi samo s vlastite domene
+    #   - script-src 'self'           → JS samo s vlastite domene
+    #     + fonts.googleapis.com      → Google Fonts CSS
+    #     + resend.com                → Resend API (za netlify funkciju)
+    #   - style-src 'self' 'unsafe-inline' → inline stilovi dozvoljeni (potrebno za HTML email template)
+    #   - img-src 'self' data: blob:  → slike + base64 (za konfigurator foto upload)
+    #   - connect-src 'self' https://api.resend.com → fetch pozivi prema Resend API-u
+    #   - font-src 'self' fonts.gstatic.com → Google Fonts fajlovi
+    #   - frame-ancestors 'none'      → pojačava X-Frame-Options DENY
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://api.resend.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+
 # CSS i JS - duzi cache, fingerprinting nije implementiran pa 1 dan
 [[headers]]
   for = "/css/*"
