@@ -138,8 +138,10 @@ const WandVision = (function() {
  const toggle = document.querySelector('.mobile-menu-toggle');
  const navbar = document.getElementById('navbar');
  if (!menu) return;
- menu.style.top = (navbar ? navbar.offsetHeight : 70) + 'px';
+ // Read offsetHeight BEFORE mutation to avoid forced reflow
+ const navH = navbar ? navbar.offsetHeight : 70;
  const isActive = menu.classList.toggle('active');
+ menu.style.top = navH + 'px';
  if (toggle) {
   toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
   toggle.classList.toggle('active', isActive);
@@ -692,19 +694,23 @@ overlay.addEventListener('touchend', function(e) {
   const gap = visible === 1 ? 0 : 24;
   const cards = track.querySelectorAll('.video-card');
   if (!cards.length) return;
+  // Read all layout values first (before any mutations)
   const trackW = track.offsetWidth;
   const cardW = (trackW - gap * (visible - 1)) / visible;
-  cards.forEach(function(card) {
-   card.style.flex = '0 0 ' + cardW + 'px';
-   card.style.width = cardW + 'px';
-   card.style.minWidth = '0';
-   card.style.maxWidth = cardW + 'px';
-  });
   const scrollPos = carouselIndex * (cardW + gap);
-  track.scrollTo({ left: scrollPos, behavior: 'smooth' });
-  const dots = document.querySelectorAll('.carousel-dot');
-  dots.forEach(function(dot, i) {
-   dot.classList.toggle('active', i === carouselIndex);
+  // Batch all DOM mutations in rAF to avoid forced reflow
+  requestAnimationFrame(function() {
+   cards.forEach(function(card) {
+    card.style.flex = '0 0 ' + cardW + 'px';
+    card.style.width = cardW + 'px';
+    card.style.minWidth = '0';
+    card.style.maxWidth = cardW + 'px';
+   });
+   track.scrollTo({ left: scrollPos, behavior: 'smooth' });
+   var dots = document.querySelectorAll('.carousel-dot');
+   dots.forEach(function(dot, i) {
+    dot.classList.toggle('active', i === carouselIndex);
+   });
   });
  }
  function initCarouselSwipe() {
@@ -749,9 +755,12 @@ overlay.addEventListener('touchend', function(e) {
   targets.forEach(function(target) {
    if (Math.random() > 0.5) return;
    const sparkle = document.createElement('span');
+   // Read layout BEFORE DOM mutation to avoid forced reflow
+   const targetW = target.offsetWidth;
+   const targetH = target.offsetHeight;
+   const x = Math.random() * targetW;
+   const y = Math.random() * targetH;
    sparkle.classList.add('sparkle');
-   const x = Math.random() * target.offsetWidth;
-   const y = Math.random() * target.offsetHeight;
    sparkle.style.left = x + 'px';
    sparkle.style.top  = y + 'px';
    const size = Math.random() * 10 + 6;
