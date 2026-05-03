@@ -28,63 +28,8 @@ const FAQPage = (() => {
    });
   });
  }
- function initReveal() {
-  const observer = new IntersectionObserver((entries) => {
-   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-     entry.target.classList.add('visible');
-     observer.unobserve(entry.target);
-    }
-   });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
- }
- function initNavbar() {
-  const navbar = document.getElementById('navbar');
-  if (!navbar) return;
-  window.addEventListener('scroll', () => {
-   navbar.classList.toggle('scrolled', window.scrollY > 50);
-  }, { passive: true });
- }
- function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-   anchor.addEventListener('click', e => {
-    const target = document.querySelector(anchor.getAttribute('href'));
-    if (target) {
-     e.preventDefault();
-     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-   });
-  });
- }
  function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
- }
- function initScrollToTop() {
-  const btn = document.getElementById('scroll-to-top');
-  if (!btn) return;
-  window.addEventListener('scroll', () => {
-   btn.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
- }
- function initCookies() {
-  const banner = document.getElementById('cookie-banner');
-  if (!banner) return;
-  if (!localStorage.getItem('cookiesAccepted')) {
-   setTimeout(() => banner.classList.add('visible'), 1500);
-  }
- }
- function acceptCookies() {
-  localStorage.setItem('cookiesAccepted', 'accepted');
-  hideCookieBanner();
- }
- function declineCookies() {
-  localStorage.setItem('cookiesAccepted', 'declined');
-  hideCookieBanner();
- }
- function hideCookieBanner() {
-  const banner = document.getElementById('cookie-banner');
-  if (banner) banner.classList.remove('visible');
  }
  function toggleMobileMenu() {
   if (window.WandVision && WandVision.toggleMobileMenu) {
@@ -97,19 +42,12 @@ const FAQPage = (() => {
   }
  }
  function init() {
-  initReveal();
-  initNavbar();
-  initSmoothScroll();
-  initScrollToTop();
   initCategoryFilter();
-  initCookies();
  }
  document.addEventListener('DOMContentLoaded', init);
  return {
   toggleFAQ,
   scrollToTop,
-  acceptCookies,
-  declineCookies,
   toggleMobileMenu,
   closeMobileMenu,
  };

@@ -143,30 +143,5 @@
     <priority>0.65</priority>
   </url>
 
-  <!-- RECHTLICHES -->
-  <url>
-    <loc>https://wandvisionkk.de/impressum/</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://wandvisionkk.de/agb/</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://wandvisionkk.de/datenschutz/</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://wandvisionkk.de/widerrufsrecht/</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
 
 </urlset>

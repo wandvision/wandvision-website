@@ -1,7 +1,9 @@
 [build]
   publish = "."
 
-# Redirecti za sve stranice bez .html ekstenzije
+# ============================================================
+# REDIRECTI - trailing slash
+# ============================================================
 [[redirects]]
   from = "/wandgestaltung"
   to = "/wandgestaltung/"
@@ -37,7 +39,6 @@
   to = "/wandgestaltung-heidenheim/"
   status = 301
 
-# Postojeći redirecti
 [[redirects]]
   from = "/wanddruck"
   to = "/wanddruck/"
@@ -68,15 +69,56 @@
   to = "/blog/"
   status = 301
 
-# Headers
+# 404 fallback
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# ============================================================
+# HEADERS
+# ============================================================
+
+# HTML stranice - kratki cache jer se sadrzaj mijenja
 [[headers]]
   for = "/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Cache-Control = "public, max-age=3600, must-revalidate"
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-XSS-Protection = "1; mode=block"
 
+# CSS i JS - duzi cache, fingerprinting nije implementiran pa 1 dan
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    X-Content-Type-Options = "nosniff"
+
+# Slike - dugi cache
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Sitemap
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
     Content-Type = "application/xml"
+    Cache-Control = "public, max-age=86400"
+
+# Robots.txt
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

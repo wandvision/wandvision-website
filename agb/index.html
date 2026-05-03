@@ -7,9 +7,11 @@
     <meta name="description" content="Allgemeine Geschäftsbedingungen der WandVision K&K GbR für Wanddruck-, Bodendruck- und Raumgestaltungsdienstleistungen.">
     <title>AGB – Allgemeine Geschäftsbedingungen | WandVision K&K</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+<link rel="icon" href="../images/zid-icon.png" type="image/png">
     <link rel="stylesheet" href="../css/style.css">
     <style>
         .legal-hero {
@@ -112,14 +114,19 @@
             <span></span><span></span><span></span>
         </button>
         <div class="nav-menu" id="nav-menu">
-            <a href="../index.html" class="nav-item">Home</a>
-            <a href="../index.html#leistungen" class="nav-item">Leistungen <span class="nav-badge">NEU</span></a>
-            <a href="../index.html#gallery" class="nav-item">Galerie</a>
-            <a href="../index.html#preise" class="nav-item">Preise</a>
-            <a href="../einsatzbereiche/index.html" class="nav-item">Branchen</a>
-            <a href="../blog/index.html" class="nav-item">Blog</a>
+            <a href="../index.html" class="nav-item" onclick="WandVision.closeMobileMenu()">Home</a>
+            <a href="../index.html#leistungen" class="nav-item nav-item-new" onclick="WandVision.closeMobileMenu()">
+                Leistungen <span class="nav-badge">EINZIGARTIG</span>
+            </a>
+            <a href="../index.html#videos" class="nav-item" onclick="WandVision.closeMobileMenu()">Video Galerie</a>
+            <a href="../index.html#gallery" class="nav-item" onclick="WandVision.closeMobileMenu()">Foto Galerie</a>
+            <a href="../index.html#preise" class="nav-item" onclick="WandVision.closeMobileMenu()">Preise</a>
+            <a href="../einsatzbereiche/index.html" class="nav-item" onclick="WandVision.closeMobileMenu()">Branchen</a>
+            <a href="../faq/index.html" class="nav-item" onclick="WandVision.closeMobileMenu()">FAQ</a>
+            <a href="../blog/index.html" class="nav-item" onclick="WandVision.closeMobileMenu()">Blog</a>
             <a href="tel:+4917641608973" class="btn-primary-nav">
-                <i class="fas fa-phone-alt"></i> Anrufen
+                <i class="fas fa-phone-alt"></i>
+                <span class="btn-text">Anrufen</span>
             </a>
         </div>
     </div>
@@ -135,7 +142,7 @@
 </div>
 
 <!-- CONTENT -->
-<div class="legal-content">
+<div class="legal-content" id="main-content">
     <div class="legal-last-update">
         <i class="fas fa-clock"></i> Stand: Februar 2026
     </div>

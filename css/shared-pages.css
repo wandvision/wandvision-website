@@ -1,0 +1,40 @@
+/* =============================================
+   SHARED PAGE STYLES
+   Common styles for sub-pages (Einsatzbereiche, FAQ, Leistungen, etc.)
+   Extracted to reduce duplication and file sizes.
+============================================= */
+
+/* Page Hero */
+.page-hero{padding:130px 0 60px;background:var(--gradient-hero);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.page-hero-content{text-align:center;position:relative;z-index:1}
+
+/* Breadcrumb */
+.page-breadcrumb{display:inline-flex;align-items:center;gap:8px;font-size:0.85rem;color:rgba(255,255,255,0.7);margin-bottom:20px}
+.page-breadcrumb a{color:rgba(255,255,255,0.8);transition:var(--transition)}
+.page-breadcrumb a:hover{color:#fff}
+.page-breadcrumb i.fa-chevron-right{font-size:0.7rem;opacity:0.6}
+
+/* Hero Title & Subtitle */
+.page-hero-title{font-size:clamp(2rem,5vw,3.5rem);color:#fff;margin-bottom:16px;line-height:1.15}
+.page-hero-title .gradient-text{background:linear-gradient(135deg,#93C5FD,#60A5FA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-hero-subtitle{font-size:clamp(1rem,2vw,1.15rem);color:rgba(255,255,255,0.85);max-width:620px;margin:0 auto 36px;line-height:1.7}
+
+/* Reveal Animations */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.15s}
+.reveal-delay-2{transition-delay:0.25s}
+.reveal-delay-3{transition-delay:0.35s}
+
+/* Outline Button (Large) */
+.btn-outline-large{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.15);color:#fff;padding:14px 28px;border-radius:50px;font-weight:600;font-size:0.95rem;border:2px solid rgba(255,255,255,0.4);transition:var(--transition);min-height:52px}
+.btn-outline-large:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.7);transform:translateY(-2px)}
+
+/* Active nav highlight */
+.nav-item-active{color:var(--mid-blue) !important;font-weight:600}
+
+/* Responsive Hero */
+@media (max-width:600px){
+  .page-hero{padding:110px 0 48px}
+}
