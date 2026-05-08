@@ -437,12 +437,18 @@ const WandVision = (function() {
   resetLightboxCta();
  }
  function toggleFAQ(questionEl) {
-  const item = questionEl.parentElement;
+  const item = questionEl.closest('.faq-item');
+  if (!item) return;
   const allItems = document.querySelectorAll('.faq-item');
   allItems.forEach(function(i) {
-   if (i !== item) i.classList.remove('active');
+   if (i !== item) {
+    i.classList.remove('active');
+    var btn = i.querySelector('.faq-question');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+   }
   });
-  item.classList.toggle('active');
+  const isActive = item.classList.toggle('active');
+  questionEl.setAttribute('aria-expanded', isActive ? 'true' : 'false');
  }
  function calculatePrice() {
   const breite = parseFloat(document.getElementById('breite').value);
@@ -830,6 +836,27 @@ overlay.addEventListener('touchend', function(e) {
   preview.addEventListener('click', function(e) {
    const card = preview.closest('.room-card');
    if (card) createParticles(e, card);
+  });
+  preview.addEventListener('keydown', function(e) {
+   if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    const card = preview.closest('.room-card');
+    if (card) createParticles(e, card);
+   }
+  });
+ });
+ // FAQ buttons — delegate click to toggleFAQ
+ document.querySelectorAll('.faq-question').forEach(function(btn) {
+  btn.addEventListener('click', function() { toggleFAQ(btn); });
+ });
+ // Gallery items — click and keyboard
+ document.querySelectorAll('.gallery-item').forEach(function(item) {
+  item.addEventListener('click', function() { openLightbox(item); });
+  item.addEventListener('keydown', function(e) {
+   if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    openLightbox(item);
+   }
   });
  });
   setInterval(createSparkle, 800);

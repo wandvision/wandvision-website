@@ -163,7 +163,7 @@
                     <div class="video-wrapper">
                         <video fetchpriority="high" class="local-video" poster="images/poster-3d-wanddruck.webp" preload="metadata" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426879/3d-wanddruck_hzsdtb.mp4" type="video/mp4">
-                            <track kind="captions" src="data:text/vtt," srclang="de" label="Deutsch" default>
+                            <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
                         </video>
                         <div class="video-play-overlay"><i class="fas fa-play-circle"></i></div>
@@ -180,7 +180,7 @@
                     <div class="video-wrapper">
                         <video class="local-video" poster="images/poster-buero.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426884/buero-transformation_ny943q.mp4" type="video/mp4">
-                            <track kind="captions" src="data:text/vtt," srclang="de" label="Deutsch" default>
+                            <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
                         </video>
                         <div class="video-play-overlay"><i class="fas fa-play-circle"></i></div>
@@ -197,7 +197,7 @@
                     <div class="video-wrapper">
                         <video class="local-video" poster="images/poster-wohnzimmer.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426898/wohnzimmer-transformation_ylbdi5.mp4" type="video/mp4">
-                            <track kind="captions" src="data:text/vtt," srclang="de" label="Deutsch" default>
+                            <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
                         </video>
                         <div class="video-play-overlay"><i class="fas fa-play-circle"></i></div>
@@ -214,7 +214,7 @@
                     <div class="video-wrapper">
                         <video class="local-video" poster="images/poster-bodendruck.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773427083/bodendruck-3d_vhtzel.mp4" type="video/mp4">
-                            <track kind="captions" src="data:text/vtt," srclang="de" label="Deutsch" default>
+                            <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
                         </video>
                         <div class="video-play-overlay"><i class="fas fa-play-circle"></i></div>
@@ -231,7 +231,7 @@
                     <div class="video-wrapper">
                         <video class="local-video" poster="images/poster-restaurant.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426875/restaurant-transformation_f05egk.mp4" type="video/mp4">
-                            <track kind="captions" src="data:text/vtt," srclang="de" label="Deutsch" default>
+                            <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
                         </video>
                         <div class="video-play-overlay"><i class="fas fa-play-circle"></i></div>
@@ -308,7 +308,7 @@
         <div class="room-grid">
 
             <div class="room-card" id="room-1" data-room="1">
-                <div class="room-preview" onclick="WandVision.transformRoom(1)">
+                <div class="room-preview" role="button" tabindex="0" aria-label="Transformation anzeigen">
 				<div class="room-before-after-badge">
         <span>VORHER</span>
         <i class="fas fa-arrow-right"></i>
@@ -328,7 +328,7 @@
             </div>
 
             <div class="room-card" id="room-2" data-room="2">
-                <div class="room-preview" onclick="WandVision.transformRoom(2)">
+                <div class="room-preview" role="button" tabindex="0" aria-label="Transformation anzeigen">
 				<div class="room-before-after-badge">
         <span>VORHER</span>
         <i class="fas fa-arrow-right"></i>
@@ -348,7 +348,7 @@
             </div>
 
             <div class="room-card" id="room-3" data-room="3">
-                <div class="room-preview" onclick="WandVision.transformRoom(3)">
+                <div class="room-preview" role="button" tabindex="0" aria-label="Transformation anzeigen">
 				<div class="room-before-after-badge">
         <span>VORHER</span>
         <i class="fas fa-arrow-right"></i>
@@ -596,7 +596,7 @@
                 </div>
                 <div class="stars-large">⭐⭐⭐⭐⭐</div>
                 <p><strong>Unsere Kunden empfehlen uns</strong></p>
-                <p style="font-size:0.85rem;color:#64748b;margin-top:5px">Jetzt bei Google bewerten!</p>
+                <p style="font-size:0.875rem;color:#475569;margin-top:5px">Jetzt bei Google bewerten!</p>
             </div>
         </div>
     </div>
@@ -680,73 +680,73 @@
         </div>
 
         <div class="gallery-grid">
-            <div class="gallery-item" data-category="wohnzimmer" onclick="WandVision.openLightbox(this)">
+            <div class="gallery-item" data-category="wohnzimmer" role="button" tabindex="0">
                 <img src="images/gallery-1.webp" alt="Luxus Wandgestaltung Aalen — Wohnzimmer nachher" loading="lazy" width="600" height="420">
                 <div class="gallery-overlay">
-                    <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Modernes Wohnzimmer</h3>
+                    <h3 class="overlay-title">Modernes Wohnzimmer</h3>
                     <p>Aalen, Baden-Württemberg</p>
                     <button class="btn-gallery"><i class="fas fa-search-plus"></i> Vergrößern</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="buero" onclick="WandVision.openLightbox(this)">
+            <div class="gallery-item" data-category="buero" role="button" tabindex="0">
                 <img src="images/gallery-2.webp" alt="Premium Wanddruck Heidenheim — Büro nachher" loading="lazy" width="650" height="463">
                 <div class="gallery-overlay">
-                    <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Business Lounge</h3>
+                    <h3 class="overlay-title">Business Lounge</h3>
                     <p>Stuttgart, Baden-Württemberg</p>
                     <button class="btn-gallery"><i class="fas fa-search-plus"></i> Vergrößern</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="restaurant" onclick="WandVision.openLightbox(this)">
+            <div class="gallery-item" data-category="restaurant" role="button" tabindex="0">
                 <img src="images/gallery-3.webp" alt="3D Villa Wandverkleidung Ulm — Restaurant nachher" loading="lazy" width="600" height="449">
                 <div class="gallery-overlay">
-                    <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Elegantes Restaurant</h3>
+                    <h3 class="overlay-title">Elegantes Restaurant</h3>
                     <p>Ulm, Baden-Württemberg</p>
                     <button class="btn-gallery"><i class="fas fa-search-plus"></i> Vergrößern</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="wohnzimmer" onclick="WandVision.openLightbox(this)">
+            <div class="gallery-item" data-category="wohnzimmer" role="button" tabindex="0">
                 <img src="images/gallery-4.webp" alt="Luxus Wandgestaltung Aalen — Wohnzimmer nachher" loading="lazy" width="595" height="450">
                 <div class="gallery-overlay">
-                    <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Gemütliches Wohnzimmer</h3>
+                    <h3 class="overlay-title">Gemütliches Wohnzimmer</h3>
                     <p>Heidenheim, Baden-Württemberg</p>
                     <button class="btn-gallery"><i class="fas fa-search-plus"></i> Vergrößern</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="buero" onclick="WandVision.openLightbox(this)">
+            <div class="gallery-item" data-category="buero" role="button" tabindex="0">
                 <img src="images/gallery-5.webp" alt="Premium Wanddruck Heidenheim — Büro nachher" loading="lazy" width="600" height="421">
                 <div class="gallery-overlay">
-                    <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Kreativbüro</h3>
+                    <h3 class="overlay-title">Kreativbüro</h3>
                     <p>Aalen, Baden-Württemberg</p>
                     <button class="btn-gallery"><i class="fas fa-search-plus"></i> Vergrößern</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="restaurant" onclick="WandVision.openLightbox(this)">
+            <div class="gallery-item" data-category="restaurant" role="button" tabindex="0">
                 <img src="images/gallery-6.webp" alt="3D Villa Wandverkleidung Ulm — Restaurant nachher" loading="lazy" width="600" height="387">
                 <div class="gallery-overlay">
-                    <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Café Ambiente</h3>
+                    <h3 class="overlay-title">Café Ambiente</h3>
                     <p>Stuttgart, Baden-Württemberg</p>
                     <button class="btn-gallery"><i class="fas fa-search-plus"></i> Vergrößern</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="boden" onclick="WandVision.openLightbox(this)">
+            <div class="gallery-item" data-category="boden" role="button" tabindex="0">
                 <img src="images/gallery-boden-1.webp" alt="Premium 3D Bodendruck Aalen — Direkt Wanddruck" loading="lazy" width="607" height="600">
                 <div class="gallery-overlay">
-                    <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">3D Bodendruck</h3>
+                    <h3 class="overlay-title">3D Bodendruck</h3>
                     <p>Stuttgart, Baden-Württemberg</p>
                     <button class="btn-gallery"><i class="fas fa-search-plus"></i> Vergrößern</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="boden" onclick="WandVision.openLightbox(this)">
+            <div class="gallery-item" data-category="boden" role="button" tabindex="0">
                 <img src="images/gallery-boden-2.webp" alt="Bodendruck Logo" loading="lazy" width="470" height="600">
                 <div class="gallery-overlay">
-                    <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Logo Bodendruck</h3>
+                    <h3 class="overlay-title">Logo Bodendruck</h3>
                     <p>Aalen, Baden-Württemberg</p>
                     <button class="btn-gallery"><i class="fas fa-search-plus"></i> Vergrößern</button>
                 </div>
@@ -908,41 +908,41 @@
         <div class="faq-container">
 
             <div class="faq-item reveal reveal-delay-1">
-                <div class="faq-question" onclick="WandVision.toggleFAQ(this)">
+                <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
                     <h3>Wie lange dauert der Wanddruck?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer" id="faq-answer-1" role="region">
                     <p>Ein typischer Wanddruck für eine Fläche von 10–15 m² dauert etwa 2–3 Stunden. Bei größeren Projekten entsprechend länger. Für Gewerbebetriebe führen wir die Montage auch außerhalb der Öffnungszeiten durch.</p>
                 </div>
             </div>
 
             <div class="faq-item reveal reveal-delay-2">
-                <div class="faq-question" onclick="WandVision.toggleFAQ(this)">
+                <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
                     <h3>Auf welchen Oberflächen kann gedruckt werden?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer" id="faq-answer-2" role="region">
                     <p>Auf Putz, Beton, Holz, Glas, Metall, Fliesen — und direkt auf Böden (Estrich, Laminat, Stein). Die Oberfläche sollte sauber und trocken sein.</p>
                 </div>
             </div>
 
             <div class="faq-item reveal reveal-delay-3">
-                <div class="faq-question" onclick="WandVision.toggleFAQ(this)">
+                <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
                     <h3>Wie haltbar ist der Druck und gibt es Garantie?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer" id="faq-answer-3" role="region">
                     <p>Unsere Drucke halten 10–15 Jahre. Die Farben sind UV-beständig, wasserfest und abwaschbar. Wir geben <strong>10 Jahre Garantie</strong> (Innendruck) und <strong>5 Jahre</strong> (Außendruck) sowie 100% Zufriedenheitsgarantie.</p>
                 </div>
             </div>
 
             <div class="faq-item reveal reveal-delay-1">
-                <div class="faq-question" onclick="WandVision.toggleFAQ(this)">
+                <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
                     <h3>Was kostet ein Wanddruck?</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="faq-answer" id="faq-answer-4" role="region">
                     <p>Ab 170 €/m² (Putz, Standard). Premium ab 200 €/m², Bodendruck ab 210 €/m². Nutzen Sie unseren <a href="#preise" style="color:var(--mid-blue);font-weight:600;">Preisrechner</a> für eine genaue Kalkulation.</p>
                 </div>
             </div>
@@ -1199,21 +1199,21 @@
             </div>
 
             <div class="footer-col">
-                <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Kontakt</h3>
+                <h3 class="overlay-title">Kontakt</h3>
                 <p><i class="fas fa-phone"></i> +49 176 41 60 89 73</p>
                 <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="10797e767f5067717e74667963797f7e7b7b3e7475">[email&#160;protected]</a></p>
                 <p><i class="fas fa-map-marker-alt"></i> Hofherrnstrasse 67, 73434 Aalen, Baden-Württemberg</p>
             </div>
 
             <div class="footer-col">
-                <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Öffnungszeiten</h3>
+                <h3 class="overlay-title">Öffnungszeiten</h3>
                 <p>Montag – Freitag: 09:00 – 18:00</p>
                 <p>Samstag: 10:00 – 14:00</p>
                 <p>Sonntag: Geschlossen</p>
             </div>
 
             <div class="footer-col">
-                <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Navigation</h3>
+                <h3 class="overlay-title">Navigation</h3>
                 <p><a href="#videos" class="footer-nav-link"><i class="fas fa-play-circle"></i> Videos</a></p>
                 <p><a href="#leistungen" class="footer-nav-link"><i class="fas fa-th-large"></i> Leistungen</a></p>
                 <p><a href="#gallery" class="footer-nav-link"><i class="fas fa-images"></i> Galerie</a></p>
@@ -1261,7 +1261,7 @@
 <div id="cookie-banner" class="cookie-banner">
     <div class="cookie-content">
         <div class="cookie-text">
-            <h3 style="font-size:0.95rem;color:white;margin-bottom:5px">Diese Website verwendet Cookies</h3>
+            <h3 class="overlay-title">Diese Website verwendet Cookies</h3>
             <p>Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten. Durch die Nutzung dieser Website stimmen Sie der Verwendung von Cookies zu.</p>
         </div>
         <div class="cookie-buttons">
