@@ -20,12 +20,16 @@ var KonfiguratorModal = (function() {
   var cameraStream = null;
   var TOTAL_STEPS = 8;
 
+  // Detect base path from script location
+  // e.g. script at "/js/konfigurator-modal.js" → basePath = "/"
+  // e.g. script at "js/konfigurator-modal.js" → basePath = ""
   var basePath = (function() {
     var scripts = document.getElementsByTagName('script');
     for (var i = 0; i < scripts.length; i++) {
       var src = scripts[i].src || '';
       var idx = src.indexOf('konfigurator-modal.js');
       if (idx !== -1) {
+        // Get everything before "js/konfigurator-modal.js"
         var path = src.substring(0, idx).replace(/js\/$/, '');
         return path;
       }
@@ -80,7 +84,7 @@ var KonfiguratorModal = (function() {
     '.km-field label i{color:#3B82F6;font-size:0.85rem}',
     '.km-input,.km-select{padding:14px 16px;border:2px solid #E2E8F0;border-radius:10px;font-size:1rem;font-family:"Poppins",sans-serif;color:#0F172A;background:#FAFBFF;transition:all 0.2s ease;min-height:50px;width:100%;box-sizing:border-box}',
     '.km-input:focus,.km-select:focus{outline:none;border-color:#2563EB;background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,0.08)}',
-    '.km-select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'12\\' height=\\'8\\' viewBox=\\'0 0 12 8\\'%3E%3Cpath d=\\'M1 1l5 5 5-5\\' stroke=\\'%2364748B\\' stroke-width=\\'2\\' fill=\\'none\\' stroke-linecap=\\'round\\'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}',
+    '.km-select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'8\' viewBox=\'0 0 12 8\'%3E%3Cpath d=\'M1 1l5 5 5-5\' stroke=\'%2364748B\' stroke-width=\'2\' fill=\'none\' stroke-linecap=\'round\'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}',
     '.km-flaeche-result{display:none;align-items:center;gap:10px;background:#DBEAFE;border:1px solid rgba(37,99,235,0.15);border-radius:10px;padding:12px 16px;margin-top:8px;font-size:0.95rem;color:#1E3A8A;font-weight:600}',
     '.km-flaeche-result.visible{display:flex}',
     '.km-flaeche-result i{color:#2563EB;font-size:1rem}',
@@ -158,6 +162,7 @@ var KonfiguratorModal = (function() {
     '<div class="km-card">' +
       '<button class="km-close" onclick="KonfiguratorModal.close()" aria-label="Schließen">&times;</button>' +
 
+      // STEP 1
       '<div class="km-step" data-step="1">' +
         '<div class="km-progress">' + progressDots(1) + '</div>' +
         '<div class="km-icon"><img src="' + imgPath('zid-icon.png') + '" alt="WandVision"></div>' +
@@ -168,6 +173,7 @@ var KonfiguratorModal = (function() {
         '</button>' +
       '</div>' +
 
+      // STEP 2
       '<div class="km-step" data-step="2">' +
         '<div class="km-progress">' + progressDots(2) + '</div>' +
         '<div class="km-icon"><img src="' + imgPath('zid-icon.png') + '" alt="Foto"></div>' +
@@ -188,6 +194,7 @@ var KonfiguratorModal = (function() {
         '</button>' +
       '</div>' +
 
+      // STEP 3
       '<div class="km-step" data-step="3">' +
         '<div class="km-progress">' + progressDots(3) + '</div>' +
         '<div class="km-icon"><img src="' + imgPath('zid-icon.png') + '" alt="Design"></div>' +
@@ -206,6 +213,7 @@ var KonfiguratorModal = (function() {
         '</button>' +
       '</div>' +
 
+      // STEP 4
       '<div class="km-step" data-step="4">' +
         '<div class="km-progress">' + progressDots(4) + '</div>' +
         '<div class="km-icon"><img src="' + imgPath('zid-icon.png') + '" alt="Maße"></div>' +
@@ -223,6 +231,7 @@ var KonfiguratorModal = (function() {
         '<button class="km-btn-primary" onclick="KonfiguratorModal.goStep(5)"><i class="fas fa-arrow-right"></i> Weiter</button>' +
       '</div>' +
 
+      // STEP 5
       '<div class="km-step" data-step="5">' +
         '<div class="km-progress">' + progressDots(5) + '</div>' +
         '<div class="km-icon"><img src="' + imgPath('zid-icon.png') + '" alt="Druckart"></div>' +
@@ -239,6 +248,7 @@ var KonfiguratorModal = (function() {
         '</button>' +
       '</div>' +
 
+      // STEP 6
       '<div class="km-step" data-step="6">' +
         '<div class="km-progress">' + progressDots(6) + '</div>' +
         '<div class="km-icon"><img src="' + imgPath('zid-icon.png') + '" alt="Details"></div>' +
@@ -271,6 +281,7 @@ var KonfiguratorModal = (function() {
         '<button class="km-btn-primary" onclick="KonfiguratorModal.goStep(7)"><i class="fas fa-arrow-right"></i> Weiter zu Kontaktdaten</button>' +
       '</div>' +
 
+      // STEP 7
       '<div class="km-step" data-step="7">' +
         '<div class="km-progress">' + progressDots(7) + '</div>' +
         '<div class="km-icon"><img src="' + imgPath('zid-icon.png') + '" alt="Kontakt"></div>' +
@@ -289,6 +300,7 @@ var KonfiguratorModal = (function() {
         '<p class="km-note"><i class="fas fa-shield-alt"></i> Kostenlos & unverbindlich · Antwort innerhalb 24h</p>' +
       '</div>' +
 
+      // STEP 8
       '<div class="km-step" data-step="8">' +
         '<div class="km-success">' +
           '<div class="km-success-icon"><i class="fas fa-check-circle"></i></div>' +
@@ -325,6 +337,7 @@ var KonfiguratorModal = (function() {
     if (initialized) return;
     initialized = true;
 
+    // Inject CSS
     if (!document.getElementById('km-style')) {
       var style = document.createElement('style');
       style.id = 'km-style';
@@ -332,6 +345,7 @@ var KonfiguratorModal = (function() {
       document.head.appendChild(style);
     }
 
+    // Create overlay
     var overlay = document.createElement('div');
     overlay.id = 'km-overlay';
     overlay.className = 'km-overlay';
@@ -339,15 +353,18 @@ var KonfiguratorModal = (function() {
     overlay.innerHTML = buildHTML();
     document.body.appendChild(overlay);
 
+    // Escape
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') close();
     });
 
+    // Photo listeners
     var camIn = document.getElementById('km-camera-capture');
     var uplIn = document.getElementById('km-photo-upload');
     if (camIn) camIn.addEventListener('change', handlePhotoSelect);
     if (uplIn) uplIn.addEventListener('change', handlePhotoSelect);
 
+    // Maße live calc
     var bEl = document.getElementById('km-breite');
     var hEl = document.getElementById('km-hoehe');
     if (bEl) bEl.addEventListener('input', calcFlaeche);
@@ -410,10 +427,12 @@ var KonfiguratorModal = (function() {
     var previewImg = document.getElementById('km-preview-img');
     if (previewImg) previewImg.src = '';
 
+    // File inputs
     ['km-camera-capture', 'km-photo-upload'].forEach(function(id) {
       var el = document.getElementById(id); if (el) el.value = '';
     });
 
+    // Selections
     document.querySelectorAll('#km-overlay .km-design-option, #km-overlay .km-druckart-option').forEach(function(d) {
       d.classList.remove('selected');
     });
@@ -421,6 +440,7 @@ var KonfiguratorModal = (function() {
       b.classList.remove('selected');
     });
 
+    // Inputs
     ['km-breite', 'km-hoehe', 'km-name', 'km-telefon', 'km-email'].forEach(function(id) {
       var el = document.getElementById(id); if (el) el.value = '';
     });
@@ -428,10 +448,12 @@ var KonfiguratorModal = (function() {
     var flaecheRes = document.getElementById('km-flaeche-result');
     if (flaecheRes) flaecheRes.classList.remove('visible');
 
+    // Selects
     ['km-oberflaeche', 'km-raumtyp'].forEach(function(id) {
       var el = document.getElementById(id); if (el) el.selectedIndex = 0;
     });
 
+    // Submit btn
     var btn = document.getElementById('km-submit-btn');
     if (btn) {
       btn.disabled = false;
@@ -519,7 +541,7 @@ var KonfiguratorModal = (function() {
   }
 
   // =============================================
-  // SUBMIT (NOVI DIO ZA GOOGLE SHEETS)
+  // SUBMIT
   // =============================================
   function submit() {
     var name = document.getElementById('km-name').value.trim();
@@ -564,14 +586,14 @@ var KonfiguratorModal = (function() {
         photoMime:   'image/jpeg'
       };
 
-      // ZAMJENA: ŠALJEMO NA GOOGLE APPS SCRIPT
-      fetch('https://script.google.com/macros/s/AKfycbwVARluwfcCqtv2LsWIFFXCnVXSVsXT-s0irs37gSxBIzHVis9llivphY2fYtuprpWn/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbyRylYbMI1-2pnPLQ8RD3LvFZ9-vWTW_xRhQKzg7ooSuNZ7BA4MEm8hc8-TOCVoCaI/exec', {
         method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       })
       .then(function() { goStep(8); })
-      .catch(function() { goStep(8); })
+      .catch(function(err) { console.error(err); goStep(8); })
       .finally(function() {
         if (btn) {
           btn.disabled = false;
@@ -599,6 +621,9 @@ var KonfiguratorModal = (function() {
     img.src = selectedPhoto;
   }
 
+  // =============================================
+  // PUBLIC API
+  // =============================================
   return {
     open:           open,
     close:          close,
