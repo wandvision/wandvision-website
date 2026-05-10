@@ -1,5 +1,5 @@
 # WandVision K&K - robots.txt
-# wandvisionkk.de
+# wand-vision.de
 
 User-agent: *
 Allow: /
@@ -10,6 +10,6 @@ Disallow: /temp/
 Disallow: /backup/
 
 # Sitemap
-Sitemap: https://wandvisionkk.de/sitemap.xml
+Sitemap: https://wand-vision.de/sitemap.xml
 
 

@@ -64,7 +64,7 @@ exports.handler = async function(event) {
 
     // API Key und Empfänger aus Environment Variables
     const RESEND_API_KEY    = process.env.RESEND_API_KEY;
-    const EMPFAENGER_EMAIL  = process.env.EMPFAENGER_EMAIL || 'info@wandvisionkk.de';
+    const EMPFAENGER_EMAIL  = process.env.EMPFAENGER_EMAIL || 'info@wand-vision.de';
 
     if (!RESEND_API_KEY) {
         console.error('RESEND_API_KEY fehlt in Environment Variables!');
@@ -186,7 +186,7 @@ exports.handler = async function(event) {
 
     // ---- Resend API Call ----
     const resendPayload = {
-        from:        'WandVision K&K <noreply@wandvisionkk.de>',
+        from:        'WandVision K&K <noreply@wand-vision.de>',
         to:          [EMPFAENGER_EMAIL],
         reply_to:    email !== '—' ? email : undefined,
         subject:     `🖨 Neue Konfigurator-Anfrage von ${name} — ${druckart}`,
