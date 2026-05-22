@@ -2,7 +2,8 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <link rel="preload" as="image" href="images/poster-3d-wanddruck.webp" fetchpriority="high">
+    <!-- Preload: prva vidljiva slika na ekranu (LCP kandidat) -->
+    <link rel="preload" as="image" href="images/room-living-empty.webp" fetchpriority="high" imagesrcset="images/room-living-empty-small.webp 213w, images/room-living-empty-large.webp 346w" imagesizes="(max-width: 480px) 480px, 780px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <link rel="stylesheet" href="css/style.css">
     <meta name="description" content="WandVision K&K — Direktdruck auf Wände & Böden in Aalen & Baden-Württemberg. Kreative Wandgestaltung ohne Tapete, 3D Bodendruck, Büro & Gastronomie. Ab 170 €/m², 10 Jahre Garantie. Kostenlos beraten lassen!">
@@ -32,8 +33,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <!-- Font Awesome -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -161,7 +162,7 @@
                 <!-- Video 1 — 3D Wanddruck -->
                 <div class="video-card reveal">
                     <div class="video-wrapper">
-                        <video fetchpriority="high" class="local-video" poster="images/poster-3d-wanddruck.webp" preload="metadata" playsinline>
+                        <video class="local-video" poster="images/poster-3d-wanddruck.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426879/3d-wanddruck_hzsdtb.mp4" type="video/mp4">
                             <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
@@ -334,7 +335,7 @@
         <i class="fas fa-arrow-right"></i>
         <span>NACHHER</span>
     </div>
-                    <img src="images/room-office-empty.webp" alt="Exklusive Wandverkleidung Heidenheim — Büro vorher" class="room-before" fetchpriority="high" loading="eager" width="700" height="467" srcset="images/room-office-empty-small.webp 480w, images/room-office-empty-large.webp 700w" sizes="(max-width: 480px) 480px, 780px">
+                    <img src="images/room-office-empty.webp" alt="Exklusive Wandverkleidung Heidenheim — Büro vorher" class="room-before" loading="lazy" width="700" height="467" srcset="images/room-office-empty-small.webp 480w, images/room-office-empty-large.webp 700w" sizes="(max-width: 480px) 480px, 780px">
                     <img src="images/room-office-after.webp" alt="Villa Wandverkleidung Heidenheim — Büro nachher" class="room-after" loading="lazy" width="780" height="483" srcset="images/room-office-after-small.webp 480w, images/room-office-after-large.webp 780w" sizes="(max-width: 480px) 480px, 780px">
                     <div class="room-overlay">
                         <i class="fas fa-magic"></i>
@@ -354,7 +355,7 @@
         <i class="fas fa-arrow-right"></i>
         <span>NACHHER</span>
     </div>
-                    <img src="images/room-restaurant-empty.webp" alt="Maßgefertigte Wanddesign Göppingen — Restaurant vorher" class="room-before" fetchpriority="high" loading="eager" width="700" height="467" srcset="images/room-restaurant-empty-small.webp 480w, images/room-restaurant-empty-large.webp 700w" sizes="(max-width: 480px) 480px, 780px">
+                    <img src="images/room-restaurant-empty.webp" alt="Maßgefertigte Wanddesign Göppingen — Restaurant vorher" class="room-before" loading="lazy" width="700" height="467" srcset="images/room-restaurant-empty-small.webp 480w, images/room-restaurant-empty-large.webp 700w" sizes="(max-width: 480px) 480px, 780px">
                     <img src="images/room-restaurant-after.webp" alt="Fugenlose Wanddesign Schwäbisch Gmünd — Restaurant nachher" class="room-after" loading="lazy" width="700" height="410" srcset="images/room-restaurant-after-small.webp 480w, images/room-restaurant-after-large.webp 700w" sizes="(max-width: 480px) 480px, 780px">
                     <div class="room-overlay">
                         <i class="fas fa-magic"></i>
