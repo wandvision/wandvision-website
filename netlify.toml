@@ -1,0 +1,120 @@
+[build]
+  command = ""
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    Permissions-Policy = "geolocation=(), microphone=()"
+    Content-Security-Policy = "default-src 'self'; media-src 'self' https://res.cloudinary.com blob:; img-src 'self' https://res.cloudinary.com data: blob:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.resend.com; frame-ancestors 'none';"
+
+# ========================================
+# 301 Redirects: Old .html URLs → New clean URLs
+# Ovo osigurava da stari linkovi (Google indexirani, bookmarks, backlinks)
+# i dalje rade i preusmjeravaju na nove URL-ove
+# ========================================
+
+# Glavne stranice
+[[redirects]]
+  from = "/wanddruck.html"
+  to = "/wanddruck/"
+  status = 301
+
+[[redirects]]
+  from = "/bodendruck.html"
+  to = "/bodendruck/"
+  status = 301
+
+[[redirects]]
+  from = "/sonderflaechen.html"
+  to = "/sonderflaechen/"
+  status = 301
+
+[[redirects]]
+  from = "/einsatzbereiche.html"
+  to = "/einsatzbereiche/"
+  status = 301
+
+[[redirects]]
+  from = "/faq.html"
+  to = "/faq/"
+  status = 301
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+# Legal stranice
+[[redirects]]
+  from = "/agb.html"
+  to = "/agb/"
+  status = 301
+
+[[redirects]]
+  from = "/datenschutz.html"
+  to = "/datenschutz/"
+  status = 301
+
+[[redirects]]
+  from = "/impressum.html"
+  to = "/impressum/"
+  status = 301
+
+[[redirects]]
+  from = "/widerrufsrecht.html"
+  to = "/widerrufsrecht/"
+  status = 301
+
+# Blog članci
+[[redirects]]
+  from = "/blog/bodendruck-revolution.html"
+  to = "/blog/bodendruck-revolution/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/buero-wanddruck.html"
+  to = "/blog/buero-wanddruck/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/projekte-stuttgart-aalen.html"
+  to = "/blog/projekte-stuttgart-aalen/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/restaurant-transformation.html"
+  to = "/blog/restaurant-transformation/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/wanddruck-kosten.html"
+  to = "/blog/wanddruck-kosten/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/wanddruck-trends-2026.html"
+  to = "/blog/wanddruck-trends-2026/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/wanddruck-vs-tapete.html"
+  to = "/blog/wanddruck-vs-tapete/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/wohnzimmer-ideen.html"
+  to = "/blog/wohnzimmer-ideen/"
+  status = 301

@@ -2,97 +2,8 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <!-- Critical CSS — inline za above-the-fold performanse -->
-    <style id="critical-css">
-/* Critical CSS — inlined for performance */
-@font-face {
-  font-family: 'Font Awesome 6 Free';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Font Awesome 6 Brands';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Poppins-fallback';
-  src: local('Arial');
-  size-adjust: 97%;
-  ascent-override: 105%;
-  descent-override: 29%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: 'Montserrat-fallback';
-  src: local('Arial');
-  size-adjust: 100%;
-  ascent-override: 108%;
-  descent-override: 27%;
-  line-gap-override: 0%;
-}
-:root{--dark-blue:#1E3A8A;--mid-blue:#2563EB;--light-blue:#3B82F6;--sky-blue:#60A5FA;--pale-blue:#DBEAFE;--dark:#0F172A;--gray:#64748B;--gray-light:#E2E8F0;--light:#F8FAFF;--white:#FFFFFF;--gradient-primary:linear-gradient(135deg,#1E3A8A 0%,#3B82F6 100%);--gradient-hero:linear-gradient(135deg,#1E3A8A 0%,#1d4ed8 50%,#2563EB 100%);--shadow-sm:0 2px 8px rgba(30,58,138,0.1);--shadow-md:0 5px 20px rgba(30,58,138,0.15);--shadow-lg:0 15px 40px rgba(30,58,138,0.2);--transition:all 0.3s ease;--font-heading:'Montserrat',sans-serif;--font-body:'Poppins','Poppins-fallback',sans-serif;--radius-sm:8px;--radius-md:16px;--radius-lg:24px}
-    
-/* ── CTA u video sekciji ─────────────────────────────── */
-.video-hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-.video-cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1E3A8A,#3B82F6);color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;transition:all 0.3s ease;min-height:52px}
-.video-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,58,138,0.4)}
-.btn-outline-video-cta{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);color:#fff;padding:14px 24px;border-radius:50px;font-weight:600;font-size:0.95rem;border:2px solid rgba(255,255,255,0.5);text-decoration:none;transition:all 0.3s ease;min-height:52px}
-.btn-outline-video-cta:hover{background:rgba(255,255,255,0.28);border-color:#fff}
-@media(max-width:600px){.video-hero-cta{flex-direction:column;align-items:center}.video-cta-btn,.btn-outline-video-cta{width:100%;max-width:300px;justify-content:center}}
-
-/* ── CSS Zvjezdice (pristupačno) ─────────────────────── */
-.stars-css{color:#F59E0B;font-size:1.1rem;letter-spacing:2px}
-.star-rating{display:inline-block}
-
-/* ── Regional link ───────────────────────────────────── */
-.regional-link{color:var(--mid-blue);font-weight:600;text-decoration:underline}
-.regional-link:hover{color:var(--dark-blue)}
-
-/* ── Branchen sub-links ──────────────────────────────── */
-.branchen-sub-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.branchen-sub-link{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);color:#fff;padding:7px 14px;border-radius:50px;font-size:0.82rem;font-weight:500;border:1px solid rgba(255,255,255,0.25);text-decoration:none;transition:all 0.25s ease}
-.branchen-sub-link:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.6);transform:translateY(-1px)}
-
-/* ── Google rating link ──────────────────────────────── */
-.google-rating-link{display:block;font-size:0.875rem;color:#475569;margin-top:5px;text-decoration:underline;cursor:pointer}
-.google-rating-link:hover{color:#1E3A8A}
-
-
-/* ── Section layout klase (zamjena za inline stilove) ── */
-.video-section-top-pad{padding-top:110px}
-.hero-section-compact{padding-top:20px;min-height:auto;justify-content:flex-start}
-.features-grid-top-margin{margin-top:50px}
-
-/* ── Room title label (zamjena za h2 inline) ─────────── */
-p.room-title-label{font-size:0.95rem;margin-bottom:4px}
-
-/* ── Footer col headings ─────────────────────────────── */
-.footer-col-heading{font-size:0.95rem;color:#fff;margin-bottom:5px;font-weight:600;
-  letter-spacing:0.02em;text-transform:uppercase}
-
-/* ── Cookie banner heading ───────────────────────────── */
-.cookie-banner-heading{font-size:0.95rem;color:#fff;margin-bottom:5px;font-weight:600}
-
-/* ── Google logo boje ────────────────────────────────── */
-.g-blue{color:#4285F4}.g-red{color:#EA4335}.g-yellow{color:#FBBC05}.g-green{color:#34A853}
-
-/* ── Section icon small ──────────────────────────────── */
-.section-icon-sm{width:32px!important;height:32px!important}
-/* ── bp-icon fixed size ──────────────────────────────── */
-.bp-icon-fixed{width:64px;height:64px;object-fit:cover}
-/* ── FAQ inline link ─────────────────────────────────── */
-.faq-inline-link{color:var(--mid-blue);font-weight:600}
-/* ── Bridge button reset ─────────────────────────────── */
-.bridge-btn-reset{border:none;cursor:pointer}
-
-    </style>
     <!-- Preload: prva vidljiva slika na ekranu (LCP kandidat) -->
-    <link rel="preload" as="image" href="images/roomlivingempty.webp" fetchpriority="high" imagesrcset="images/roomlivingemptysmall.webp 213w, images/roomlivingemptylarge.webp 346w" imagesizes="(max-width: 480px) 480px, 780px">
+    <link rel="preload" as="image" href="images/room-living-empty.webp" fetchpriority="high" imagesrcset="images/room-living-empty-small.webp 213w, images/room-living-empty-large.webp 346w" imagesizes="(max-width: 480px) 480px, 780px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/style.css">
@@ -118,7 +29,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
     <meta property="twitter:image" content="https://wand-vision.de/images/og-image.webp">
 
     <!-- Favicon -->
-    <link rel="icon" href="images/zidicon.png" type="image/png">
+    <link rel="icon" href="images/zid-icon.png" type="image/png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,9 +37,13 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet"></noscript>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <!-- Font Awesome — konsolidiran u 1 HTTP request -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <!-- Font Awesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css"></noscript>
 
 
 
@@ -141,7 +56,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
       "@type": "VideoObject",
       "name": "3D Wanddruck Transformation - WandVision K&K",
       "description": "Sehen Sie wie WandVision K&K Räume in Aalen, Heidenheim und Ulm mit 3D Wanddruck und Bodendruck verwandelt.",
-      "thumbnailUrl": "https://wand-vision.de/images/poster3dwanddruck.webp",
+      "thumbnailUrl": "https://res.cloudinary.com/dgaibia2d/image/upload/f_auto,q_auto/poster-wanddruck.jpg",
       "uploadDate": "2026-03-13",
       "contentUrl": "https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426875/restaurant-transformation_f05egk.mp4",
       "publisher": {
@@ -158,7 +73,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "WandVision K&K",
-      "image": "https://wand-vision.de/images/zidicon.png",
+      "image": "https://wand-vision.de/images/logo.png",
       "description": "Professioneller Wanddruck & Bodendruck in Aalen und Umgebung",
       "url": "https://wand-vision.de",
       "telephone": "+4917641608973",
@@ -175,16 +90,9 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         "latitude": 48.8384,
         "longitude": 10.0933
       },
-      "openingHours": ["Mo-Fr 09:00-18:00", "Sa 10:00-14:00"],
+      "openingHours": "Mo-Fr 09:00-18:00",
       "priceRange": "ab 170€/m²",
       "areaServed": ["Aalen", "Heidenheim", "Ulm"],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "200",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
       "sameAs": [
         "https://www.instagram.com/wandvisionkk",
         "https://www.facebook.com/wandvisionkk"
@@ -199,7 +107,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 <nav class="navbar" id="navbar">
     <div class="nav-container">
         <a href="#home" class="logo">
-            <img src="images/zidicon.png" alt="WandVision Logo" class="logo-icon-img" width="40" height="40">
+            <img src="images/zid-icon.png" alt="WandVision Logo" class="logo-icon-img" width="40" height="40">
             <div class="logo-text">
                 <div class="logo-title">
                     <span class="wand">Wand</span><span class="vision">Vision</span><span class="kk">K&K</span>
@@ -208,21 +116,21 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div>
         </a>
 
-        <button class="mobile-menu-toggle js-mobile-toggle" aria-label="Menu" aria-expanded="false">
+        <button class="mobile-menu-toggle js-mobile-toggle" onclick="WandVision.toggleMobileMenu()" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
 </button>
 
         <div class="nav-menu" id="nav-menu">
-            <a href="#home" class="nav-item">Home</a>
-            <a href="#leistungen" class="nav-item nav-item-new">
+            <a href="#home" class="nav-item" onclick="WandVision.closeMobileMenu()">Home</a>
+            <a href="#leistungen" class="nav-item nav-item-new" onclick="WandVision.closeMobileMenu()">
                 Leistungen <span class="nav-badge">EINZIGARTIG</span>
             </a>
-			<a href="#videos" class="nav-item">Video Galerie</a>
-            <a href="#gallery" class="nav-item">Foto Galerie</a>
-            <a href="#preise" class="nav-item">Preise</a>
-            <a href="/einsatzbereiche/" class="nav-item">Branchen</a>
-            <a href="/faq/" class="nav-item">FAQ</a>
-            <a href="/blog/" class="nav-item">Blog</a>
+			<a href="#videos" class="nav-item" onclick="WandVision.closeMobileMenu()">Video Galerie</a>
+            <a href="#gallery" class="nav-item" onclick="WandVision.closeMobileMenu()">Foto Galerie</a>
+            <a href="#preise" class="nav-item" onclick="WandVision.closeMobileMenu()">Preise</a>
+            <a href="einsatzbereiche/index.html" class="nav-item" onclick="WandVision.closeMobileMenu()">Branchen</a>
+            <a href="faq/index.html" class="nav-item" onclick="WandVision.closeMobileMenu()">FAQ</a>
+            <a href="blog/index.html" class="nav-item" onclick="WandVision.closeMobileMenu()">Blog</a>
             <a href="tel:+4917641608973" class="btn-primary-nav">
                 <i class="fas fa-phone-alt"></i>
                 <span class="btn-text">Anrufen</span>
@@ -232,29 +140,20 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 </nav>
 <main id="main-content">
 <!-- VIDEO GALLERY SECTION -->
-<section id="videos" class="video-gallery-section video-hero-blue video-section-top-pad">
+<section id="videos" class="video-gallery-section video-hero-blue" style="padding-top: 110px;">
     <div class="container">
         <div class="section-header">
-            <p class="section-title section-title-hero-display">
+            <h2 class="section-title" style="font-size: 3.5rem;">
     Sehen was <span class="gradient-text">andere verpassen</span>
-</p>
+</h2>
 <p class="section-subtitle">Echte Projekte, echte Verwandlungen — direkt bei Ihnen vor Ort</p>
-            <!-- CTA above-the-fold -->
-            <div class="video-hero-cta">
-                <a href="/wanddruck/" class="btn-primary-large video-cta-btn">
-                    <i class="fas fa-rocket"></i> Jetzt Angebot anfordern
-                </a>
-                <a href="tel:+4917641608973" class="btn-outline-video-cta">
-                    <i class="fas fa-phone-alt"></i> +49 176 41 60 89 73
-                </a>
-            </div>
         </div>
 
         <!-- KARUSEL WRAPPER -->
         <div class="video-carousel-wrapper">
 
             <!-- Strelica lijevo -->
-            <button class="carousel-arrow carousel-arrow-left" aria-label="Vorheriges Video">
+            <button class="carousel-arrow carousel-arrow-left" onclick="WandVision.carouselPrev()" aria-label="Vorheriges Video">
                 <i class="fas fa-chevron-left"></i>
             </button>
 
@@ -264,7 +163,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 <!-- Video 1 — 3D Wanddruck -->
                 <div class="video-card reveal">
                     <div class="video-wrapper">
-                        <video class="local-video" poster="images/poster3dwanddruck.webp" preload="none" playsinline>
+                        <video class="local-video" poster="images/poster-3d-wanddruck.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426879/3d-wanddruck_hzsdtb.mp4" type="video/mp4">
                             <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
@@ -281,7 +180,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 <!-- Video 2 — Büro -->
                 <div class="video-card reveal">
                     <div class="video-wrapper">
-                        <video class="local-video" poster="images/posterbuero.webp" preload="none" playsinline>
+                        <video class="local-video" poster="images/poster-buero.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426884/buero-transformation_ny943q.mp4" type="video/mp4">
                             <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
@@ -298,7 +197,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 <!-- Video 3 — Wohnzimmer -->
                 <div class="video-card reveal">
                     <div class="video-wrapper">
-                        <video class="local-video" poster="images/posterwohnzimmer.webp" preload="none" playsinline>
+                        <video class="local-video" poster="images/poster-wohnzimmer.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426898/wohnzimmer-transformation_ylbdi5.mp4" type="video/mp4">
                             <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
@@ -315,7 +214,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 <!-- Video 4 — Bodendruck -->
                 <div class="video-card reveal">
                     <div class="video-wrapper">
-                        <video class="local-video" poster="images/posterbodendruck.webp" preload="none" playsinline>
+                        <video class="local-video" poster="images/poster-bodendruck.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773427083/bodendruck-3d_vhtzel.mp4" type="video/mp4">
                             <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
@@ -332,7 +231,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 <!-- Video 5 — Restaurant -->
                 <div class="video-card reveal">
                     <div class="video-wrapper">
-                        <video class="local-video" poster="images/posterrestaurant.webp" preload="none" playsinline>
+                        <video class="local-video" poster="images/poster-restaurant.webp" preload="none" playsinline>
                             <source src="https://res.cloudinary.com/dgaibia2d/video/upload/q_auto,f_auto/v1773426875/restaurant-transformation_f05egk.mp4" type="video/mp4">
                             <track kind="captions" srclang="de" label="Deutsch">
                             <p>Ihr Browser unterstützt das Video-Tag nicht.</p>
@@ -349,7 +248,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div><!-- end track -->
 
             <!-- Strelica desno -->
-            <button class="carousel-arrow carousel-arrow-right" aria-label="Nächstes Video">
+            <button class="carousel-arrow carousel-arrow-right" onclick="WandVision.carouselNext()" aria-label="Nächstes Video">
                 <i class="fas fa-chevron-right"></i>
             </button>
 
@@ -357,15 +256,15 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
         <!-- Dot indikatori -->
         <div class="carousel-dots" id="carouselDots">
-            <button class="carousel-dot active" data-index="0" aria-label="Video 1"></button>
-            <button class="carousel-dot" data-index="1" aria-label="Video 2"></button>
-            <button class="carousel-dot" data-index="2" aria-label="Video 3"></button>
-            <button class="carousel-dot" data-index="3" aria-label="Video 4"></button>
-            <button class="carousel-dot" data-index="4" aria-label="Video 5"></button>
+            <button class="carousel-dot active" onclick="WandVision.carouselGoTo(0)" aria-label="Video 1"></button>
+            <button class="carousel-dot" onclick="WandVision.carouselGoTo(1)" aria-label="Video 2"></button>
+            <button class="carousel-dot" onclick="WandVision.carouselGoTo(2)" aria-label="Video 3"></button>
+            <button class="carousel-dot" onclick="WandVision.carouselGoTo(3)" aria-label="Video 4"></button>
+            <button class="carousel-dot" onclick="WandVision.carouselGoTo(4)" aria-label="Video 5"></button>
         </div>
 
         <!-- Feature kartice unutar video sekcije -->
-        <div class="features-grid features-grid-top-margin">
+        <div class="features-grid" style="margin-top: 50px;">
             <div class="feature-card">
                 <div class="feature-icon">🖼️</div>
                 <p>Direktdruck auf allen Wandoberflächen – Holz, Putz, Metall, Glas...</p>
@@ -389,13 +288,13 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
 
 <!-- HERO SECTION -->
-<section class="hero-interactive hero-white-bg hero-section-compact">
+<section class="hero-interactive hero-white-bg" style="padding-top: 20px; min-height: auto; justify-content: flex-start;">
 
     <!-- Hero tekst -->
     <div class="hero-content">
 
         <h1 class="hero-title">
-            Wanddruck &amp; 3D Bodendruck in Aalen — <span class="gradient-text">Direktdruck für Wände &amp; Böden</span>
+            Verwandeln Sie <span class="gradient-text">Ihre Wand</span>
         </h1>
 
         <div class="hero-surface-badge">
@@ -417,15 +316,15 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         <i class="fas fa-arrow-right"></i>
         <span>NACHHER</span>
     </div>
-                    <img src="images/roomlivingempty.webp" alt="Luxus Wandgestaltung Aalen — Wohnzimmer vor Wanddruck" class="room-before" fetchpriority="high" loading="eager" width="346" height="520" srcset="images/roomlivingemptysmall.webp 213w, images/roomlivingemptylarge.webp 346w" sizes="(max-width: 480px) 480px, 780px">
-                    <img src="images/roomlivingafter.webp" alt="Luxus Wandgestaltung Aalen — Wohnzimmer nach Wanddruck" class="room-after" loading="lazy" width="390" height="520" srcset="images/roomlivingaftersmall.webp 240w, images/roomlivingafterlarge.webp 390w" sizes="(max-width: 480px) 480px, 780px">
+                    <img src="images/room-living-empty.webp" alt="Luxus Wandgestaltung Aalen — Wohnzimmer vor Wanddruck" class="room-before" fetchpriority="high" loading="eager" width="346" height="520" srcset="images/room-living-empty-small.webp 213w, images/room-living-empty-large.webp 346w" sizes="(max-width: 480px) 480px, 780px">
+                    <img src="images/room-living-after.webp" alt="Luxus Wandgestaltung Aalen — Wohnzimmer nach Wanddruck" class="room-after" loading="lazy" width="390" height="520" srcset="images/room-living-after-small.webp 240w, images/room-living-after-large.webp 390w" sizes="(max-width: 480px) 480px, 780px">
                     <div class="room-overlay">
                         <i class="fas fa-magic"></i>
                         <p>Klicken Sie, um die Transformation zu sehen!</p>
                     </div>
                 </div>
                 <div class="room-info">
-                    <p class="room-title room-title-label">Modernes Wohnzimmer</p>
+                    <h2 class="room-title" style="font-size:0.95rem;margin-bottom:4px">Modernes Wohnzimmer</h2>
                     <p>Stilvolle Wandgestaltung für Ihr Zuhause</p>
                 </div>
             </div>
@@ -437,15 +336,15 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         <i class="fas fa-arrow-right"></i>
         <span>NACHHER</span>
     </div>
-                    <img src="images/roomofficeempty.webp" alt="Exklusive Wandverkleidung Heidenheim — Büro vorher" class="room-before" loading="lazy" width="700" height="467" srcset="images/roomofficeemptysmall.webp 480w, images/roomofficeemptylarge.webp 700w" sizes="(max-width: 480px) 480px, 780px">
-                    <img src="images/roomofficeafter.webp" alt="Villa Wandverkleidung Heidenheim — Büro nachher" class="room-after" loading="lazy" width="780" height="483" srcset="images/roomofficeaftersmall.webp 480w, images/roomofficeafterlarge.webp 780w" sizes="(max-width: 480px) 480px, 780px">
+                    <img src="images/room-office-empty.webp" alt="Exklusive Wandverkleidung Heidenheim — Büro vorher" class="room-before" loading="lazy" width="700" height="467" srcset="images/room-office-empty-small.webp 480w, images/room-office-empty-large.webp 700w" sizes="(max-width: 480px) 480px, 780px">
+                    <img src="images/room-office-after.webp" alt="Villa Wandverkleidung Heidenheim — Büro nachher" class="room-after" loading="lazy" width="780" height="483" srcset="images/room-office-after-small.webp 480w, images/room-office-after-large.webp 780w" sizes="(max-width: 480px) 480px, 780px">
                     <div class="room-overlay">
                         <i class="fas fa-magic"></i>
                         <p>Klicken Sie, um die Transformation zu sehen!</p>
                     </div>
                 </div>
                 <div class="room-info">
-                    <p class="room-title room-title-label">Business Büro</p>
+                    <h2 class="room-title" style="font-size:0.95rem;margin-bottom:4px">Business Büro</h2>
                     <p>Professionelle Atmosphäre schaffen</p>
                 </div>
             </div>
@@ -457,15 +356,15 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         <i class="fas fa-arrow-right"></i>
         <span>NACHHER</span>
     </div>
-                    <img src="images/roomrestaurantempty.webp" alt="Maßgefertigte Wanddesign Göppingen — Restaurant vorher" class="room-before" loading="lazy" width="700" height="467" srcset="images/roomrestaurantemptysmall.webp 480w, images/roomrestaurantemptylarge.webp 700w" sizes="(max-width: 480px) 480px, 780px">
-                    <img src="images/roomrestaurantafter.webp" alt="Fugenlose Wanddesign Schwäbisch Gmünd — Restaurant nachher" class="room-after" loading="lazy" width="700" height="410" srcset="images/roomrestaurantaftersmall.webp 480w, images/roomrestaurantafterlarge.webp 700w" sizes="(max-width: 480px) 480px, 780px">
+                    <img src="images/room-restaurant-empty.webp" alt="Maßgefertigte Wanddesign Göppingen — Restaurant vorher" class="room-before" loading="lazy" width="700" height="467" srcset="images/room-restaurant-empty-small.webp 480w, images/room-restaurant-empty-large.webp 700w" sizes="(max-width: 480px) 480px, 780px">
+                    <img src="images/room-restaurant-after.webp" alt="Fugenlose Wanddesign Schwäbisch Gmünd — Restaurant nachher" class="room-after" loading="lazy" width="700" height="410" srcset="images/room-restaurant-after-small.webp 480w, images/room-restaurant-after-large.webp 700w" sizes="(max-width: 480px) 480px, 780px">
                     <div class="room-overlay">
                         <i class="fas fa-magic"></i>
                         <p>Klicken Sie, um die Transformation zu sehen!</p>
                     </div>
                 </div>
                 <div class="room-info">
-                    <p class="room-title room-title-label">Elegantes Restaurant</p>
+                    <h2 class="room-title" style="font-size:0.95rem;margin-bottom:4px">Elegantes Restaurant</h2>
                     <p>Einzigartiges Ambiente kreieren</p>
                 </div>
             </div>
@@ -480,7 +379,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
     <div class="container">
         <div class="section-header reveal">
             <h2 class="section-title">
-                <img src="images/zidicon.png" alt="Wand Icon" class="section-icon" width="40" height="40" loading="lazy">
+                <img src="images/zid-icon.png" alt="Wand Icon" class="section-icon" width="40" height="40" loading="lazy">
                 Was können wir für Sie drucken?
             </h2>
             <p class="section-subtitle">Direktdruck auf Wände, Böden & Sonderflächen — präzise, langlebig, unverwechselbar</p>
@@ -498,7 +397,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                     <li><i class="fas fa-check"></i> UV-beständig & abwaschbar</li>
                     <li><i class="fas fa-check"></i> 10 J. Innen / 5 J. Außen Garantie</li>
                 </ul>
-                <a href="/wanddruck/" class="btn-leistung">Mehr erfahren</a>
+                <a href="wanddruck/index.html" class="btn-leistung">Mehr erfahren</a>
             </div>
 
             <!-- Karte 2 - 3D Bodendruck PREMIUM -->
@@ -512,7 +411,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                     <li><i class="fas fa-check"></i> Direktdruck — kein Kleber</li>
                     <li><i class="fas fa-check"></i> Hotels, Retail & Showrooms</li>
                 </ul>
-                <a href="/bodendruck/" class="btn-leistung">Premium-Lösung entdecken</a>
+                <a href="bodendruck/index.html" class="btn-leistung">Premium-Lösung entdecken</a>
             </div>
 
             <!-- Karte 3 - Sonderflächen -->
@@ -524,7 +423,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                     <li><i class="fas fa-check"></i> Gewölbe & Sonderprojekte</li>
                     <li><i class="fas fa-check"></i> Planung & Machbarkeitsanalyse</li>
                 </ul>
-                <a href="/sonderflaechen/" class="btn-leistung">Individuelles Projekt besprechen</a>
+                <a href="sonderflaechen/index.html" class="btn-leistung">Individuelles Projekt besprechen</a>
             </div>
 
         </div>
@@ -536,7 +435,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
     <div class="container">
         <div class="section-header reveal">
             <h2 class="section-title">
-                <img src="images/zidicon.png" alt="Boden Icon" class="section-icon" width="40" height="40" loading="lazy">
+                <img src="images/zid-icon.png" alt="Boden Icon" class="section-icon" width="40" height="40" loading="lazy">
                 Bodendruck in 3D erleben
             </h2>
             <p class="section-subtitle">Bewegen Sie die Maus über das Bild</p>
@@ -579,7 +478,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 </ul>
 
                 <!-- BODENDRUCK UPIT FORMA -->
-                <form class="boden3d-form" id="boden3dForm">
+                <form class="boden3d-form" id="boden3dForm" onsubmit="WandVision.submitBodenForm(event)">
                     <p class="boden3d-form-label">Kostenloses Angebot anfordern:</p>
                     <div class="boden3d-form-row">
                         <div class="boden3d-form-group">
@@ -634,8 +533,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
 
 <!-- TESTIMONIALS SECTION -->
-<section id="testimonials" class="testimonials-section" itemscope itemtype="https://schema.org/Organization">
-    <meta itemprop="name" content="WandVision K&K">
+<section id="testimonials" class="testimonials-section">
     <div class="container">
         <div class="section-header reveal">
             <h2 class="section-title">200+ zufriedene Kunden können nicht irren</h2>
@@ -643,69 +541,49 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         </div>
 
         <div class="testimonials-grid">
-            <div class="testimonial-card reveal reveal-delay-1" itemscope itemtype="https://schema.org/Review">
-                <meta itemprop="itemReviewed" content="WandVision K&K Wanddruck">
-                <div class="testimonial-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                    <meta itemprop="ratingValue" content="5">
-                    <meta itemprop="bestRating" content="5">
-                    <span class="star-rating" aria-label="5 von 5 Sternen"><span aria-hidden="true" class="stars-css">★★★★★</span></span>
-                </div>
-                <p class="testimonial-text" itemprop="reviewBody">"Absolut begeistert! Der Wanddruck hat unser Restaurant komplett verwandelt. Die Qualität ist hervorragend und die Montage war schnell und sauber."</p>
-                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <div class="testimonial-card reveal reveal-delay-1">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Absolut begeistert! Der Wanddruck hat unser Restaurant komplett verwandelt. Die Qualität ist hervorragend und die Montage war schnell und sauber."</p>
+                <div class="testimonial-author">
                     <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
                     <div class="author-info">
-                        <strong itemprop="name">Maria Schmidt</strong>
+                        <strong>Maria Schmidt</strong>
                         <span>Restaurant Luna, Aalen</span>
                     </div>
                 </div>
             </div>
 
-            <div class="testimonial-card reveal reveal-delay-2" itemscope itemtype="https://schema.org/Review">
-                <meta itemprop="itemReviewed" content="WandVision K&K Wanddruck">
-                <div class="testimonial-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                    <meta itemprop="ratingValue" content="5">
-                    <meta itemprop="bestRating" content="5">
-                    <span class="star-rating" aria-label="5 von 5 Sternen"><span aria-hidden="true" class="stars-css">★★★★★</span></span>
-                </div>
-                <p class="testimonial-text" itemprop="reviewBody">"Professionelle Beratung und perfekte Umsetzung! Unser Büro sieht jetzt modern und einladend aus. Absolut empfehlenswert!"</p>
-                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <div class="testimonial-card reveal reveal-delay-2">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Professionelle Beratung und perfekte Umsetzung! Unser Büro sieht jetzt modern und einladend aus. Absolut empfehlenswert!"</p>
+                <div class="testimonial-author">
                     <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
                     <div class="author-info">
-                        <strong itemprop="name">Thomas Müller</strong>
+                        <strong>Thomas Müller</strong>
                         <span>Tech Solutions GmbH, Ulm</span>
                     </div>
                 </div>
             </div>
 
-            <div class="testimonial-card reveal reveal-delay-3" itemscope itemtype="https://schema.org/Review">
-                <meta itemprop="itemReviewed" content="WandVision K&K Wanddruck">
-                <div class="testimonial-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                    <meta itemprop="ratingValue" content="5">
-                    <meta itemprop="bestRating" content="5">
-                    <span class="star-rating" aria-label="5 von 5 Sternen"><span aria-hidden="true" class="stars-css">★★★★★</span></span>
-                </div>
-                <p class="testimonial-text" itemprop="reviewBody">"Wir haben unser Wohnzimmer mit einem tollen Motiv gestalten lassen. Das Ergebnis übertrifft alle Erwartungen. Vielen Dank!"</p>
-                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <div class="testimonial-card reveal reveal-delay-3">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Wir haben unser Wohnzimmer mit einem tollen Motiv gestalten lassen. Das Ergebnis übertrifft alle Erwartungen. Vielen Dank!"</p>
+                <div class="testimonial-author">
                     <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
                     <div class="author-info">
-                        <strong itemprop="name">Familie Weber</strong>
+                        <strong>Familie Weber</strong>
                         <span>Privatkunde, Ulm</span>
                     </div>
                 </div>
             </div>
 
-            <div class="testimonial-card reveal reveal-delay-4" itemscope itemtype="https://schema.org/Review">
-                <meta itemprop="itemReviewed" content="WandVision K&K Wanddruck">
-                <div class="testimonial-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                    <meta itemprop="ratingValue" content="5">
-                    <meta itemprop="bestRating" content="5">
-                    <span class="star-rating" aria-label="5 von 5 Sternen"><span aria-hidden="true" class="stars-css">★★★★★</span></span>
-                </div>
-                <p class="testimonial-text" itemprop="reviewBody">"Schnelle Abwicklung, faire Preise und ein traumhaftes Ergebnis. Das Team war sehr freundlich und kompetent."</p>
-                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <div class="testimonial-card reveal reveal-delay-4">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Schnelle Abwicklung, faire Preise und ein traumhaftes Ergebnis. Das Team war sehr freundlich und kompetent."</p>
+                <div class="testimonial-author">
                     <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
                     <div class="author-info">
-                        <strong itemprop="name">Andreas Koch</strong>
+                        <strong>Andreas Koch</strong>
                         <span>Fitnessstudio Powerzone, Heidenheim</span>
                     </div>
                 </div>
@@ -716,12 +594,11 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         <div class="google-rating">
             <div class="rating-content">
                 <div class="google-text-logo">
-                    <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
+                    <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
                 </div>
-                <div class="stars-large"><span class="star-rating" aria-label="5 von 5 Sternen"><span aria-hidden="true" class="stars-css">★★★★★</span></span></div>
+                <div class="stars-large">⭐⭐⭐⭐⭐</div>
                 <p><strong>Unsere Kunden empfehlen uns</strong></p>
-                <!-- TODO: Zamijeni GOOGLE_REVIEW_URL s pravim URL-om iz Google My Business -->
-                <a href="https://g.page/r/GOOGLE_REVIEW_URL/review" class="google-rating-link" target="_blank" rel="noopener" aria-label="WandVision K&K bei Google bewerten">Jetzt bei Google bewerten! <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                <p style="font-size:0.875rem;color:#475569;margin-top:5px">Jetzt bei Google bewerten!</p>
             </div>
         </div>
     </div>
@@ -732,7 +609,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         <div class="branchen-preview-inner reveal">
             <div class="branchen-preview-text">
                 <div class="branchen-preview-eyebrow">
-                    <img src="images/zidicon.png" alt="Branchen Icon" class="section-icon section-icon-sm" width="40" height="40" loading="lazy">
+                    <img src="images/zid-icon.png" alt="Branchen Icon" class="section-icon" style="width:32px;height:32px;" width="40" height="40" loading="lazy">
                     Für wen ist WandVision gemacht?
                 </div>
                 <h2 class="branchen-preview-title">
@@ -741,41 +618,33 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 <p class="branchen-preview-subtitle">
                     Von der Gastronomie bis zur Klinik, vom Büro bis zur Kita — wir gestalten Räume für alle Branchen in Baden-Württemberg.
                 </p>
-                <a href="/einsatzbereiche/" class="btn-primary-large branchen-preview-cta">
+                <a href="einsatzbereiche/index.html" class="btn-primary-large branchen-preview-cta">
                     <i class="fas fa-building"></i> Alle Einsatzbereiche ansehen
                 </a>
-                <!-- Interne linkovi na B2B orphan stranice -->
-                <div class="branchen-sub-links">
-                    <a href="/buero-wandgestaltung/" class="branchen-sub-link"><i class="fas fa-briefcase"></i> Büro</a>
-                    <a href="/restaurant-wandgestaltung/" class="branchen-sub-link"><i class="fas fa-utensils"></i> Restaurant</a>
-                    <a href="/wandgestaltung-aalen/" class="branchen-sub-link"><i class="fas fa-map-marker-alt"></i> Aalen</a>
-                    <a href="/wandgestaltung-ulm/" class="branchen-sub-link"><i class="fas fa-map-marker-alt"></i> Ulm</a>
-                    <a href="/wandgestaltung/" class="branchen-sub-link"><i class="fas fa-paint-roller"></i> Wandgestaltung</a>
-                </div>
             </div>
             <div class="branchen-preview-icons">
                 <a href="einsatzbereiche/index.html#gastronomie" class="bp-icon-card" title="Gastronomie">
-                    <img src="images/sektorgastronomie.webp" alt="Gastronomie Wandgestaltung" class="bp-icon bp-icon-fixed" width="96" height="56" loading="lazy">
+                    <img src="images/sektor-gastronomie.webp" alt="Gastronomie Wandgestaltung" class="bp-icon" style="width:64px;height:64px;object-fit:cover;" width="96" height="56" loading="lazy">
                     <span>Gastronomie</span>
                 </a>
                 <a href="einsatzbereiche/index.html#bueros" class="bp-icon-card" title="Büros">
-                    <img src="images/sektorbuero.webp" alt="Büro Wandgestaltung" class="bp-icon bp-icon-fixed" width="96" height="62" loading="lazy">
+                    <img src="images/sektor-buero.webp" alt="Büro Wandgestaltung" class="bp-icon" style="width:64px;height:64px;object-fit:cover;" width="96" height="62" loading="lazy">
                     <span>Büros</span>
                 </a>
                 <a href="einsatzbereiche/index.html#hotels" class="bp-icon-card" title="Hotels">
-                    <img src="images/sektorhotel.webp" alt="Hotel Wandgestaltung" class="bp-icon bp-icon-fixed" width="96" height="62" loading="lazy">
+                    <img src="images/sektor-hotel.webp" alt="Hotel Wandgestaltung" class="bp-icon" style="width:64px;height:64px;object-fit:cover;" width="96" height="62" loading="lazy">
                     <span>Hotels</span>
                 </a>
                 <a href="einsatzbereiche/index.html#kliniken" class="bp-icon-card" title="Kliniken">
-                    <img src="images/sektorklinik.webp" alt="Klinik Wandgestaltung" class="bp-icon bp-icon-fixed" width="96" height="58" loading="lazy">
+                    <img src="images/sektor-klinik.webp" alt="Klinik Wandgestaltung" class="bp-icon" style="width:64px;height:64px;object-fit:cover;" width="96" height="58" loading="lazy">
                     <span>Kliniken</span>
                 </a>
                 <a href="einsatzbereiche/index.html#schulen" class="bp-icon-card" title="Schulen">
-                    <img src="images/sektorschule.webp" alt="Schule Wandgestaltung" class="bp-icon bp-icon-fixed" width="96" height="71" loading="lazy">
+                    <img src="images/sektor-schule.webp" alt="Schule Wandgestaltung" class="bp-icon" style="width:64px;height:64px;object-fit:cover;" width="96" height="71" loading="lazy">
                     <span>Schulen</span>
                 </a>
                 <a href="einsatzbereiche/index.html#einzelhandel" class="bp-icon-card" title="Einzelhandel">
-                    <img src="images/sektoreinzelhandel.webp" alt="Einzelhandel Wandgestaltung" class="bp-icon bp-icon-fixed" width="96" height="53" loading="lazy">
+                    <img src="images/sektor-einzelhandel.webp" alt="Einzelhandel Wandgestaltung" class="bp-icon" style="width:64px;height:64px;object-fit:cover;" width="96" height="53" loading="lazy">
                     <span>Einzelhandel</span>
                 </a>
             </div>
@@ -788,7 +657,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">
-                <img src="images/zidicon.png" alt="Wand Icon" class="section-icon" width="40" height="40" loading="lazy">
+                <img src="images/zid-icon.png" alt="Wand Icon" class="section-icon" width="40" height="40" loading="lazy">
                 Echte Projekte — echte Verwandlungen
             </h2>
             <p class="section-subtitle">Jedes Bild ist ein reales Projekt in Ihrer Region</p>
@@ -814,7 +683,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
         <div class="gallery-grid">
             <div class="gallery-item" data-category="wohnzimmer" role="button" tabindex="0">
-                <img src="images/gallery1.webp" alt="Luxus Wandgestaltung Aalen — Wohnzimmer nachher" loading="lazy" width="600" height="420">
+                <img src="images/gallery-1.webp" alt="Luxus Wandgestaltung Aalen — Wohnzimmer nachher" loading="lazy" width="600" height="420">
                 <div class="gallery-overlay">
                     <h3 class="overlay-title">Modernes Wohnzimmer</h3>
                     <p>Aalen, Baden-Württemberg</p>
@@ -823,7 +692,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div>
 
             <div class="gallery-item" data-category="buero" role="button" tabindex="0">
-                <img src="images/gallery2.webp" alt="Premium Wanddruck Heidenheim — Büro nachher" loading="lazy" width="650" height="463">
+                <img src="images/gallery-2.webp" alt="Premium Wanddruck Heidenheim — Büro nachher" loading="lazy" width="650" height="463">
                 <div class="gallery-overlay">
                     <h3 class="overlay-title">Business Lounge</h3>
                     <p>Stuttgart, Baden-Württemberg</p>
@@ -832,7 +701,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div>
 
             <div class="gallery-item" data-category="restaurant" role="button" tabindex="0">
-                <img src="images/gallery3.webp" alt="3D Villa Wandverkleidung Ulm — Restaurant nachher" loading="lazy" width="600" height="449">
+                <img src="images/gallery-3.webp" alt="3D Villa Wandverkleidung Ulm — Restaurant nachher" loading="lazy" width="600" height="449">
                 <div class="gallery-overlay">
                     <h3 class="overlay-title">Elegantes Restaurant</h3>
                     <p>Ulm, Baden-Württemberg</p>
@@ -841,7 +710,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div>
 
             <div class="gallery-item" data-category="wohnzimmer" role="button" tabindex="0">
-                <img src="images/gallery4.webp" alt="Kreative Wandgestaltung Aalen — Gemütliches Wohnzimmer mit Wanddruck" loading="lazy" width="595" height="450">
+                <img src="images/gallery-4.webp" alt="Luxus Wandgestaltung Aalen — Wohnzimmer nachher" loading="lazy" width="595" height="450">
                 <div class="gallery-overlay">
                     <h3 class="overlay-title">Gemütliches Wohnzimmer</h3>
                     <p>Heidenheim, Baden-Württemberg</p>
@@ -850,7 +719,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div>
 
             <div class="gallery-item" data-category="buero" role="button" tabindex="0">
-                <img src="images/gallery5.webp" alt="Kreativbüro Wandgestaltung Aalen — Wanddruck mit Farbakzenten" loading="lazy" width="600" height="421">
+                <img src="images/gallery-5.webp" alt="Premium Wanddruck Heidenheim — Büro nachher" loading="lazy" width="600" height="421">
                 <div class="gallery-overlay">
                     <h3 class="overlay-title">Kreativbüro</h3>
                     <p>Aalen, Baden-Württemberg</p>
@@ -859,7 +728,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div>
 
             <div class="gallery-item" data-category="restaurant" role="button" tabindex="0">
-                <img src="images/gallery6.webp" alt="Café Ambiente Wandgestaltung Stuttgart — modernes Restaurant Design" loading="lazy" width="600" height="387">
+                <img src="images/gallery-6.webp" alt="3D Villa Wandverkleidung Ulm — Restaurant nachher" loading="lazy" width="600" height="387">
                 <div class="gallery-overlay">
                     <h3 class="overlay-title">Café Ambiente</h3>
                     <p>Stuttgart, Baden-Württemberg</p>
@@ -868,7 +737,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div>
 
             <div class="gallery-item" data-category="boden" role="button" tabindex="0">
-                <img src="images/galleryboden1.webp" alt="Premium 3D Bodendruck Aalen — Direkt Wanddruck" loading="lazy" width="607" height="600">
+                <img src="images/gallery-boden-1.webp" alt="Premium 3D Bodendruck Aalen — Direkt Wanddruck" loading="lazy" width="607" height="600">
                 <div class="gallery-overlay">
                     <h3 class="overlay-title">3D Bodendruck</h3>
                     <p>Stuttgart, Baden-Württemberg</p>
@@ -877,7 +746,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div>
 
             <div class="gallery-item" data-category="boden" role="button" tabindex="0">
-                <img src="images/galleryboden2.webp" alt="Bodendruck Logo" loading="lazy" width="470" height="600">
+                <img src="images/gallery-boden-2.webp" alt="Bodendruck Logo" loading="lazy" width="470" height="600">
                 <div class="gallery-overlay">
                     <h3 class="overlay-title">Logo Bodendruck</h3>
                     <p>Aalen, Baden-Württemberg</p>
@@ -891,20 +760,20 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
 <!-- Lightbox -->
 <div id="lightbox" class="lightbox">
-    <button class="lightbox-close" aria-label="Schließen">&times;</button>
+    <button class="lightbox-close" onclick="WandVision.closeLightbox()" aria-label="Schließen">&times;</button>
 
     <div class="glb-layout">
 
         <!-- LIJEVA KOLONA -->
         <div class="glb-side glb-side-left">
             <div class="glb-nav-group">
-                <button class="vlb-btn" data-action="prev">
+                <button class="vlb-btn" onclick="WandVision.lightboxGalleryPrev()">
                     <i class="fas fa-arrow-left"></i>
                     <span>Zurück</span>
                 </button>
             </div>
             <div class="glb-conv-group">
-                <button class="vlb-btn" data-action="config">
+                <button class="vlb-btn" onclick="WandVision.lightboxGoConfigurator()">
                     <i class="fas fa-magic"></i>
                     <span>Meinen Bereich gestalten</span>
                 </button>
@@ -920,13 +789,13 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         <!-- DESNA KOLONA -->
         <div class="glb-side glb-side-right">
             <div class="glb-nav-group">
-                <button class="vlb-btn" data-action="next">
+                <button class="vlb-btn" onclick="WandVision.lightboxGalleryNext()">
                     <span>Weiter</span>
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
             <div class="glb-conv-group">
-                <button class="vlb-btn" data-action="preise">
+                <button class="vlb-btn" onclick="WandVision.lightboxGoPreise()">
                     <i class="fas fa-calculator"></i>
                     <span>Was kostet das?</span>
                 </button>
@@ -935,11 +804,11 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
         <!-- MOBILNI NAV RED — iznad slike -->
         <div class="glb-mobile-nav-row">
-            <button class="vlb-btn" data-action="prev">
+            <button class="vlb-btn" onclick="WandVision.lightboxGalleryPrev()">
                 <i class="fas fa-arrow-left"></i>
                 <span>Zurück</span>
             </button>
-            <button class="vlb-btn" data-action="next">
+            <button class="vlb-btn" onclick="WandVision.lightboxGalleryNext()">
                 <span>Weiter</span>
                 <i class="fas fa-arrow-right"></i>
             </button>
@@ -947,11 +816,11 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
         <!-- MOBILNI CONV RED — ispod slike -->
         <div class="glb-mobile-conv-row">
-            <button class="vlb-btn" data-action="config">
+            <button class="vlb-btn" onclick="WandVision.lightboxGoConfigurator()">
                 <i class="fas fa-magic"></i>
                 <span>Meinen Bereich gestalten</span>
             </button>
-            <button class="vlb-btn" data-action="preise">
+            <button class="vlb-btn" onclick="WandVision.lightboxGoPreise()">
                 <i class="fas fa-calculator"></i>
                 <span>Was kostet das?</span>
             </button>
@@ -961,20 +830,20 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 </div>
 <!-- VIDEO LIGHTBOX -->
 <div id="video-lightbox" class="video-lightbox">
-  <button class="lightbox-close" aria-label="Schließen">&times;</button>
+  <button class="lightbox-close" onclick="WandVision.closeVideoLightbox()" aria-label="Schließen">&times;</button>
 
   <div class="vlb-layout">
 
     <!-- LIJEVA KOLONA -->
     <div class="vlb-side vlb-side-left">
       <div id="vlb-nav-btns" class="vlb-cta-group vlb-nav-group">
-        <button class="vlb-btn" data-action="prev">
+        <button class="vlb-btn" onclick="WandVision.lightboxPrev()">
           <i class="fas fa-arrow-left"></i>
           <span>Zurück</span>
         </button>
       </div>
       <div id="vlb-conv-btns" class="vlb-cta-group vlb-conv-group">
-        <button class="vlb-btn" data-action="config">
+        <button class="vlb-btn" onclick="WandVision.lightboxGoConfigurator()">
           <i class="fas fa-magic"></i>
           <span>Meinen Bereich gestalten</span>
         </button>
@@ -990,13 +859,13 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
     <!-- DESNA KOLONA -->
     <div class="vlb-side vlb-side-right">
       <div id="vlb-nav-btns-right" class="vlb-cta-group vlb-nav-group">
-        <button class="vlb-btn" data-action="next">
+        <button class="vlb-btn" onclick="WandVision.lightboxNext()">
           <span>Weiter</span>
           <i class="fas fa-arrow-right"></i>
         </button>
       </div>
       <div id="vlb-conv-btns-right" class="vlb-cta-group vlb-conv-group">
-        <button class="vlb-btn" data-action="preise">
+        <button class="vlb-btn" onclick="WandVision.lightboxGoPreise()">
           <i class="fas fa-calculator"></i>
           <span>Was kostet das?</span>
         </button>
@@ -1005,11 +874,11 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
     <!-- MOBILNI NAV RED — iznad videa (samo mobile) -->
     <div id="vlb-mobile-nav-row" class="vlb-mobile-nav-row">
-      <button class="vlb-btn" data-action="prev">
+      <button class="vlb-btn" onclick="WandVision.lightboxPrev()">
         <i class="fas fa-arrow-left"></i>
         <span>Zurück</span>
       </button>
-      <button class="vlb-btn" data-action="next">
+      <button class="vlb-btn" onclick="WandVision.lightboxNext()">
         <span>Weiter</span>
         <i class="fas fa-arrow-right"></i>
       </button>
@@ -1017,11 +886,11 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
     <!-- MOBILNI CONV RED — ispod videa (samo mobile) -->
     <div id="vlb-mobile-conv-row" class="vlb-mobile-conv-row">
-      <button class="vlb-btn" data-action="config">
+      <button class="vlb-btn" onclick="WandVision.lightboxGoConfigurator()">
         <i class="fas fa-magic"></i>
         <span>Meinen Bereich gestalten</span>
       </button>
-      <button class="vlb-btn" data-action="preise">
+      <button class="vlb-btn" onclick="WandVision.lightboxGoPreise()">
         <i class="fas fa-calculator"></i>
         <span>Was kostet das?</span>
       </button>
@@ -1076,7 +945,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                     <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </button>
                 <div class="faq-answer" id="faq-answer-4" role="region">
-                    <p>Ab 170 €/m² (Putz, Standard). Premium ab 200 €/m², Bodendruck ab 210 €/m². Nutzen Sie unseren <a href="#preise" class="faq-inline-link">Preisrechner</a> für eine genaue Kalkulation.</p>
+                    <p>Ab 170 €/m² (Putz, Standard). Premium ab 200 €/m², Bodendruck ab 210 €/m². Nutzen Sie unseren <a href="#preise" style="color:var(--mid-blue);font-weight:600;">Preisrechner</a> für eine genaue Kalkulation.</p>
                 </div>
             </div>
 
@@ -1084,7 +953,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
         <div class="faq-cta reveal">
             <p>Noch mehr Fragen? Alle 9 Antworten auf einen Blick.</p>
-            <a href="/faq/" class="btn-primary-large">
+            <a href="faq/index.html" class="btn-primary-large">
                 <i class="fas fa-question-circle"></i> Alle Fragen ansehen
             </a>
         </div>
@@ -1100,7 +969,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         </div>
 
         <div class="calculator-wrapper">
-            <form class="calculator-form" >
+            <form class="calculator-form" onsubmit="event.preventDefault(); WandVision.calculatePrice();">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="breite">
@@ -1177,7 +1046,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                     </div>
                     <div class="result-footer">
                         <p><i class="fas fa-info-circle"></i> Dies ist ein unverbindlicher Richtwert. Für ein genaues Angebot kontaktieren Sie uns bitte.</p>
-                        <button class="btn-primary-large" data-action="open-konfigurator">
+                        <button class="btn-primary-large" onclick="KonfiguratorModal.open()">
                             <i class="fas fa-paper-plane"></i> Anfrage senden
                         </button>
                     </div>
@@ -1185,7 +1054,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 				<!-- Auto CTA nakon kalkulacije -->
 <div class="result-cta-bridge">
     <p>Ihr Budget passt? Dann starten wir!</p>
-    <button data-action="open-konfigurator" class="bridge-btn bridge-btn-primary bridge-btn-reset">
+    <button onclick="KonfiguratorModal.open()" class="bridge-btn bridge-btn-primary" style="border:none; cursor:pointer;">
         <i class="fas fa-rocket"></i> Jetzt Projekt konfigurieren
     </button>
 </div>
@@ -1202,7 +1071,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 
         <div class="section-header reveal">
             <h2 class="section-title">
-                <img src="images/zidicon.png" alt="Team Icon" class="section-icon" width="40" height="40" loading="lazy">
+                <img src="images/zid-icon.png" alt="Team Icon" class="section-icon" width="40" height="40" loading="lazy">
                 Das sind wir
             </h2>
             <p class="section-subtitle">
@@ -1216,7 +1085,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 <div class="ueber-foto-wrapper">
                     <div class="ueber-foto-card">
                         <img
-                            src="images/kristinaportrait.webp"
+                            src="images/kristina-portrait.webp"
                             alt="Kristina Ćaćić – Gründerin WandVision K&K"
                             class="ueber-foto"
                             loading="lazy"
@@ -1248,7 +1117,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 <div class="ueber-foto-wrapper">
                     <div class="ueber-foto-card">
                         <img
-                            src="images/kristijanportrait.webp"
+                            src="images/kristijan-portrait.webp"
                             alt="Kristijan Hrestак – Gründer WandVision K&K"
                             class="ueber-foto"
                             loading="lazy"
@@ -1307,7 +1176,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
                 die jeden Raum in ein Unikat verwandeln.
             </p>
             <p class="regional-keywords">
-                Unser Einzugsgebiet umfasst den <strong>Ostalbkreis</strong> sowie die umliegenden Städte und Regionen — von <a href="/wandgestaltung-aalen/" class="regional-link">Wandgestaltung in Aalen</a> und <a href="/wandgestaltung-heidenheim/" class="regional-link">Wandverkleidung in Heidenheim</a> über <a href="/wandgestaltung-ulm/" class="regional-link">3D-Wände in Ulm</a> bis zu Wanddesign-Projekten in Göppingen und Schwäbisch Gmünd.
+                Wanddruck Ostalbkreis · Wandgestaltung Aalen · Wandverkleidung Heidenheim · 3D Wand Ulm · Wanddesign Göppingen · Wandlösung Schwäbisch Gmünd
             </p>
         </div>
     </div>
@@ -1321,7 +1190,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="images/zidicon.png" alt="WandVision Logo" class="footer-logo-icon-img" width="40" height="40">
+                    <img src="images/zid-icon.png" alt="WandVision Logo" class="footer-logo-icon-img" width="40" height="40">
                     <div class="footer-logo-text">
                         <div class="footer-logo-title">
                             <span class="wand">Wand</span><span class="vision">Vision</span><span class="kk">K&K</span>
@@ -1332,49 +1201,39 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
             </div>
 
             <div class="footer-col">
-                <h3 class="footer-col-heading">Kontakt</h3>
+                <h3 class="overlay-title">Kontakt</h3>
                 <p><i class="fas fa-phone"></i> +49 176 41 60 89 73</p>
                 <p><i class="fas fa-envelope"></i> <a href="mailto:kontakt@wand-vision.de">kontakt@wand-vision.de</a></p>
                 <p><i class="fas fa-map-marker-alt"></i> Hofherrnstrasse 67, 73434 Aalen, Baden-Württemberg</p>
             </div>
 
             <div class="footer-col">
-                <h3 class="footer-col-heading">Öffnungszeiten</h3>
+                <h3 class="overlay-title">Öffnungszeiten</h3>
                 <p>Montag – Freitag: 09:00 – 18:00</p>
                 <p>Samstag: 10:00 – 14:00</p>
                 <p>Sonntag: Geschlossen</p>
             </div>
 
             <div class="footer-col">
-                <h3 class="footer-col-heading">Navigation</h3>
+                <h3 class="overlay-title">Navigation</h3>
                 <p><a href="#videos" class="footer-nav-link"><i class="fas fa-play-circle"></i> Videos</a></p>
                 <p><a href="#leistungen" class="footer-nav-link"><i class="fas fa-th-large"></i> Leistungen</a></p>
                 <p><a href="#gallery" class="footer-nav-link"><i class="fas fa-images"></i> Galerie</a></p>
                 <p><a href="#preise" class="footer-nav-link"><i class="fas fa-calculator"></i> Preisrechner</a></p>
-                <p><a href="/einsatzbereiche/" class="footer-nav-link"><i class="fas fa-building"></i> Einsatzbereiche</a></p>
-                <p><a href="/faq/" class="footer-nav-link"><i class="fas fa-question-circle"></i> FAQ</a></p>
-                <p><a href="/blog/" class="footer-nav-link"><i class="fas fa-blog"></i> Blog</a></p>
-            </div>
-            <!-- B2B & Geo interne stranice — za SEO crawlability -->
-            <div class="footer-col">
-                <h3 class="footer-col-heading">Branchen & Regionen</h3>
-                <p><a href="/buero-wandgestaltung/" class="footer-nav-link"><i class="fas fa-briefcase"></i> Büro Wandgestaltung</a></p>
-                <p><a href="/restaurant-wandgestaltung/" class="footer-nav-link"><i class="fas fa-utensils"></i> Restaurant Wandgestaltung</a></p>
-                <p><a href="/wandgestaltung/" class="footer-nav-link"><i class="fas fa-paint-roller"></i> Wandgestaltung</a></p>
-                <p><a href="/wandgestaltung-aalen/" class="footer-nav-link"><i class="fas fa-map-marker-alt"></i> Wandgestaltung Aalen</a></p>
-                <p><a href="/wandgestaltung-ulm/" class="footer-nav-link"><i class="fas fa-map-marker-alt"></i> Wandgestaltung Ulm</a></p>
-                <p><a href="/wandgestaltung-heidenheim/" class="footer-nav-link"><i class="fas fa-map-marker-alt"></i> Wandgestaltung Heidenheim</a></p>
+                <p><a href="einsatzbereiche/index.html" class="footer-nav-link"><i class="fas fa-building"></i> Einsatzbereiche</a></p>
+                <p><a href="faq/index.html" class="footer-nav-link"><i class="fas fa-question-circle"></i> FAQ</a></p>
+                <p><a href="blog/index.html" class="footer-nav-link"><i class="fas fa-blog"></i> Blog</a></p>
             </div>
         </div>
 
         <div class="footer-legal">
-            <a href="/impressum/" class="legal-link">Impressum</a>
+            <a href="impressum/index.html" class="legal-link">Impressum</a>
             <span class="legal-sep">|</span>
-            <a href="/agb/" class="legal-link">AGB</a>
+            <a href="agb/index.html" class="legal-link">AGB</a>
             <span class="legal-sep">|</span>
-            <a href="/datenschutz/" class="legal-link">Datenschutzerklärung</a>
+            <a href="datenschutz/index.html" class="legal-link">Datenschutzerklärung</a>
             <span class="legal-sep">|</span>
-            <a href="/widerrufsrecht/" class="legal-link">Widerrufsrecht</a>
+            <a href="widerrufsrecht/index.html" class="legal-link">Widerrufsrecht</a>
         </div>
 
         <div class="footer-bottom">
@@ -1394,7 +1253,7 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
     <span class="whatsapp-pulse"></span>
 </a>
 
-<button id="scroll-to-top" class="scroll-to-top" aria-label="Nach oben scrollen">
+<button id="scroll-to-top" class="scroll-to-top" onclick="WandVision.scrollToTop()" aria-label="Nach oben scrollen">
     <i class="fas fa-arrow-up"></i>
 </button>
 
@@ -1404,22 +1263,22 @@ p.room-title-label{font-size:0.95rem;margin-bottom:4px}
 <div id="cookie-banner" class="cookie-banner">
     <div class="cookie-content">
         <div class="cookie-text">
-            <h3 class="cookie-banner-heading">Diese Website verwendet Cookies</h3>
+            <h3 class="overlay-title">Diese Website verwendet Cookies</h3>
             <p>Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten. Durch die Nutzung dieser Website stimmen Sie der Verwendung von Cookies zu.</p>
         </div>
         <div class="cookie-buttons">
-            <button class="btn-accept-cookies">
+            <button onclick="WandVision.acceptCookies()" class="btn-accept-cookies">
                 <i class="fas fa-check"></i> Alle akzeptieren
             </button>
-            <button class="btn-decline-cookies">
+            <button onclick="WandVision.declineCookies()" class="btn-decline-cookies">
                 Nur notwendige
             </button>
-            <a href="/datenschutz/" class="btn-cookie-policy">Datenschutz</a>
+            <a href="datenschutz/index.html" class="btn-cookie-policy">Datenschutz</a>
         </div>
     </div>
 </div>
 
-<script src="js/main.min.js" defer></script>
-<script src="js/konfigurator-modal.min.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/konfigurator-modal.js" defer></script>
 </body>
 </html>
