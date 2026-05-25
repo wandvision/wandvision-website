@@ -45,7 +45,7 @@
 .bd-feature-card{background:var(--white);border:1px solid var(--gray-light);border-radius:14px;padding:28px 22px;text-align:center;transition:var(--transition)}
 .bd-feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.08);border-color:var(--sky-blue)}
 .bd-feature-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;margin:0 auto 16px}
-.bd-feature-card h3{font-size:1.05rem;color:var(--dark-blue);margin-bottom:8px;font-weight:700}
+.bd-feature-card h3,.bd-feature-card .bd-feature-title{font-size:1.05rem;color:var(--dark-blue);margin-bottom:8px;font-weight:700;font-family:var(--font-heading);line-height:1.2}
 .bd-feature-card p{font-size:0.88rem;color:var(--gray);line-height:1.6;margin:0}
 .bd-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .bd-gallery-item{border-radius:14px;overflow:hidden;position:relative;background:var(--white);border:1px solid var(--gray-light);transition:var(--transition)}
