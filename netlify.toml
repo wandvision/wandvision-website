@@ -1,120 +1,142 @@
 [build]
-  command = ""
   publish = "."
 
-[functions]
-  directory = "netlify/functions"
-
-[[headers]]
-  for = "/*"
-    [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
-    Permissions-Policy = "geolocation=(), microphone=()"
-    Content-Security-Policy = "default-src 'self'; media-src 'self' https://res.cloudinary.com blob:; img-src 'self' https://res.cloudinary.com data: blob:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.resend.com; frame-ancestors 'none';"
-
-# ========================================
-# 301 Redirects: Old .html URLs → New clean URLs
-# Ovo osigurava da stari linkovi (Google indexirani, bookmarks, backlinks)
-# i dalje rade i preusmjeravaju na nove URL-ove
-# ========================================
-
-# Glavne stranice
+# ============================================================
+# REDIRECTI - trailing slash
+# ============================================================
 [[redirects]]
-  from = "/wanddruck.html"
+  from = "/wandgestaltung"
+  to = "/wandgestaltung/"
+  status = 301
+
+[[redirects]]
+  from = "/buero-wandgestaltung"
+  to = "/buero-wandgestaltung/"
+  status = 301
+
+[[redirects]]
+  from = "/restaurant-wandgestaltung"
+  to = "/restaurant-wandgestaltung/"
+  status = 301
+
+[[redirects]]
+  from = "/praxis-wandgestaltung"
+  to = "/praxis-wandgestaltung/"
+  status = 301
+
+[[redirects]]
+  from = "/wandgestaltung-aalen"
+  to = "/wandgestaltung-aalen/"
+  status = 301
+
+[[redirects]]
+  from = "/wandgestaltung-ulm"
+  to = "/wandgestaltung-ulm/"
+  status = 301
+
+[[redirects]]
+  from = "/wandgestaltung-heidenheim"
+  to = "/wandgestaltung-heidenheim/"
+  status = 301
+
+[[redirects]]
+  from = "/wanddruck"
   to = "/wanddruck/"
   status = 301
 
 [[redirects]]
-  from = "/bodendruck.html"
+  from = "/bodendruck"
   to = "/bodendruck/"
   status = 301
 
 [[redirects]]
-  from = "/sonderflaechen.html"
+  from = "/sonderflaechen"
   to = "/sonderflaechen/"
   status = 301
 
 [[redirects]]
-  from = "/einsatzbereiche.html"
+  from = "/einsatzbereiche"
   to = "/einsatzbereiche/"
   status = 301
 
 [[redirects]]
-  from = "/faq.html"
+  from = "/faq"
   to = "/faq/"
   status = 301
 
 [[redirects]]
-  from = "/blog.html"
+  from = "/blog"
   to = "/blog/"
   status = 301
 
+# 404 fallback
 [[redirects]]
-  from = "/index.html"
-  to = "/"
-  status = 301
+  from = "/*"
+  to = "/404.html"
+  status = 404
 
-# Legal stranice
-[[redirects]]
-  from = "/agb.html"
-  to = "/agb/"
-  status = 301
+# ============================================================
+# HEADERS
+# ============================================================
 
-[[redirects]]
-  from = "/datenschutz.html"
-  to = "/datenschutz/"
-  status = 301
+# HTML stranice - kratki cache jer se sadrzaj mijenja
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-XSS-Protection = "1; mode=block"
 
-[[redirects]]
-  from = "/impressum.html"
-  to = "/impressum/"
-  status = 301
+    # Izolacija prozora od cross-origin stranica (COOP)
+    Cross-Origin-Opener-Policy = "same-origin"
 
-[[redirects]]
-  from = "/widerrufsrecht.html"
-  to = "/widerrufsrecht/"
-  status = 301
+    # Content Security Policy — zaštita od XSS i injection napada
+    # VAŽNO: Prilagodi 'script-src' i 'style-src' ako koristiš externe skripte!
+    #
+    # Trenutno dozvoljeno:
+    #   - default-src 'self'          → svi resursi samo s vlastite domene
+    #   - script-src 'self'           → JS samo s vlastite domene
+    #     + fonts.googleapis.com      → Google Fonts CSS
+    #     + resend.com                → Resend API (za netlify funkciju)
+    #   - style-src 'self' 'unsafe-inline' → inline stilovi dozvoljeni (potrebno za HTML email template)
+    #   - img-src 'self' data: blob:  → slike + base64 (za konfigurator foto upload)
+    #   - connect-src 'self' https://api.resend.com → fetch pozivi prema Resend API-u
+    #   - font-src 'self' fonts.gstatic.com → Google Fonts fajlovi
+    #   - frame-ancestors 'none'      → pojačava X-Frame-Options DENY
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://api.resend.com https://script.google.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'none'; base-uri 'self';"
 
-# Blog članci
-[[redirects]]
-  from = "/blog/bodendruck-revolution.html"
-  to = "/blog/bodendruck-revolution/"
-  status = 301
+# CSS i JS - duzi cache, fingerprinting nije implementiran pa 1 dan
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
 
-[[redirects]]
-  from = "/blog/buero-wanddruck.html"
-  to = "/blog/buero-wanddruck/"
-  status = 301
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
 
-[[redirects]]
-  from = "/blog/projekte-stuttgart-aalen.html"
-  to = "/blog/projekte-stuttgart-aalen/"
-  status = 301
+# Slike - dugi cache
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
 
-[[redirects]]
-  from = "/blog/restaurant-transformation.html"
-  to = "/blog/restaurant-transformation/"
-  status = 301
+# Sitemap
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml"
+    Cache-Control = "public, max-age=86400"
 
-[[redirects]]
-  from = "/blog/wanddruck-kosten.html"
-  to = "/blog/wanddruck-kosten/"
-  status = 301
-
-[[redirects]]
-  from = "/blog/wanddruck-trends-2026.html"
-  to = "/blog/wanddruck-trends-2026/"
-  status = 301
-
-[[redirects]]
-  from = "/blog/wanddruck-vs-tapete.html"
-  to = "/blog/wanddruck-vs-tapete/"
-  status = 301
-
-[[redirects]]
-  from = "/blog/wohnzimmer-ideen.html"
-  to = "/blog/wohnzimmer-ideen/"
-  status = 301
+# Robots.txt
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
