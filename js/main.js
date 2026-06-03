@@ -557,7 +557,7 @@ const WandVision = (function() {
  function initAnimations() {
   if (!('IntersectionObserver' in window)) return;
   const elements = document.querySelectorAll(
-   '.leistung-card, .testimonial-card, .gallery-item, .video-card, .faq-item, .feature-card'
+   '.leistung-card, .testimonial-card, .gallery-item, .video-card, .feature-card'
   );
   const observer = new IntersectionObserver(function(entries) {
    entries.forEach(function(entry) {
