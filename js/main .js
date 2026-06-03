@@ -845,10 +845,7 @@ overlay.addEventListener('touchend', function(e) {
    }
   });
  });
- // FAQ buttons — delegate click to toggleFAQ
- document.querySelectorAll('.faq-question').forEach(function(btn) {
-  btn.addEventListener('click', function() { toggleFAQ(btn); });
- });
+
  // Gallery items — click and keyboard
  document.querySelectorAll('.gallery-item').forEach(function(item) {
   item.addEventListener('click', function() { openLightbox(item); });
