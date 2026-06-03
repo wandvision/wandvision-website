@@ -13,3 +13,8 @@
 .faq-ani-1 { animation-delay: 0.05s; }
 .faq-ani-2 { animation-delay: 0.12s; }
 .faq-ani-3 { animation-delay: 0.19s; }
+
+/* Fix: resetuj bilo koji inline opacity koji main.js postavi */
+.faq-item {
+  opacity: 1 !important;
+}
