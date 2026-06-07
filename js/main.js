@@ -876,7 +876,11 @@ overlay.addEventListener('touchend', function(e) {
   }, 200);
  }
  window.addEventListener('load', handleHashOnLoad);
+ if (document.readyState === 'loading') {
  document.addEventListener('DOMContentLoaded', init);
+} else {
+ init();
+}
  return {
   carouselNext:            carouselNext,
   carouselPrev:            carouselPrev,
