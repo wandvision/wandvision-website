@@ -742,7 +742,7 @@ overlay.addEventListener('touchend', function(e) {
    updateCarousel();
   }, 200));
  }
-  function initScrollReveal() {
+ function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(function(entries) {
    entries.forEach(function(entry) {
@@ -752,6 +752,13 @@ overlay.addEventListener('touchend', function(e) {
    });
   }, { threshold: 0.15 });
   reveals.forEach(function(el) { observer.observe(el); });
+ }
+ function initFAQ() {
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+   btn.addEventListener('click', function() {
+    toggleFAQ(this);
+   });
+  });
  }
  function createSparkle() {
   const targets = document.querySelectorAll(
@@ -832,6 +839,7 @@ overlay.addEventListener('touchend', function(e) {
   initAnimations();
   initBoden3DTilt();
   initScrollReveal();
+  initFAQ();
  document.querySelectorAll('.room-preview').forEach(function(preview) {
   preview.addEventListener('click', function(e) {
    const card = preview.closest('.room-card');
