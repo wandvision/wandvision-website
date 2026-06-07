@@ -756,7 +756,7 @@ overlay.addEventListener('touchend', function(e) {
  function initFAQ() {
   document.querySelectorAll('.faq-question').forEach(function(btn) {
    btn.addEventListener('click', function() {
-    toggleFAQ(this);
+    WandVision.toggleFAQ(this);
    });
   });
  }

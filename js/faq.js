@@ -44,7 +44,11 @@ const FAQPage = (() => {
  function init() {
   initCategoryFilter();
  }
+ if (document.readyState === 'loading') {
  document.addEventListener('DOMContentLoaded', init);
+} else {
+ init();
+}
  return {
   toggleFAQ,
   scrollToTop,
